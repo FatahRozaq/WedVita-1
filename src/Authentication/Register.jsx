@@ -1,6 +1,11 @@
+import { Link } from 'react-router-dom';
 import gambar from '../assets/WeddingAuth.png';
 
 // get : http://127.0.0.1:8000
+
+const onSubmit = (ev) => {
+  ev.preventDefault(ev)
+}
 
 export default function Register() {
     return(
@@ -9,7 +14,7 @@ export default function Register() {
               <h1 className="text-2xl font-semibold mb-4">Registrasi</h1>
               <h3 className="text-base mb-4">Silakan registrasi untuk buat akun baru</h3>
 
-              <form action="#" method="POST">
+              <form onSubmit={onSubmit} action="#" method="POST">
               <div className="flex mb-4">
                   <div className="mr-4">
                     <label htmlFor="username" className="block text-gray-600">Nama</label>
@@ -82,7 +87,7 @@ export default function Register() {
 
               <div className="mt-6 text-center">
                 <span href="#" className="text-black">
-                  Sudah memiliki akun? <a className="text-textPurple hover:underline">Login Sekarang</a >
+                  Sudah memiliki akun? <Link to="/login" className="text-textPurple hover:underline">Login Sekarang</Link >
                 </span>
               </div>
           </div>

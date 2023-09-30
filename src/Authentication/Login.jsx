@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom'
 import gambar from '../assets/WeddingAuth.png'
 
-function App() {
+export default function Login() {
 
+  const onSubmit = (ev) => {
+    ev.preventDefault()
+  }
   return (
     <>
 
@@ -10,7 +14,7 @@ function App() {
               <h1 className="text-2xl font-semibold mb-4">Login</h1>
               <h3 className="text-base mb-4">Silakan login terlebih dahulu</h3>
 
-              <form action="#" method="POST">
+              <form onSubmit={onSubmit} action="#" method="POST">
                   <div className="mb-4">
                     <label htmlFor="username" className="block text-gray-600">
                       Username
@@ -61,7 +65,7 @@ function App() {
 
               <div className="mt-6 text-center">
                 <span href="#" className="text-black">
-                  Sudah memiliki akun? <a className="text-textPurple hover:underline">Login Sekarang</a >
+                  Belum memiliki akun? <Link to="/register" className="text-textPurple hover:underline">Buat Akun Sekarang</Link >
                 </span>
               </div>
           </div>
@@ -79,4 +83,3 @@ function App() {
   )
 }
 
-export default App
