@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         element: <DesainKU />
     },
     {
-        path: '/cms-detail-ku',
+        path: '/cms-detail-ku/:id',
         element: <DetailKU />
     },
     {

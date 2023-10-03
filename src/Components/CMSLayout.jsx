@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom'
+import { useStateContext } from '../Contexts/ContextProvider'
 
 import '../App.css'
 
@@ -12,7 +13,8 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Layout({ children, onLogout, user }) {
+export default function Layout({ children}) {
+
     return(
         <div class="body-font font-poppins bg-wedvita-sidebar-dark">
 
@@ -77,7 +79,7 @@ export default function Layout({ children, onLogout, user }) {
                         </li>
 
                         <li>
-                            <a onClick={onLogout} class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
+                            <a /*onClick={onLogout} */ class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
                                 </svg>
@@ -104,7 +106,7 @@ export default function Layout({ children, onLogout, user }) {
                                                 <Menu.Button className="flex mb-4 items-center text-sm font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white">
                                                     <span class="sr-only">Open user menu</span>
                                                     <img class="w-8 h-8 mr-2 rounded-full" src={orang1} alt="user photo"></img>
-                                                    <div class="font-extrabold">{user.username}</div>
+                                                    <div class="font-extrabold">{/*{user.username}*/}</div>
                                                     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                                     </svg>

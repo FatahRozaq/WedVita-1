@@ -40,6 +40,7 @@ export default function Register() {
   }
 
     return(
+      <>
         <div className="bg-gray-100 flex justify-center items-center h-screen">
           <div className="lg:pt-12 lg:pl-20 md:p-52 sm:20 p-8 w-full h-full lg:w-1/2 bg-white">
               <h1 className="text-2xl font-semibold mb-4">Registrasi</h1>
@@ -144,6 +145,8 @@ export default function Register() {
             />
           </div>
     </div>
+
+    </>
     )
 }
 

@@ -1,8 +1,45 @@
 import './App.css'
 
 import Layout from './Components/CMSLayout.jsx'
+import { useEffect, useState } from 'react'
+import axiosClient from './axios-client'
+import { useParams, Link } from 'react-router-dom'
 
 function DataKartuUndangan() {
+    const designName = createRef();
+    const designDescription = createRef();
+    const designImage = createRef();
+    const price = createRef();
+    const designLink = createRef();
+
+    const { id } = useParams(); 
+    const [design, setDesign] = useState({});
+
+    const onSubmit = (ev) => {
+        ev.preventDefault()
+      
+        const payload = {
+          name: nameRef.current.value,
+          username: userNameRef.current.value,
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+          password_confirmation: passwordConfirmationRef.current.value,
+        }
+        axiosClient.post('/register', payload)
+        .then(({data}) => {
+          setUser(data.user)
+          setToken(data.token)
+        })
+        .catch(err => {
+          const response = err.response;
+          if( response && response.status === 422){
+            // response.data.errors
+            // console.log(response.data.errors);
+            setErrors(response.data.errors)
+          }
+        })
+      }
+
     return (
         <Layout>
             <div class="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
