@@ -38,8 +38,8 @@ export default {
         'poppins': ['Poppins', 'sans-serif'],
         'GreatVibes': ['GreatVibes', 'script']
       },
+      darkMode: 'class',
     },
   },
   plugins: [],
 }
-
