@@ -8,6 +8,7 @@ import imag2 from './assets/Imag2.svg'
 import sosmed from './assets/sosmeds.svg'
 import Carousel from './Carousel';
 import Carousel2 from './Carousel2';
+import DarkModeSwitch from './DarkModeSwitch';
 
 import './App.css'
 
@@ -24,10 +25,12 @@ function App() {
               <li><a href="#" class="hover:underline">Home</a></li>
               <li><a href="#" class="hover:underline">Design</a></li>
               <li><a href="#" class="hover:underline">About</a></li>
+
             </ul>
           </nav>
           <nav>
             <ul class="flex space-x-5">
+              {/* <DarkModeSwitch /> */}
               <Link to="/login"><button type="button" class="text-wedvita-purple-unhover hover:text-white border border-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:ring-4 focus:outline-none focus:ring-purple-hovered font-medium rounded-full text-sm px-5 py-2.5">Login</button></Link>
               <Link to="/register"><button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5">Register</button></Link>
             </ul>
@@ -85,7 +88,7 @@ function App() {
 
         <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Elevate Your Wedding Experience with Wedvita Plus! </h1>
 
-        <div class="grid grid-cols-3 gap-4 flex items-stretch justify-between content-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 flex items-stretch justify-between justify-items-center content-center">
           <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
             <div>
               <a href="#">
