@@ -2,9 +2,9 @@ import './App.css'
 
 import Layout from './Components/CMSLayout.jsx'
 
-function UserProfile() {
+function UserProfile({user, onLogout}) {
     return (
-        <Layout>
+        <Layout onLogout={onLogout} user={user}>
             <div class="text-xl font-extrabold mb-4">Profil</div>
             <div className='UserProfile'>
                 <div class="bg-white p-4 mb-4 rounded shadow">
@@ -12,7 +12,7 @@ function UserProfile() {
                         <div class="w-16 h-16 rounded-full bg-blue-500"></div>
                         <div class="ml-4">
                             <div class="text-xl">User</div>
-                            <div class="text-xl text-gray-700 font-bold">Julya</div>
+                            <div class="text-xl text-gray-700 font-bold">{user.username}</div>
                         </div>
                     </div>
                     <div class="text-gray-700"></div>

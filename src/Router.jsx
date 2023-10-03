@@ -32,7 +32,12 @@ const router = createBrowserRouter([
             {
                 path: '/users',
                 element: <Users />
-            }
+            },
+            {
+                path: '/cms-user-profile',
+                element: <UP1 />
+            },
+            
         ]
     },
     {
@@ -56,10 +61,6 @@ const router = createBrowserRouter([
     {
         path: '/home',
         element: <LandingPage />
-    },
-    {
-        path: '/cms-user-profile',
-        element: <UP1 />
     },
     {
         path: '/cms-dku',

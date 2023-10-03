@@ -2,8 +2,24 @@ import './App.css'
 import blueTempl from './assets/blue.jpg'
 import Layout from './Components/CMSLayout.jsx'
 import brownTempl from './assets/example.png'
+import { useState, useEffect } from 'react'
 
 function DesainKartuUndangan() {
+    const [designs, setDesigns] = useState([]);
+  
+    useEffect(() => {
+        // Make an HTTP GET request to fetch the data
+        axios.get('/getInvitationDesigns') // Replace with your API endpoint
+        .then(response => {
+            // Set the fetched data to the 'designs' state
+            setDesigns(response.data.designs);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    }, []);
+
+
     return (
         <Layout>
             <div class="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
@@ -108,7 +124,17 @@ function DesainKartuUndangan() {
                 </div>
             </div>
 
-
+            {/* <div>
+      <h1>Invitation Designs</h1>
+      <ul>
+        {designs.map(design => (
+          <li key={design.id}>
+            <h2>{design.designName}</h2>
+            <p>{design.designDescription}</p>
+          </li>
+        ))}
+      </ul>
+    </div> */}
         </Layout>
     )
 }

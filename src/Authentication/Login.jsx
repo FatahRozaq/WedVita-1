@@ -1,10 +1,41 @@
-import { Link } from 'react-router-dom'
-import gambar from '../assets/WeddingAuth.png'
+import { Link } from 'react-router-dom';
+import gambar from '../assets/WeddingAuth.png';
+import { createRef, useState } from 'react';
+import axiosClient from '../axios-client';
+import { useStateContext } from '../Contexts/ContextProvider';
 
 export default function Login() {
 
+  const userNameRef = createRef();
+  const passwordRef = createRef();
+  const [errors, setErrors] = useState(null);
+  const {setUser, setToken} = useStateContext();
+
   const onSubmit = (ev) => {
     ev.preventDefault()
+
+    const payload = {
+      username: userNameRef.current.value,
+      password: passwordRef.current.value,
+    }
+    setErrors(null)
+    axiosClient.post('/login', payload)
+    .then(({data}) => {
+      setUser(data.user)
+      setToken(data.token)
+    })
+    .catch(err => {
+      const response = err.response;
+      if( response && response.status === 422){
+        if(response.data.errors){
+          setErrors(response.data.errors)
+        } else {
+          setErrors({
+            username : [response.data.message]
+          })
+        }
+      }
+    })
   }
   return (
     <>
@@ -14,12 +45,20 @@ export default function Login() {
               <h1 className="text-2xl font-semibold mb-4">Login</h1>
               <h3 className="text-base mb-4">Silakan login terlebih dahulu</h3>
 
+              {errors && 
+                <div>
+                  {Object.keys(errors).map(key => (
+                    <p key={key}>{errors[key][0]}</p>
+                  ))}
+                </div>
+              }
               <form onSubmit={onSubmit} action="#" method="POST">
                   <div className="mb-4">
                     <label htmlFor="username" className="block text-gray-600">
                       Username
                     </label>
                     <input
+                      ref={userNameRef}
                       type="text"
                       id="username"
                       name="username"
@@ -32,6 +71,7 @@ export default function Login() {
                       Password
                     </label>
                     <input
+                      ref={passwordRef}
                       type="password"
                       id="password"
                       name="password"
