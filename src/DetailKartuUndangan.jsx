@@ -9,7 +9,7 @@ function DataKartuUndangan() {
         <Layout>
             <div class="text-xl font-extrabold mb-4">Detail Kartu Undangan</div>
             <div
-                class="block rounded-3xl p-6 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                class="block rounded-3xl p-6 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
                 <div class="flex justify-center">
                     <img
                         class="rounded-lg"

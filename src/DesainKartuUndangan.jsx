@@ -7,17 +7,17 @@ import { useState, useEffect } from 'react'
 function DesainKartuUndangan() {
     const [designs, setDesigns] = useState([]);
   
-    useEffect(() => {
-        // Make an HTTP GET request to fetch the data
-        axios.get('/getInvitationDesigns') // Replace with your API endpoint
-        .then(response => {
-            // Set the fetched data to the 'designs' state
-            setDesigns(response.data.designs);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-    }, []);
+    // useEffect(() => {
+    //     // Make an HTTP GET request to fetch the data
+    //     axios.get('/getInvitationDesigns') // Replace with your API endpoint
+    //     .then(response => {
+    //         // Set the fetched data to the 'designs' state
+    //         setDesigns(response.data.designs);
+    //     })
+    //     .catch(error => {
+    //         console.error('Error fetching data:', error);
+    //     });
+    // }, []);
 
 
     return (
@@ -26,16 +26,16 @@ function DesainKartuUndangan() {
             <div class="container mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
                     <div class="px-2">
-                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
                             <a href="#" class="flex p-5 justify-center">
                                 <img class="rounded-lg" src={brownTempl} alt="product image" />
                             </a>
                             <div class="px-5 pb-5">
                                 <a href="#">
-                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Desain Casual</h5>
+                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 mb-4">Desain Casual</h5>
                                 </a>
                                 <div class="flex items-center justify-between">
-                                    <span class="text-xl font-bold text-gray-900 dark:text-white">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
+                                    <span class="text-xl font-bold text-gray-900">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
                                     <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                             <path d="M11.625 16.5a1.875 1.875 0 100-3.75 1.875 1.875 0 000 3.75z" />
@@ -50,16 +50,16 @@ function DesainKartuUndangan() {
                     </div>
 
                     <div class="px-2">
-                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
                             <a href="#" class="flex p-5 justify-center">
                                 <img class="rounded-lg" src={brownTempl} alt="product image" />
                             </a>
                             <div class="px-5 pb-5">
                                 <a href="#">
-                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Desain Casual</h5>
+                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 mb-4">Desain Casual</h5>
                                 </a>
                                 <div class="flex items-center justify-between">
-                                    <span class="text-xl font-bold text-gray-900 dark:text-white">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
+                                    <span class="text-xl font-bold text-gray-900">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
                                     <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                             <path d="M11.625 16.5a1.875 1.875 0 100-3.75 1.875 1.875 0 000 3.75z" />
@@ -74,16 +74,16 @@ function DesainKartuUndangan() {
                     </div>
 
                     <div class="px-2">
-                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
                             <a href="#" class="flex p-5 justify-center">
                                 <img class="rounded-lg" src={brownTempl} alt="product image" />
                             </a>
                             <div class="px-5 pb-5">
                                 <a href="#">
-                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Desain Casual</h5>
+                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 mb-4">Desain Casual</h5>
                                 </a>
                                 <div class="flex items-center justify-between">
-                                    <span class="text-xl font-bold text-gray-900 dark:text-white">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
+                                    <span class="text-xl font-bold text-gray-900">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
                                     <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                             <path d="M11.625 16.5a1.875 1.875 0 100-3.75 1.875 1.875 0 000 3.75z" />
@@ -98,16 +98,16 @@ function DesainKartuUndangan() {
                     </div>
 
                     <div class="px-2">
-                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
                             <a href="#" class="flex p-5 justify-center">
                                 <img class="rounded-lg" src={brownTempl} alt="product image" />
                             </a>
                             <div class="px-5 pb-5">
                                 <a href="#">
-                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">Desain Casual</h5>
+                                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 mb-4">Desain Casual</h5>
                                 </a>
                                 <div class="flex items-center justify-between">
-                                    <span class="text-xl font-bold text-gray-900 dark:text-white">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
+                                    <span class="text-xl font-bold text-gray-900">Rp.5000<span class="text-sm font-normal">/pcs</span></span>
                                     <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                             <path d="M11.625 16.5a1.875 1.875 0 100-3.75 1.875 1.875 0 000 3.75z" />
