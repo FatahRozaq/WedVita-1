@@ -1,0 +1,47 @@
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    20% {opacity: 0.4;}
+    60% {opacity: 0.8;}
+    80% {opacity: 0.95;}
+    100% {opacity: 1;}
+}
+.countdown-animate {
+    animation: fadeIn 1s linear;
+}
+
+.font-gv {
+    font-size: 30px;
+    font-family: "Great Vibes";
+  }
+
+.inv-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("img/f2y375nox1181.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.inv-row{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;   
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    img {
+        width: 50%;
+        height: auto;
+      }
+}
+
+.inv-column-3{
+    display: flex;  
+    align-content: center;   
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+}
