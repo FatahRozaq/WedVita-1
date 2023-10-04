@@ -26,15 +26,15 @@ class weddingInvitationsController extends Controller
         $coverPhotoPath = null;
 
         if ($groomPhoto) {
-            $groomPhotoPath = $groomPhoto->storeAs('groom_photos', $groomPhoto->getClientOriginalName());
+            $groomPhotoPath = $groomPhoto->storeAs($groomPhoto->getClientOriginalName());
         }
 
         if ($bridePhoto) {
-            $bridePhotoPath = $bridePhoto->storeAs('bride_photos', $bridePhoto->getClientOriginalName());
+            $bridePhotoPath = $bridePhoto->storeAs($bridePhoto->getClientOriginalName());
         }
 
         if ($coverPhoto) {
-            $coverPhotoPath = $coverPhoto->storeAs('cover_photos', $coverPhoto->getClientOriginalName());
+            $coverPhotoPath = $coverPhoto->storeAs($coverPhoto->getClientOriginalName());
         }
 
         // Simpan data ke dalam tabel
