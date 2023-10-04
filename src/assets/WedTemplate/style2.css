@@ -1,0 +1,68 @@
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    20% {opacity: 0.4;}
+    60% {opacity: 0.8;}
+    80% {opacity: 0.95;}
+    100% {opacity: 1;}
+}
+.countdown-animate {
+    animation: fadeIn 1s linear;
+}
+
+.font-gv {
+    font-size: 30px;
+    font-family: "Great Vibes";
+  }
+
+.inv-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0)),
+      url("img/rm422-047-kq92wx9y.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+
+}
+
+body{
+  background-color: #FAF1E4;
+}
+
+.inv-banner .title{
+  color: #435334;
+}
+
+.inv-banner .subtitle{
+  color: #435334;  
+}
+
+h1{
+  color: #435334;  
+}
+
+.inv-footer{
+  background-color: #CEDEBD;
+}
+
+.inv-row{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;   
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    img {
+        width: 50%;
+        height: auto;
+      }
+}
+
+.inv-column-3{
+    display: flex;  
+    align-content: center;   
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+}
