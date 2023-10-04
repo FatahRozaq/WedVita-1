@@ -11,6 +11,26 @@ use Illuminate\Http\UploadedFile;
 
 class invitationDesignsController extends Controller
 {
+    public function getData()
+    {
+        $invitationDesigns = InvitationDesigns::all();
+
+        return response()->json([
+            'message' => 'Semua data invitation design',
+            'designs' => $invitationDesigns,
+        ], 200);
+    }
+
+    public function showData($id)
+    {
+        try {
+            $design = InvitationDesigns::findOrFail($id);
+            return response()->json($design);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Desain tidak ditemukan'], 404);
+        }
+    }
+
     public function store(invitationDesignsRequest $request)
     {
         // Validasi data lainnya...

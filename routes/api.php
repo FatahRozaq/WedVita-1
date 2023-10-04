@@ -29,7 +29,12 @@ Route::middleware('auth:sanctum')->group(function () {
     
 });
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/designs', [invitationDesignsController::class, 'store']);
-Route::post('/invitations', [weddingInvitationsController::class, 'store']);
+// Authentication
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+
+// Design Undangan
+    Route::post('/designs', [invitationDesignsController::class, 'store']);
+    Route::post('/invitations', [weddingInvitationsController::class, 'store']);
+    Route::get('/getInvitationDesigns', [invitationDesignsController::class, 'getData']);
+    Route::get('/designs/{id}', [invitationDesignsController::class, 'showData']);
