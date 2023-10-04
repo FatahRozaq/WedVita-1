@@ -20,11 +20,22 @@ class weddingInvitationsController extends Controller
         $groomPhoto = $request->file('groomPhoto');
         $bridePhoto = $request->file('bridePhoto');
         $coverPhoto = $request->file('coverPhoto');
+        
+        $groomPhotoPath = null;
+        $bridePhotoPath = null;
+        $coverPhotoPath = null;
 
-        $groomPhotoPath = $groomPhoto->storeAs($groomPhoto->getClientOriginalName());
-        $bridePhotoPath = $bridePhoto->storeAs($bridePhoto->getClientOriginalName());
-        $coverPhotoPath = $coverPhoto->storeAs($coverPhoto->getClientOriginalName());
+        if ($groomPhoto){
+            $groomPhotoPath = $groomPhoto->storeAs($groomPhoto->getClientOriginalName());
+        }
 
+        if ($bridePhoto){
+            $bridePhotoPath = $bridePhoto->storeAs($bridePhoto->getClientOriginalName());
+        }
+        
+        if ($coverPhoto){
+            $coverPhotoPath = $coverPhoto->storeAs($coverPhoto->getClientOriginalName());
+        }
         // Simpan data ke dalam tabel
         $weddingInvitations = new weddingInvitations([
             'designId' => $validatedData['designId'],
