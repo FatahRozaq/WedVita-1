@@ -18,9 +18,11 @@ class invitationDesignsController extends Controller
 
         // Simpan file gambar dengan nama asli
         $designImage = $request->file('designImage');
+        $designImagePath = null;
 
-        $designImagePath = $designImage->storeAs($designImage->getClientOriginalName());
-
+        if($designImage){
+            $designImagePath = $designImage->storeAs($designImage->getClientOriginalName());
+        }    
         // Simpan data ke dalam tabel
         $invitationDesigns = new InvitationDesigns([
             'userId' => $validatedData['userId'],
