@@ -38,11 +38,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/designs', [invitationDesignsController::class, 'store']);
     Route::post('/invitations', [weddingInvitationsController::class, 'store']);
     Route::get('/getInvitationDesigns', [invitationDesignsController::class, 'getData']);
-    Route::get('/designs/{id}', [invitationDesignsController::class, 'showData']);
-    
+    Route::get('/designs/{id}', [invitationDesignsController::class, 'showData']);    
+
     Route::put('/invitations/{id}',[weddingInvitationsController::class, 'update']);
     Route::delete('/invitations/{id}',[weddingInvitationsController::class, 'destroy']);
 
     
     Route::post('/photos', [weddingPhotosController::class, 'store']);
-    Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);
+    Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);    Route::put('/designs/{id}', [invitationDesignsController::class, 'update']);
+    Route::delete('/designs/{id}', [invitationDesignsController::class, 'destroy']);

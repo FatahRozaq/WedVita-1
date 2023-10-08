@@ -4,14 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateuserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
+
     }
 
     /**
@@ -22,7 +23,15 @@ class UpdateuserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'username' => ['required', 'string', 'unique:users,username'],
+            'name' => ['required', 'string'],
+            'email' => 'required|email|unique:users,email,'.$this->id,
+            'password' => [
+                'confirmed',
+                Password::min(8)
+                    ->letters()
+                    ->symbols(),
+            ]
         ];
     }
 }
