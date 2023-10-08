@@ -33,17 +33,17 @@ class invitationDesignsController extends Controller
 
     public function store(invitationDesignsRequest $request)
     {
-        // Validasi data lainnya...
+        
         $validatedData = $request->validated();
 
-        // Simpan file gambar dengan nama asli
+        
         $designImage = $request->file('designImage');
         $designImagePath = null;
 
         if($designImage){
             $designImagePath = $designImage->storeAs($designImage->getClientOriginalName());
         }    
-        // Simpan data ke dalam tabel
+        
         $invitationDesigns = new InvitationDesigns([
             'userId' => $validatedData['userId'],
             'designName' => $validatedData['designName'],
