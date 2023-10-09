@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
-class StoreUserRequest extends FormRequest
+class weddingPhotosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +22,9 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'unique:users,username'],
-            'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => [
-                'required',
-                Password::min(8)
-                    ->letters()
-                    ->symbols(),
-            ]
+            'invitationId' => 'required|exists:weddingInvitations,id',
+            'photo' => 'required|image|max:2048',
+            'photoInformation' => 'nullable|string',
         ];
     }
 }
