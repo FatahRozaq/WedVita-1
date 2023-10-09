@@ -31,24 +31,21 @@ class invitationDesignsController extends Controller
         }
     }
 
-    public function store(invitationDesignsRequest $request)
-    {
-        // Validasi data lainnya...
-        $validatedData = $request->validated();
-
+    public function store(Request $request)
+{
+    try {
         // Simpan file gambar dengan nama asli
         $designImage = $request->file('designImage');
-
-        $designImagePath = $designImage->storeAs($designImage->getClientOriginalName());
+        // $designImagePath = $designImage->store('design_images'); // Simpan gambar dalam direktori 'design_images'
 
         // Simpan data ke dalam tabel
         $invitationDesigns = new InvitationDesigns([
-            'userId' => $validatedData['userId'],
-            'designName' => $validatedData['designName'],
-            'designDescription' => $validatedData['designDescription'],
-            'designImage' => $designImagePath,
-            'price' => $validatedData['price'],
-            'designLink' => $validatedData['designLink'],
+            'userId' => 1,
+            'designName' => $request->input('designName'),
+            'designDescription' => $request->input('designDescription'),
+            'designImage' => $designImage, // Simpan path gambar yang telah disimpan
+            'price' => $request->input('price'),
+            'designLink' => $request->input('designLink'),
         ]);
 
         $invitationDesigns->save();
@@ -57,6 +54,11 @@ class invitationDesignsController extends Controller
             'message' => 'Data invitation design berhasil disimpan',
             'designs' => $invitationDesigns,
         ], 201);
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'Terjadi kesalahan saat menyimpan data invitation design',
+        ], 500);
     }
+}
 
 }
