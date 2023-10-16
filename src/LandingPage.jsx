@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import React, { useEffect, useRef } from "react";
+
 import { Link } from 'react-router-dom';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -11,6 +13,37 @@ import Carousel2 from './Carousel2';
 import DarkModeSwitch from './DarkModeSwitch';
 
 import './App.css'
+
+const RevealOnScroll = ({ children }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const onWindScroll = () => {
+      const element = ref.current;
+      if (element) {
+        const { top } = element.getBoundingClientRect();
+        const isVisible = top < window.innerHeight;
+        setIsVisible(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", onWindScroll);
+    return () => {
+      window.removeEventListener("scroll", onWindScroll);
+    };
+  }, []);
+
+  const classes = `transition-opacity duration-1000
+      ${isVisible ? "opacity-100" : "opacity-0"
+    }`;
+
+  return (
+    <div ref={ref} className={classes}>
+      {children}
+    </div>
+  );
+};
 
 function App() {
   const [count, setCount] = useState(0)
@@ -40,14 +73,18 @@ function App() {
 
       <body class="my-20 px-12 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 justify-between items-center">
-          <div class="md:col-span-1">
-            <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-loose tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Crafting Love Stories, <span class="underline underline-offset-3 decoration-8 decoration-wedvita-purple to-wedvita-purple-light from-wedvita-purple">One Invitation</span> at a Time </h1>
-            <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Create, Share, and Celebrate Your Wedding with Beautiful Online Invitations</p>
-            <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button>
-          </div>
-          <div class="md:col-span-1 hidden md:block">
-            <div class="row-span-1"><img src={imag1} alt="Description of the image" /></div>
-          </div>
+          <RevealOnScroll>
+            <div class="md:col-span-1">
+              <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-loose tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Crafting Love Stories, <span class="underline underline-offset-3 decoration-8 decoration-wedvita-purple to-wedvita-purple-light from-wedvita-purple">One Invitation</span> at a Time </h1>
+              <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Create, Share, and Celebrate Your Wedding with Beautiful Online Invitations</p>
+              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button>
+            </div>
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <div class="md:col-span-1 hidden md:block">
+              <div class="row-span-1"><img src={imag1} alt="Description of the image" /></div>
+            </div>
+          </RevealOnScroll>
         </div>
 
         {/* <div class="grid grid-cols-2 gap-4 flex justify-between items-center">
@@ -59,15 +96,20 @@ function App() {
           <div class="row-span-1"><img src={imag1} alt="Description of the image" /></div>
         </div> */}
 
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 justify-between items-center">
-          <div class="md:col-span-1 relative right-12 hidden md:block">
-            <img src={imag2} alt="Description of the image" />
-          </div>
-          <div class="md:col-span-1">
-            <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-none tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Discover Our Feature Set</h1>
-            <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Wedvita simplifies your wedding invitation experience. Customize invitations, manage your guest list with digital RSVPs, choose from beautiful templates, stay connected with guests, and plan on-the-go with mobile accessibility. We prioritize your privacy and security for a stress-free wedding invitation journey.</p>
-            <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button>
-          </div>
+          <RevealOnScroll>
+            <div class="md:col-span-1 relative right-12 hidden md:block">
+              <img src={imag2} alt="Description of the image" />
+            </div>
+          </RevealOnScroll>
+          <RevealOnScroll>
+            <div class="md:col-span-1">
+              <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-none tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Discover Our Feature Set</h1>
+              <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Wedvita simplifies your wedding invitation experience. Customize invitations, manage your guest list with digital RSVPs, choose from beautiful templates, stay connected with guests, and plan on-the-go with mobile accessibility. We prioritize your privacy and security for a stress-free wedding invitation journey.</p>
+              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button>
+            </div>
+          </RevealOnScroll>
         </div>
 
 
@@ -80,59 +122,68 @@ function App() {
           </div>
         </div> */}
 
-        <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Explore Our Templates </h1>
-        <div class='mb-28'>
-          <Carousel2 />
-        </div>
+        <RevealOnScroll>
+          <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Explore Our Templates </h1>
+          </RevealOnScroll>
+          <RevealOnScroll>
+          <div class='mb-28'>
+            <Carousel2 />
+          </div>
+        </RevealOnScroll>
 
-
-        <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Elevate Your Wedding Experience with Wedvita Plus! </h1>
-
-        {/* <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 flex items-stretch justify-between justify-items-center content-center"> */}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 justify-items-center">
-          <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
-            <div>
-              <a href="#">
-                <h5 class="body-font font-GreatVibes mb-2 text-2xl font-normal tracking-tight text-gray-900 text-4xl">Free</h5>
-                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 text-xl">IDR 0</h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 text-justify">Sign up for our free subscription and gain access to a selection of beautiful wedding invitation templates to get started on creating your perfect wedding invitation.</p>
+        <RevealOnScroll>
+          <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Elevate Your Wedding Experience with Wedvita Plus! </h1>
+          </RevealOnScroll>
+        <RevealOnScroll>
+          {/* <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 flex items-stretch justify-between justify-items-center content-center"> */}
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 justify-items-center">
+            <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
+              <div>
+                <a href="#">
+                  <h5 class="body-font font-GreatVibes mb-2 text-2xl font-normal tracking-tight text-gray-900 text-4xl">Free</h5>
+                  <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 text-xl">IDR 0</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 text-justify">Sign up for our free subscription and gain access to a selection of beautiful wedding invitation templates to get started on creating your perfect wedding invitation.</p>
+              </div>
+              <div>
+                <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Join</button>
+              </div>
             </div>
-            <div>
-              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Join</button>
+
+            <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
+              <div>
+                <a href="#">
+                  <h5 class="body-font font-GreatVibes mb-2 text-2xl font-normal tracking-tight text-gray-900 text-4xl">Gold</h5>
+                  <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 text-xl">IDR 40k</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 text-justify">Upgrade to our Gold Subscription for just $9.99 per month and unlock exclusive benefits, including a vast library of premium wedding invitation templates, personalized design assistance, and priority customer support.</p>
+              </div>
+              <div>
+                <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Join</button>
+              </div>
+            </div>
+
+            <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
+              <div>
+                <a href="#">
+                  <h5 class="body-font font-GreatVibes mb-2 text-2xl font-normal tracking-tight text-gray-900 text-4xl">Platinum</h5>
+                  <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 text-xl">IDR 240k</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 text-justify">Experience the ultimate wedding invitation design journey with our Platinum Subscription. For $19.99 per month, you'll enjoy unlimited access to our entire collection of exquisite templates, one-on-one consultations with professional designers, and early access to new designs and features.</p>
+              </div>
+              <div>
+                <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Join</button>
+              </div>
             </div>
           </div>
+        </RevealOnScroll>
 
-          <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
-            <div>
-              <a href="#">
-                <h5 class="body-font font-GreatVibes mb-2 text-2xl font-normal tracking-tight text-gray-900 text-4xl">Gold</h5>
-                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 text-xl">IDR 40k</h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 text-justify">Upgrade to our Gold Subscription for just $9.99 per month and unlock exclusive benefits, including a vast library of premium wedding invitation templates, personalized design assistance, and priority customer support.</p>
-            </div>
-            <div>
-              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Join</button>
-            </div>
-          </div>
-
-          <div class="max-w-sm p-6 bg-white rounded-lg drop-shadow-2xlcustom hover:drop-shadow-3xlcustom-hovered transition ease-in-out delay-150 flex flex-col justify-between h-full">
-            <div>
-              <a href="#">
-                <h5 class="body-font font-GreatVibes mb-2 text-2xl font-normal tracking-tight text-gray-900 text-4xl">Platinum</h5>
-                <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 text-xl">IDR 240k</h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 text-justify">Experience the ultimate wedding invitation design journey with our Platinum Subscription. For $19.99 per month, you'll enjoy unlimited access to our entire collection of exquisite templates, one-on-one consultations with professional designers, and early access to new designs and features.</p>
-            </div>
-            <div>
-              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Join</button>
-            </div>
-          </div>
-        </div>
-
-        <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Testimonials </h1>
-        <Carousel />
-
+        <RevealOnScroll>
+          <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Testimonials </h1>
+        </RevealOnScroll>
+        <RevealOnScroll>
+          <Carousel />
+        </RevealOnScroll>
 
       </body>
 
