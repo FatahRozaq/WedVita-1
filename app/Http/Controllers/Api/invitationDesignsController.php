@@ -42,7 +42,7 @@ class invitationDesignsController extends Controller
 
         if($designImage){
             $designImagePath = $designImage->storeAs($designImage->getClientOriginalName());
-        }    
+        }
         
         $invitationDesigns = new InvitationDesigns([
             'userId' => $validatedData['userId'],
