@@ -6,15 +6,17 @@ use App\Http\Requests\weddingInvitationsRequest;
 use App\Models\weddingInvitations;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\invitationOrders;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 class weddingInvitationsController extends Controller
 {
-    public function store(weddingInvitationsRequest $request)
+    public function store(weddingInvitationsRequest $request, invitationOrders $requestOrder)
     {
         // Validasi data menggunakan request
         $validatedData = $request->validated();
+        // $validatedData = $requestOrder->validated();
 
         // Simpan file gambar dengan nama asli
         $groomPhoto = $request->file('groomPhoto');
@@ -26,16 +28,24 @@ class weddingInvitationsController extends Controller
         $coverPhotoPath = null;
 
         if ($groomPhoto) {
-            $groomPhotoPath = $groomPhoto->storeAs($groomPhoto->getClientOriginalName());
+            $groomPhotoPath = $groomPhoto->getClientOriginalName();
         }
 
         if ($bridePhoto) {
-            $bridePhotoPath = $bridePhoto->storeAs($bridePhoto->getClientOriginalName());
+            $bridePhotoPath = $bridePhoto->getClientOriginalName();
         }
 
         if ($coverPhoto) {
-            $coverPhotoPath = $coverPhoto->storeAs($coverPhoto->getClientOriginalName());
+            $coverPhotoPath = $coverPhoto->getClientOriginalName();
         }
+
+        $groomPhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $groomPhotoPath);
+        $bridePhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $bridePhotoPath);
+        $coverPhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $coverPhotoPath);
+
+        $groomPhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $groomPhotoPath);
+        $bridePhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $bridePhotoPath);
+        $coverPhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $coverPhotoPath);
 
         // Simpan data ke dalam tabel
         $weddingInvitations = new weddingInvitations([
@@ -43,9 +53,9 @@ class weddingInvitationsController extends Controller
             'userId' => $validatedData['userId'],
             'groomName' => $validatedData['groomName'],
             'brideName' => $validatedData['brideName'],
-            'groomPhoto' => $groomPhotoPath,
-            'bridePhoto' => $bridePhotoPath,
-            'coverPhoto' => $coverPhotoPath,
+            'groomPhoto' => $groomPhotoUrl,
+            'bridePhoto' => $bridePhotoUrl,
+            'coverPhoto' => $coverPhotoUrl,
             'weddingDate' => $validatedData['weddingDate'],
             'weddingTime' => $validatedData['weddingTime'],
             'weddingMap' => $validatedData['weddingMap'],
@@ -58,6 +68,18 @@ class weddingInvitationsController extends Controller
         ]);
 
         $weddingInvitations->save();
+
+        // $invitationOrders = new invitationOrders([
+        //     'designId' => $validatedData['designId'],
+        //     'userId' => $validatedData['userId'],
+        //     'invitationId' => $validatedData['invitationId'],
+        //     'orderDate' => $validatedData['orderDate'],
+        //     'orderExpired' => $validatedData['orderExpired'],
+        //     'totalPrice' => $validatedData['totalPrice'],
+        //     'orderStatus' => $validatedData['orderStatus'],
+        // ]);
+
+        // $invitationOrders->save();
 
         return response()->json([
             'message' => 'Data wedding invitation berhasil disimpan',

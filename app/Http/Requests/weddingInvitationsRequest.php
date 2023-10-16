@@ -30,7 +30,7 @@ class weddingInvitationsRequest extends FormRequest
             'bridePhoto' => 'nullable|image|max:2048',
             'coverPhoto' => 'nullable|image|max:2048',
             'weddingDate' => 'required|date',
-            'weddingTime' => 'required|date_format:H:i:s',
+            'weddingTime' => 'required|',
             'weddingMap' => 'nullable|string|max:255',
             'weddingLocation' => 'required|string|max:255',
             'fatherOfGroom' => 'required|string|max:255',
