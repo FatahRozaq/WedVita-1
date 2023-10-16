@@ -5,11 +5,35 @@ import brownTempl2 from './assets/example-lg.png'
 import colorPallete2 from './assets/color-pallete1.svg'
 import { useEffect, useState } from 'react'
 import axiosClient from './axios-client'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
+import { useStateContext } from './Contexts/ContextProvider'
 
 function DataKartuUndangan() {
     const { id } = useParams(); 
     const [design, setDesign] = useState({});
+
+    const {user, token, setUser, setToken} = useStateContext();
+
+    if(!token){
+        return <Navigate to="/login" /> 
+    }
+
+    const onLogout = ev => {
+        ev.preventDefault()
+    
+        axiosClient.post('/logout')
+          .then(() => {
+            setUser({})
+            setToken(null)
+          })
+    }
+    
+      useEffect(() => {
+        axiosClient.get('/user')
+          .then(({data}) => {
+             setUser(data)
+          })
+      }, [])
 
     useEffect(() => {
         axiosClient.get(`/designs/${id}`) 
@@ -22,7 +46,7 @@ function DataKartuUndangan() {
       }, [id]);
 
     return (
-        <Layout>
+        <Layout onLogout={onLogout} user={user}>
             <div class="text-xl font-extrabold mb-4">Detail Kartu Undangan</div>
             <div
                 class="block rounded-3xl p-6 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">

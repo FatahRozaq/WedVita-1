@@ -15,6 +15,9 @@ import DKU from "./DataKartuUndangan.jsx";
 import DesainKU from "./DesainKartuUndangan.jsx";
 import DetailKU from "./DetailKartuUndangan.jsx";
 import T1 from "./test-bg.jsx";
+import Template from "./Views/WedTemplateViewer.jsx"
+import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
+import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +40,6 @@ const router = createBrowserRouter([
                 path: '/cms-user-profile',
                 element: <UP1 />
             },
-            
         ]
     },
     {
@@ -62,10 +64,7 @@ const router = createBrowserRouter([
         path: '/home',
         element: <LandingPage />
     },
-    {
-        path: '/cms-dku',
-        element: <DKU />
-    },
+    
     {
         path: '/cms-desain-ku',
         element: <DesainKU />
@@ -75,8 +74,24 @@ const router = createBrowserRouter([
         element: <DetailKU />
     },
     {
+        path: '/cms-dku',
+        element: <DKU />
+    },
+    {
         path: '/t1',
         element: <T1 />
+    },
+    {
+        path: '/template',
+        element: <Template />
+    },
+    {
+        path: '/isi-data-undangan',
+        element : <IsiDataUndangan />
+    },
+    {
+        path: '/pesan-undangan',
+        element : <PesanUndangan />
     }
 ])
 

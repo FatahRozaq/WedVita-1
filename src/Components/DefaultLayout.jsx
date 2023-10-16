@@ -30,7 +30,7 @@ export default function DefaultLayout(){
 
     return(
         <div>
-            <UP1 user={user} onLogout={onLogout}/>
+            <UP1 user={user} token={token} onLogout={onLogout}/>
         </div>
     )
 }
