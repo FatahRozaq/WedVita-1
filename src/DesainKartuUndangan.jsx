@@ -55,7 +55,7 @@ function DesainKartuUndangan() {
                 <div className="px-2" key={index}>
                 <div className="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
                     <a href="#" className="flex p-5 justify-center">
-                    <img className="rounded-lg" src={`http://localhost:8000${design.designImage}`} alt={design.designName}/* alt="product image"*/ />
+                    <img className="rounded-lg object-cover h-48 w-96" src={`http://localhost:8000${design.designImage}`} alt={design.designName}/* alt="product image"*/ />
                     </a>
                     <div className="px-5 pb-5">
                     <a href="#">
