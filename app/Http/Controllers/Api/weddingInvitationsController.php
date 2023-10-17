@@ -12,11 +12,37 @@ use Illuminate\Http\UploadedFile;
 
 class weddingInvitationsController extends Controller
 {
-    public function store(weddingInvitationsRequest $request, invitationOrders $requestOrder)
+    public function showData($userId)
+    {
+        try {
+            $weddingInvitations = weddingInvitations::where('userId', $userId)->get();
+            
+            if ($weddingInvitations->isEmpty()) {
+                return response()->json(['message' => 'No invitations found for this user'], 404);
+            }
+            
+            return response()->json(['weddingInvitations' => $weddingInvitations]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'An error occurred'], 500);
+        }
+         
+    }
+
+    public function getData()
+    {
+        $weddingInvitations = weddingInvitations::all();
+
+        return response()->json([
+            'message' => 'Semua data invitation design',
+            'designs' => $weddingInvitations,
+        ], 200);
+    }
+
+    public function store(weddingInvitationsRequest $request)
     {
         // Validasi data menggunakan request
         $validatedData = $request->validated();
-        // $validatedData = $requestOrder->validated();
+        // $validatedDataOrder = $requestOrder->validated();
 
         // Simpan file gambar dengan nama asli
         $groomPhoto = $request->file('groomPhoto');
@@ -70,13 +96,13 @@ class weddingInvitationsController extends Controller
         $weddingInvitations->save();
 
         // $invitationOrders = new invitationOrders([
-        //     'designId' => $validatedData['designId'],
-        //     'userId' => $validatedData['userId'],
-        //     'invitationId' => $validatedData['invitationId'],
-        //     'orderDate' => $validatedData['orderDate'],
-        //     'orderExpired' => $validatedData['orderExpired'],
-        //     'totalPrice' => $validatedData['totalPrice'],
-        //     'orderStatus' => $validatedData['orderStatus'],
+        //     'designId' => $validatedDataOrder['designId'],
+        //     'userId' => $validatedDataOrder['userId'],
+        //     'invitationId' => $validatedDataOrder['invitationId'],
+        //     'orderDate' => $validatedDataOrder['orderDate'],
+        //     'orderExpired' => $validatedDataOrder['orderExpired'],
+        //     'totalPrice' => $validatedDataOrder['totalPrice'],
+        //     'orderStatus' => $validatedDataOrder['orderStatus'],
         // ]);
 
         // $invitationOrders->save();
@@ -97,7 +123,6 @@ class weddingInvitationsController extends Controller
         if (!$weddingInvitations) {
             return response()->json(['message' => 'Data wedding invitation tidak ditemukan'], 404);
         }
-
         
         $groomPhoto = $request->file('groomPhoto');
         $bridePhoto = $request->file('bridePhoto');
