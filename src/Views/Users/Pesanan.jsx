@@ -56,7 +56,6 @@ function PesananUser() {
         
       }, [token, setUser, setToken, setWeddingInvitation]);
 
-    console.log(weddingInvitations)
     return (
         
         <Layout onLogout={onLogout} user={user}>
