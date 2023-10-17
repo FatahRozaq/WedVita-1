@@ -111,8 +111,7 @@ function IsiDataUndangan() {
         })
         .then(({data}) => {
           setWeddingData(data.weddingInvitations)
-        //   return <Navigate to={"/cms-desain-ku"} />
-        //   navigate('/cms-desain-ku');
+          navigate('/cms-desain-ku');
         })
         .catch(err => {
           const response = err.response;

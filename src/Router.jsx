@@ -18,6 +18,7 @@ import T1 from "./test-bg.jsx";
 import Template from "./Views/WedTemplateViewer.jsx"
 import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
 import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
+import PesananUser from "./Views/Users/Pesanan.jsx";
 
 const router = createBrowserRouter([
     {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
     {
         path: '/pesan-undangan',
         element : <PesanUndangan />
+    },
+    {
+        path: '/pesanan/:id',
+        element : <PesananUser />
     }
 ])
 

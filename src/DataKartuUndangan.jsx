@@ -51,6 +51,8 @@ function DataKartuUndangan() {
 
     const onSubmit = (ev) => {
         ev.preventDefault()
+
+        navigate("/cms-desain-ku");
       
         const formData = new FormData();
         formData.append('userId', user.id);
@@ -67,7 +69,6 @@ function DataKartuUndangan() {
         })
         .then(({data}) => {
           setDesign(data.invitationDesigns)
-          navigate('/cms-desain-ku')
         })
         .catch(err => {
           const response = err.response;
@@ -82,6 +83,7 @@ function DataKartuUndangan() {
     return (
         <Layout onLogout={onLogout} user={user}>
             <div class="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
+            
             <div className='DataKartuUndangan'>
               {errors && 
                   <div>
@@ -90,8 +92,6 @@ function DataKartuUndangan() {
                     ))}
                   </div>
                 }
-
-                <img src={selectedImage} />
 
                 <form onSubmit={onSubmit}>
                 <div class="bg-white p-4 mb-4 rounded shadow">
