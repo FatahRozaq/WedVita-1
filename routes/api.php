@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\invitationDesignsController;
 use App\Http\Controllers\Api\weddingInvitationsController;
 use App\Http\Controllers\Api\weddingPhotosController;
+use App\Models\weddingInvitations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,8 +44,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/invitations', [weddingInvitationsController::class, 'store']);
     Route::put('/invitations/{id}',[weddingInvitationsController::class, 'update']);
     Route::delete('/invitations/{id}',[weddingInvitationsController::class, 'destroy']);
-    
+    Route::get('/getInvitations/{id}',[weddingInvitationsController::class, 'showData']);
+    Route::get('/getWeddingInvitation', [weddingInvitationController::class, 'getData']);
+
     Route::post('/photos', [weddingPhotosController::class, 'store']);
-    Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);
+    Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);   
     Route::put('/designs/{id}', [invitationDesignsController::class, 'update']);
     Route::delete('/designs/{id}', [invitationDesignsController::class, 'destroy']);
