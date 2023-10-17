@@ -33,4 +33,8 @@ class weddingInvitations extends Model
         'motherOfBride',
         'accountNumber',
     ];
+
+    public function design() {
+        return $this->hasOne(invitationDesigns::class);
+    }
 }

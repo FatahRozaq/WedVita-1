@@ -129,25 +129,33 @@ class weddingInvitationsController extends Controller
         $coverPhoto = $request->file('coverPhoto');
 
         if ($groomPhoto) {
-            $groomPhotoPath = $groomPhoto->storeAs($groomPhoto->getClientOriginalName());
-            $weddingInvitations->groomPhoto = $groomPhotoPath;
+            $groomPhotoPath = $groomPhoto->getClientOriginalName();
         }
 
         if ($bridePhoto) {
-            $bridePhotoPath = $bridePhoto->storeAs($bridePhoto->getClientOriginalName());
-            $weddingInvitations->bridePhoto = $bridePhotoPath;
+            $bridePhotoPath = $bridePhoto->getClientOriginalName();
         }
 
         if ($coverPhoto) {
-            $coverPhotoPath = $coverPhoto->storeAs($coverPhoto->getClientOriginalName());
-            $weddingInvitations->coverPhoto = $coverPhotoPath;
+            $coverPhotoPath = $coverPhoto->getClientOriginalName();
         }
+
+        $groomPhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $groomPhotoPath);
+        $bridePhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $bridePhotoPath);
+        $coverPhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $coverPhotoPath);
+
+        $groomPhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $groomPhotoPath);
+        $bridePhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $bridePhotoPath);
+        $coverPhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $coverPhotoPath);
 
         $weddingInvitations->update([
             'designId' => $validatedData['designId'],
             'userId' => $validatedData['userId'],
             'groomName' => $validatedData['groomName'],
             'brideName' => $validatedData['brideName'],
+            'groomPhoto' => $groomPhotoUrl,
+            'bridePhoto' => $bridePhotoUrl,
+            'coverPhoto' => $coverPhotoUrl,
             'weddingDate' => $validatedData['weddingDate'],
             'weddingTime' => $validatedData['weddingTime'],
             'weddingMap' => $validatedData['weddingMap'],
