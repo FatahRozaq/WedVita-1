@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class weddingPhotos extends Model
-{   
+{
 
     protected $table = 'weddingPhotos';
     use HasFactory;
