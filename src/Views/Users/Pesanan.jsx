@@ -6,7 +6,10 @@ import axiosClient from '../../axios-client';
 import { Link, Navigate } from 'react-router-dom'
 import { useStateContext } from '../../Contexts/ContextProvider'
 import { redirect, useParams } from 'react-router-dom'
-import DataTable from 'datatables.net-dt';
+import 'datatables.net-dt/css/jquery.dataTables.css'; // Import the DataTables CSS
+import $ from 'jquery';
+import 'datatables.net';
+
 import { useRef } from 'react';
 
 function PesananUser() {
@@ -47,6 +50,9 @@ function PesananUser() {
           });
 
         // Initialize DataTable when the component mounts
+        if (tableRef.current) {
+          $(tableRef.current).DataTable();
+        }
         
       }, [token, setUser, setToken, setWeddingInvitation]);
 
@@ -59,13 +65,24 @@ function PesananUser() {
             </div>
             
             <div className="container mx-auto">
-            {weddingInvitations.map((invitation, index) => (
-                    <div key={index}>
-                        <p>Nama Pengantin Pria: {invitation.groomName}</p>
-                        <p>Nama Pengantin Wanita: {invitation.brideName}</p>
-                        
-                    </div>
-                ))}
+            <table ref={tableRef} className="display">
+                <thead>
+                    <tr>
+                        <th>Nama Pengantin Pria</th>
+                        <th>Nama Pengantin Wanita</th>
+                        {/* Add more table headers if needed */}
+                    </tr>
+                </thead>
+                <tbody>
+                    {weddingInvitations.map((invitation, index) => (
+                        <tr key={index}>
+                            <td>{invitation.groomName}</td>
+                            <td>{invitation.brideName}</td>
+                            {/* Add more table data if needed */}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
             </div>
         </Layout> 
     );
