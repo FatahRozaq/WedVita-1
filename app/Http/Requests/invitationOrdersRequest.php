@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class invitationDesignsRequest extends FormRequest
+class invitationOrdersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,12 +22,13 @@ class invitationDesignsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'userId' => 'required|exists:users,id',
-            'designName' => 'required|string|max:255',
-            'designDescription' => 'nullable|string',
-            'designImage' => 'nullable|',
-            'price' => 'required|numeric|min:0',
-            'designLink' => 'required|url',
+            'designId' => 'required|integer',
+            'userId' => 'required|integer',
+            'invitationId' => 'required|',
+            'orderDate' => 'required|date',
+            'orderExpired' => 'required|date',
+            'totalPrice' => 'required|',
+            'orderStatus' => 'required|',
         ];
     }
 }

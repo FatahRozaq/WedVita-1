@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\invitationDesignsRequest;
-use App\Models\invitationDesigns;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\invitationDesigns;
 use Illuminate\Http\UploadedFile;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\invitationDesignsRequest;
 
 class invitationDesignsController extends Controller
 {
@@ -36,19 +37,20 @@ class invitationDesignsController extends Controller
         
         $validatedData = $request->validated();
 
-        
-        $designImage = $request->file('designImage');
-        $designImagePath = null;
+        $image = $request->file('designImage');
+        $imageName = $image->getClientOriginalName();;
 
-        if($designImage){
-            $designImagePath = $designImage->storeAs($designImage->getClientOriginalName());
-        }
+        // Simpan gambar ke folder storage/app/public/images
+        $image->storeAs('public/images', $imageName);
+
+        // Dapatkan URL gambar yang disimpan
+        $imageUrl = Storage::url('public/images/' . $imageName);
         
         $invitationDesigns = new InvitationDesigns([
-            'userId' => $validatedData['userId'],
+            'userId' => $request->input('userId'),
             'designName' => $validatedData['designName'],
             'designDescription' => $validatedData['designDescription'],
-            'designImage' => $designImagePath,
+            'designImage' => $imageUrl,
             'price' => $validatedData['price'],
             'designLink' => $validatedData['designLink'],
         ]);
