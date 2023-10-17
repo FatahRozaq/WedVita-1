@@ -88,7 +88,7 @@ function IsiDataUndangan() {
       
         const formData = new FormData();
         formData.append('userId', user.id);
-        formData.append('designId', 45);
+        formData.append('designId', 14);
         formData.append('groomName', groomNameRef.current.value);
         formData.append('brideName', brideNameRef.current.value);
         formData.append('groomPhoto', selectedImageGroom);
@@ -153,7 +153,43 @@ function IsiDataUndangan() {
                                     <label for="brideName" class="block mb-2 text-sm font-semibold text-gray-900">Nama Pengantin Wanita</label>
                                     <input ref={brideNameRef} name="brideName" type="name" id="brideName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Pengantin Wanita" required></input>
                                 </div>
-                                
+                                <div>
+                                    <label for="fatherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah</label>
+                                    <input ref={fatherOfGroomRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                </div>
+
+                                <div>
+                                    <label for="motherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu</label>
+                                    <input ref={motherOfGroomRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                </div>
+
+                                <div>
+                                    <label for="fatherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah</label>
+                                    <input ref={fatherOfBrideRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                </div>
+
+                                <div>
+                                    <label for="motherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu</label>
+                                    <input ref={motherOfBrideRef} name="motherOfGroom" type="name" id="motherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Pria" required></input>
+                                </div>
+                                <div>
+                                    <label for="groomPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Pria</label>
+                                    <input ref={groomPhotoRef} class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeGroom} required />
+                                </div>
+                                <div>
+                                    <label for="bridePhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Wanita</label>
+                                    <input ref={bridePhotoRef} class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeBride} required />
+                                    {/* <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-2.5 file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile" /> */}
+                                </div>
+                                {/* <div>
+                                    <label for="groomPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Pria</label>
+                                    <input ref={groomPhotoRef} name="groomPhoto" type="file" id="groomPhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeGroom} required></input>
+                                </div>
+                                <div>
+                                    <label for="bridePhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Wanita</label>
+                                    <input ref={bridePhotoRef} name="bridePhoto" type="file" id="bridePhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeBride} required></input>
+                                </div> */}
+
                             </div>
 
                             <div className="mb-6 flex justify-between">
@@ -209,7 +245,8 @@ function IsiDataUndangan() {
 
                             <div class="mb-6">
                                 <label for="coverPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
-                                <input ref={coverPhotoRef} name="coverPhoto" type="file" id="coverPhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeCover} required></input>
+                                <input ref={coverPhotoRef} class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeCover} required />
+                                {/* <input ref={coverPhotoRef} name="coverPhoto" type="file" id="coverPhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeCover} required></input> */}
                             </div>
 
                             <div class="mb-6">
