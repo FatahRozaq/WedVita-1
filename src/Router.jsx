@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         element: <Template />
     },
     {
-        path: '/isi-data-undangan',
+        path: '/isi-data-undangan/:id',
         element : <IsiDataUndangan />
     },
     {

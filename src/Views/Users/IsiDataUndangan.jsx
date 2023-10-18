@@ -24,6 +24,7 @@ function IsiDataUndangan() {
     const motherOfBrideRef = createRef();
     const accountNumberRef = createRef();
 
+    const { id } = useParams();
     const { user, token, setUser, setToken, setWeddingData } = useStateContext();
 
     const [errors, setErrors] = useState(null);
@@ -54,6 +55,8 @@ function IsiDataUndangan() {
         axiosClient.get('/user').then(({ data }) => {
             setUser(data);
         });
+
+        // console.log(id)
 
     }, [token, setUser, setToken]);
 
@@ -86,9 +89,10 @@ function IsiDataUndangan() {
     const onSubmit = (ev) => {
         ev.preventDefault()
 
+        // navigate(`/pesanan/${user.id}`);
         const formData = new FormData();
         formData.append('userId', user.id);
-        formData.append('designId', 14);
+        formData.append('designId', id);
         formData.append('groomName', groomNameRef.current.value);
         formData.append('brideName', brideNameRef.current.value);
         formData.append('groomPhoto', selectedImageGroom);
@@ -153,23 +157,23 @@ function IsiDataUndangan() {
                                     <input ref={brideNameRef} name="brideName" type="name" id="brideName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Pengantin Wanita" required></input>
                                 </div>
                                 <div>
-                                    <label for="fatherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah</label>
+                                    <label for="fatherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah Mempelai Pria</label>
                                     <input ref={fatherOfGroomRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
                                 </div>
 
                                 <div>
-                                    <label for="fatherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah</label>
-                                    <input ref={fatherOfBrideRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                    <label for="fatherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah Mempelai Wanita</label>
+                                    <input ref={fatherOfBrideRef} name="fatherOfBride" type="name" id="fatherOfBride" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Wanita" required></input>
                                 </div>
 
                                 <div>
-                                    <label for="motherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu</label>
-                                    <input ref={motherOfGroomRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                    <label for="motherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu Mempelai Pria</label>
+                                    <input ref={motherOfGroomRef} name="motherOfGroom" type="name" id="motherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Pria" required></input>
                                 </div>
 
                                 <div>
-                                    <label for="motherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu</label>
-                                    <input ref={motherOfBrideRef} name="motherOfGroom" type="name" id="motherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Pria" required></input>
+                                    <label for="motherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu Mempelai Wanita</label>
+                                    <input ref={motherOfBrideRef} name="motherOfBride" type="name" id="motherOfBride" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Wanita" required></input>
                                 </div>
                                 <div>
                                     <label for="groomPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Pria</label>
