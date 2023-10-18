@@ -56,8 +56,8 @@ function App() {
           <nav>
             <ul class="flex space-x-10">
               <li><a href="#" class="hover:underline">Home</a></li>
-              <li><a href="#" class="hover:underline">Design</a></li>
-              <li><a href="#" class="hover:underline">About</a></li>
+              <li><a href="#design" class="hover:underline">Design</a></li>
+              <li><a href="#about" class="hover:underline">About</a></li>
 
             </ul>
           </nav>
@@ -72,12 +72,12 @@ function App() {
       </header>
 
       <body class="my-20 px-12 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 justify-between items-center">
+        <div id="about" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 justify-between items-center">
           <RevealOnScroll>
             <div class="md:col-span-1">
               <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-loose tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Crafting Love Stories, <span class="underline underline-offset-3 decoration-8 decoration-wedvita-purple to-wedvita-purple-light from-wedvita-purple">One Invitation</span> at a Time </h1>
               <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Create, Share, and Celebrate Your Wedding with Beautiful Online Invitations</p>
-              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button>
+              {/* <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button> */}
             </div>
           </RevealOnScroll>
           <RevealOnScroll>
@@ -107,7 +107,7 @@ function App() {
             <div class="md:col-span-1">
               <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-none tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Discover Our Feature Set</h1>
               <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Wedvita simplifies your wedding invitation experience. Customize invitations, manage your guest list with digital RSVPs, choose from beautiful templates, stay connected with guests, and plan on-the-go with mobile accessibility. We prioritize your privacy and security for a stress-free wedding invitation journey.</p>
-              <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button>
+              {/* <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5">Learn More &gt;&gt;&gt;</button> */}
             </div>
           </RevealOnScroll>
         </div>
@@ -122,18 +122,22 @@ function App() {
           </div>
         </div> */}
 
-        <RevealOnScroll>
-          <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Explore Our Templates </h1>
+        <div id="design">
+          <RevealOnScroll>
+            <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Explore Our Templates </h1>
           </RevealOnScroll>
           <RevealOnScroll>
-          <div class='mb-28'>
-            <Carousel2 />
-          </div>
-        </RevealOnScroll>
+            <div class='mb-28'>
+              <Carousel2 />
+            </div>
+          </RevealOnScroll>
+        </div>
+
+
 
         <RevealOnScroll>
           <h1 class="body-font font-GreatVibes text-center grid-item mt-16 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">Elevate Your Wedding Experience with Wedvita Plus! </h1>
-          </RevealOnScroll>
+        </RevealOnScroll>
         <RevealOnScroll>
           {/* <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 flex items-stretch justify-between justify-items-center content-center"> */}
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 justify-items-center">

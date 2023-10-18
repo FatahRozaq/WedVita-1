@@ -158,13 +158,13 @@ function IsiDataUndangan() {
                                 </div>
 
                                 <div>
-                                    <label for="motherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu</label>
-                                    <input ref={motherOfGroomRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                    <label for="fatherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah</label>
+                                    <input ref={fatherOfBrideRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
                                 </div>
 
                                 <div>
-                                    <label for="fatherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah</label>
-                                    <input ref={fatherOfBrideRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
+                                    <label for="motherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu</label>
+                                    <input ref={motherOfGroomRef} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
                                 </div>
 
                                 <div>
