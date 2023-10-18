@@ -23,4 +23,8 @@ class invitationDesigns extends Model
         'price',
         'designLink',
     ];
+
+    public function weddiingInvitations() {
+        return $this->belongsTo(weddingInvitations::class);
+    }
 }
