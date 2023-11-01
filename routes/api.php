@@ -47,7 +47,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/invitations/{id}',[weddingInvitationsController::class, 'update']);
     Route::delete('/invitations/{id}',[weddingInvitationsController::class, 'destroy']);
     Route::get('/getInvitations/{id}',[weddingInvitationsController::class, 'showData']);
-    Route::get('/getWeddingInvitation', [weddingInvitationController::class, 'getData']);
+    Route::get('/getWeddingInvitation', [weddingInvitationsController::class, 'getData']);
+    Route::get('/getWeddingInvitations/{id}', [weddingInvitationsController::class, 'showDataWeddingInvitations']);   
 
     Route::post('/photos', [weddingPhotosController::class, 'store']);
     Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);   

@@ -12,6 +12,16 @@ use Illuminate\Http\UploadedFile;
 
 class weddingInvitationsController extends Controller
 {
+    public function showDataWeddingInvitations($id)
+    {
+        try{
+            $invitationOrders = weddingInvitations::findOrFail($id);
+            return response()->json($invitationOrders);
+        }catch  (\Exception $e){ 
+            return response()->json(['message' => 'Data undangan tidak ditemukan'],404);
+        }   
+        
+    }
     public function showData($userId)
     {
         try {
