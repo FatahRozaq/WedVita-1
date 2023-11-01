@@ -110,6 +110,7 @@ function PesananUser() {
                             <th>Nama Pengantin Pria</th>
                             <th>Nama Pengantin Wanita</th>
                             <th>Show</th>
+                            <th>Generate Link</th>
                             {/* Add more table headers if needed */}
                         </tr>
                     </thead>
@@ -118,6 +119,8 @@ function PesananUser() {
                             <tr key={index}>
                                 <td>{invitation.groomName}</td>
                                 <td>{invitation.brideName}</td>
+                                {/* langkah3 */}
+                                <td><Link to={`/WeddingCobaLeaflet/${invitation.id}`}>Lihat Desain</Link></td> 
                                 <td>
                                     <button onClick={() => openModal(invitation)}>  
                                       Show Detail
