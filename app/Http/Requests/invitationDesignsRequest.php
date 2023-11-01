@@ -26,6 +26,8 @@ class invitationDesignsRequest extends FormRequest
             'designName' => 'required|string|max:255',
             'designDescription' => 'nullable|string',
             'designImage' => 'nullable|',
+            'designDummy' => 'nullable|',
+            'designCode' => 'nullable|',
             'price' => 'required|numeric|min:0',
             'designLink' => 'required|url',
         ];

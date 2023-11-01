@@ -38,7 +38,9 @@ Route::middleware('auth:sanctum')->group(function () {
 // Design Undangan
     Route::post('/designs', [invitationDesignsController::class, 'store']);
     Route::get('/getInvitationDesigns', [invitationDesignsController::class, 'getData']);
-    Route::get('/designs/{id}', [invitationDesignsController::class, 'showData']);   
+    Route::get('/designs/{id}', [invitationDesignsController::class, 'showData']);
+    Route::get('/download-design/{filename}', [invitationDesignsController::class, 'downloadDesign']);
+
     
 // Pesan Undangan
     Route::post('/invitations', [weddingInvitationsController::class, 'store']);

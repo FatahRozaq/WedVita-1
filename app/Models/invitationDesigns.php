@@ -20,6 +20,8 @@ class invitationDesigns extends Model
         'designName',
         'designDescription',
         'designImage',
+        'designDummy',
+        'designCode',
         'price',
         'designLink',
     ];

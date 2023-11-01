@@ -38,19 +38,36 @@ class invitationDesignsController extends Controller
         $validatedData = $request->validated();
 
         $image = $request->file('designImage');
-        $imageName = $image->getClientOriginalName();;
+        $imageName = $image->getClientOriginalName();
 
         // Simpan gambar ke folder storage/app/public/images
         $image->storeAs('public/images', $imageName);
 
         // Dapatkan URL gambar yang disimpan
         $imageUrl = Storage::url('public/images/' . $imageName);
+
+        // Simpan file designDummy (CSS dan JavaScript)
+        if ($request->hasFile('designDummy')) {
+            $designDummy = $request->file('designDummy');
+            $designDummyName = $designDummy->getClientOriginalName();    
+            $designDummy->storeAs('public/designs', $designDummyName, ['disk' => 'local']);
+            $validatedData['designDummy'] = $designDummyName;
+        }
         
+        if ($request->hasFile('designCode')) {
+            $designCode = $request->file('designCode');
+            $designCodeName = $designCode->getClientOriginalName();    
+            $designCode->storeAs('public/designs', $designCodeName, ['disk' => 'local']);
+            $validatedData['designCode'] = $designCodeName;
+        }
+
         $invitationDesigns = new InvitationDesigns([
             'userId' => $request->input('userId'),
             'designName' => $validatedData['designName'],
             'designDescription' => $validatedData['designDescription'],
             'designImage' => $imageUrl,
+            'designDummy' => $validatedData['designDummy'],
+            'designCode' => $validatedData['designCode'],
             'price' => $validatedData['price'],
             'designLink' => $validatedData['designLink'],
         ]);
@@ -62,6 +79,17 @@ class invitationDesignsController extends Controller
             'designs' => $invitationDesigns,
         ], 201);
     }
+
+    public function downloadDesign($filename)
+    {
+        $path = storage_path('app/public/designs/' . $filename);
+        if (file_exists($path)) {
+            return response()->download($path, $filename);
+        } else {
+            return response()->json(['message' => 'File tidak ditemukan'], 404);
+        }
+    }
+
 
     public function update(invitationDesignsRequest $request, $id)
     {
