@@ -19,6 +19,13 @@ import Template from "./Views/WedTemplateViewer.jsx"
 import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
 import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
+import Template1 from "./assets/WedTemplate/template_1.jsx";
+
+import LeafletMain from "./coba_Leaflet_Main.jsx";
+import LeafletMap from './coba_LeafletMap.jsx';
+import MapLinks from './coba_MapLinks.jsx';
+
+import WeddingTemplateLeaflet from "./assets/WedTemplate/template_leaflet_1.jsx";
 
 const router = createBrowserRouter([
     {
@@ -97,6 +104,22 @@ const router = createBrowserRouter([
     {
         path: '/pesanan/:id',
         element : <PesananUser />
+    },
+    {
+        path: '/template1/:id',          // langkah 1
+        element: <Template1/>
+    },
+    {
+        path: '/leafletMap',
+        element: <LeafletMap/>       
+    },
+    {
+        path: '/WeddingCobaLeaflet/:id',
+        element: <WeddingTemplateLeaflet/>       
+    },
+    { 
+        path: '/cobaLeaflet',
+        element: <LeafletMain/>       
     }
 ])
 
