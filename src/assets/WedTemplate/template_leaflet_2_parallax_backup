@@ -1,0 +1,57 @@
+
+                <div class="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center">
+                    {/* gambar ditengah: justify item center */}
+                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40" src={`http://localhost:8000${weddingInvitations.groomPhoto}`} //nambahin gambar
+                        alt="image description" />
+                        <p class="font-gv">{weddingInvitations.groomName}</p>
+                        <p>Putra dari </p>
+                        <p>Bapak {weddingInvitations.fatherOfGroom}</p>
+                        <p>&</p>
+                        <p>Ibu {weddingInvitations.motherOfGroom} </p>
+                    </div>
+                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
+                        alt="image description" />
+                        <p class="font-gv">{weddingInvitations.brideName}</p>
+                        <p>Putri dari </p>
+                        <p>Bapak {weddingInvitations.fatherOfBride}</p>
+                        <p>&</p>
+                        <p>Ibu {weddingInvitations.motherOfBride}</p>
+                    </div>
+                </div>
+
+
+
+                
+                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section class="p-2">
+                    <h1
+                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        Countdown</h1>
+
+                    <div class="flex justify-around text-center">
+                        <div>
+                            <h2 class="font-gv" id="month">{months}</h2>
+                            <p>Month</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="day">{days}</h2>
+                            <p>days</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="hour">{hours}</h2>
+                            <p>Hours</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="minute">{minutes}</h2>
+                            <p>Minutes</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="second">{seconds}</h2>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                </section>

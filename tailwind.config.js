@@ -28,6 +28,7 @@ export default {
         'wedvita-sidebar-dark' : '#160A2B',
         'wedvita-content-beige' : '#F2EEEB',
         'wedvita-text-light-purple' : '#B8BED9',
+        'genshin-red' : '#B05846',
 
       },
       fontSize: {
@@ -36,7 +37,8 @@ export default {
       fontFamily: {
         'manrope': ['Manrope', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
-        'GreatVibes': ['GreatVibes', 'script']
+        'GreatVibes': ['GreatVibes', 'script'],
+        'GenshinFont': ['GenshinFont', 'script']
       },
       darkMode: 'class',
     },

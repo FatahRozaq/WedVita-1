@@ -1,0 +1,45 @@
+.image{
+    position: relative;
+    height: 100vh;
+}
+
+.image-half{
+    position: relative;
+    height: 50vh;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+.content-half{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 50vh;
+    width: 100%;
+}
+
+.content span.img-txt{
+    background-color: black;
+    color: aliceblue;
+    padding: 1rem;
+    font-size: 4rem;
+}
+
+.h3test{
+    font: 1.3rem;
+    text-align: center;
+}
+
+.text-box{
+    text-align: center;
+    padding: 3rem 1rem;
+    text-align: justify;
+}

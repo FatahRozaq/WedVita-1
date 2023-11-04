@@ -27,6 +27,13 @@ import MapLinks from './coba_MapLinks.jsx';
 
 import WeddingTemplateLeaflet from "./assets/WedTemplate/template_leaflet_1.jsx";
 
+import WeddingTemplateLeaflet2 from "./assets/WedTemplate/template_leaflet_2_parallax.jsx";
+import ParallaxProvider from "./assets/WedTemplate/parallax_provider_2.jsx";
+import ParallaxComponent from "./assets/WedTemplate/parallax_component_2.jsx";
+
+import ImgKaveh1 from "./assets/WedTemplate/ImgKaveh1.jsx";
+import ParallaxDrivers from "./assets/WedTemplate/parallax_driver.jsx";
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -115,7 +122,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/WeddingCobaLeaflet/:id',
-        element: <WeddingTemplateLeaflet/>       
+        element: <WeddingTemplateLeaflet2/>       
+    },
+    {
+        path: '/cobaParallax',
+        element: <ParallaxDrivers/>  
     },
     { 
         path: '/cobaLeaflet',
