@@ -19,6 +19,7 @@ import Template from "./Views/WedTemplateViewer.jsx"
 import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
 import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
+import Latihan from "./Views/Users/Latihan.jsx";
 
 const router = createBrowserRouter([
     {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
     {
         path: '/pesanan/:id',
         element : <PesananUser />
+    },
+    {
+        path: '/latihan/:id',
+        element : <Latihan/>
     }
 ])
 

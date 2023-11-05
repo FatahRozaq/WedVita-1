@@ -195,6 +195,12 @@ function IsiDataUndangan() {
 
                             </div>
 
+                            <div class="mb-6">
+                                <label for="coverPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
+                                <input ref={coverPhotoRef} class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeCover} required />
+                                {/* <input ref={coverPhotoRef} name="coverPhoto" type="file" id="coverPhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeCover} required></input> */}
+                            </div>
+
                             {/* 
                             <div className="mb-6 flex justify-between">
                                 <div className="w-1/3">
@@ -247,18 +253,12 @@ function IsiDataUndangan() {
                             </div>
 
                             <div class="mb-6">
-                                <label for="coverPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
-                                <input ref={coverPhotoRef} class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeCover} required />
-                                {/* <input ref={coverPhotoRef} name="coverPhoto" type="file" id="coverPhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeCover} required></input> */}
-                            </div>
-
-                            <div class="mb-6">
                                 <label for="accountNumber" class="block mb-2 text-sm font-semibold text-gray-900">Nomor Rekening</label>
                                 <input ref={accountNumberRef} name="accountNumber" type="name" id="accountNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nomor Rekening Anda" required></input>
                             </div>
 
                             <div class="mb-6">
-                                <label for="weddingMap" class="block mb-2 text-sm font-semibold text-gray-900">Link Google Maps Pernikahan</label>
+                                <label for="weddingMap" class="block mb-2 text-sm font-semibold text-gray-900">Link Open Street Map Pernikahan</label>
                                 <input ref={weddingMapRef} name="weddingMap" type="name" id="weddingMap" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Link Google Maps Pernikahan" required></input>
                             </div>
 

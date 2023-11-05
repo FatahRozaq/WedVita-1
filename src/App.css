@@ -73,10 +73,14 @@ body {
   margin-bottom: 20px;
 }
 
-.row-center {
+.row-center, .row-center-detail {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.row-center-detail > * {
+  margin-right: 30px;
 }
 
 .column {

@@ -42,7 +42,7 @@ function DataKartuUndangan() {
           .catch(error => {
             console.error('Terjadi kesalahan:', error);
           });
-      }, [id]);
+      }, []);
 
     return (
         <Layout onLogout={onLogout} user={user}>
