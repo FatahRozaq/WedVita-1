@@ -10,6 +10,9 @@ import ImgKaveh1 from "./ImgKaveh1";
 import ImgRep1 from './ImgRep1'
 import ImgShikanoin1 from './ImgShikanoin1'
 
+import { inView, motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+
 import img11 from './img/user3-128x128.jpg'
 import img12 from './img/user6-128x128.jpg'
 import ReactModal from 'react-modal';
@@ -48,6 +51,57 @@ function formatCustomDateTime(weddingDate, weddingTime) {
     const formattedDateTime = `${month} ${day}, ${year} ${hours}:${minutes}:${seconds}`;
     return formattedDateTime;
 }
+
+const boxVariant = {
+    visible: { opacity: 1, scale: 1, transition: { duration: 1.25 } },
+    hidden: { opacity: 0, scale: 0 }
+};
+
+const Box = ({ str }) => {
+    const control = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    }, [control, inView]);
+
+    return (
+        <motion.div
+            ref={ref}
+            variants={boxVariant}
+            initial="hidden"
+            animate={control}
+        >
+            <h1 class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">{str} </h1>
+        </motion.div>
+    );
+};
+
+const Box2 = ({ str }) => {
+    const control = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    }, [control, inView]);
+
+    return (
+        <motion.div
+            ref={ref}
+            variants={boxVariant}
+            initial="hidden"
+            animate={control}
+        >
+            <h1 class="body-font font-GenshinFont text-center grid-item mt-4 mb-4 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">{str} </h1>
+        </motion.div>
+    );
+};
 
 function WeddingTemplateLeaflet2() {
     const { id } = useParams();
@@ -150,6 +204,16 @@ function WeddingTemplateLeaflet2() {
 
     }, [setWeddingInvitations]);
 
+    const control = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        }
+    }, [control, inView]);
+
+    const isDefaultSize = window.innerWidth >= 1280;
+
     return (
         <div>
             <head>
@@ -168,7 +232,7 @@ function WeddingTemplateLeaflet2() {
 
             <body>
 
-
+            <ImgKaveh1 groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} wedDate={formatDate(weddingInvitations.weddingDate)} />
 
 
                 {/* <p class="subtitle">Wedding Invitation</p>
@@ -176,20 +240,35 @@ function WeddingTemplateLeaflet2() {
                 <p class="subtitle">{formatDate(weddingInvitations.weddingDate)}</p>
                 <ParallaxComponent/> */}
 
-                <ImgKaveh1 groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} wedDate={formatDate(weddingInvitations.weddingDate)} />
 
                 <section class="p-2">
-                    <h1
-                        class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
-                        Embark on the romantic journey of...</h1>
+                    <Box str="Embark on the romantic journey of..." />
+                    {/* <motion.div
+                        ref={ref}
+                        variants={boxVariant}
+                        initial="hidden"
+                        animate={control}>
+                        <h1
+                            class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
+                            Embark on the romantic journey of...</h1>
+                    </motion.div> */}
+
                 </section>
 
                 <ImgRep1 groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} fatherOfGroom={weddingInvitations.fatherOfGroom} motherOfGroom={weddingInvitations.motherOfGroom} fatherOfBride={weddingInvitations.fatherOfBride} motherOfBride={weddingInvitations.motherOfBride} groomPhoto={weddingInvitations.groomPhoto} bridePhoto={weddingInvitations.bridePhoto} />
 
                 <section class="p-2">
-                    <h1
-                        class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
-                        Browse through memories of their love story...</h1>
+                    <Box str="Browse through memories of their love story..." />
+                    {/* <motion.div
+                        ref={ref}
+                        variants={boxVariant}
+                        initial="hidden"
+                        animate={control}>
+                        <h1
+                            class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
+                            Browse through memories of their love story...</h1>
+                    </motion.div> */}
+
                     <div class="grid-container">
                         <div class="inv-grid grid-vertical">
                             <div class="inv-grid">
@@ -239,17 +318,19 @@ function WeddingTemplateLeaflet2() {
                 </section>
 
                 <section class="p-2">
-                    <h1
+                    <Box str="The big day is approaching, the clock is ticking!" />
+                    {/* <h1
                         class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
-                        The big day is approaching, the clock is ticking!</h1>
+                        The big day is approaching, the clock is ticking!</h1> */}
                 </section>
 
                 <ImgShikanoin1 months={months} days={days} hours={hours} minutes={minutes} seconds={seconds} />
 
                 <section class="p-5">
-                    <h1
+                    <Box str="Discover the enchanting venues" />
+                    {/* <h1
                         class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
-                        Discover the enchanting venues</h1>
+                        Discover the enchanting venues</h1> */}
 
                     <div class="inv-card">
                         <div class="card-title">
@@ -280,10 +361,14 @@ function WeddingTemplateLeaflet2() {
                 </section>
 
                 <section class="pt-2 mb-12">
-                <h1
+                    <Box2 str="Look out for the special invitation arriving soon!" />
+                    <p className='text-lg text-center font-GenshinFont mb-4'>{weddingInvitations.groomName} and {weddingInvitations.brideName} invite you to celebrate with them.</p>
+
+
+                    {/* <h1
                         class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
                         Look out for the special invitation arriving soon!<br />
-                        {weddingInvitations.groomName} and {weddingInvitations.brideName} invite you to celebrate with them.</h1>
+                        {weddingInvitations.groomName} and {weddingInvitations.brideName} invite you to celebrate with them.</h1> */}
 
                     <div class="grid grid-cols-1 justify-center justify-items-center items-center">
                         {/* gambar ditengah: justify item center */}
@@ -298,11 +383,12 @@ function WeddingTemplateLeaflet2() {
                     </div>
                 </section>
                 <section class="pt-2 mb-12">
-
-                <h1
+                    <Box2 str="Don't forget to sign our guest book with your warm wishes." />
+                    <p className='text-lg text-center font-GenshinFont mb-4'>Your words will be a cherished memory for {weddingInvitations.groomName} and {weddingInvitations.brideName}.</p>
+                    {/* <h1
                         class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-gray-900 md:text-xl lg:text-2xl">
                         Don't forget to sign our guest book with your warm wishes. <br />
-                        Your words will be a cherished memory for {weddingInvitations.groomName} and {weddingInvitations.brideName}.</h1>
+                        Your words will be a cherished memory for {weddingInvitations.groomName} and {weddingInvitations.brideName}.</h1> */}
 
                     <div class="grid grid-cols-1 justify-center justify-items-center items-center">
                         {/* gambar ditengah: justify item center */}
