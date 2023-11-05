@@ -121,7 +121,7 @@ const router = createBrowserRouter([
         element: <LeafletMap/>       
     },
     {
-        path: '/WeddingCobaLeaflet/:id',
+        path: '/Wedding/:namaVariable/:id',
         element: <WeddingTemplateLeaflet2/>       
     },
     {

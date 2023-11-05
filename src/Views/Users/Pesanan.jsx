@@ -120,7 +120,7 @@ function PesananUser() {
                                 <td>{invitation.groomName}</td>
                                 <td>{invitation.brideName}</td>
                                 {/* langkah3 */}
-                                <td><Link to={`/WeddingCobaLeaflet/${invitation.id}`}>Lihat Desain</Link></td> 
+                                <td><Link to={`/Wedding/wedding-of-${invitation.groomName}-and-${invitation.brideName}/${invitation.id}`}>Lihat Desain</Link></td> 
                                 <td>
                                     <button onClick={() => openModal(invitation)}>  
                                       Show Detail
