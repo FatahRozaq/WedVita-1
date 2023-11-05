@@ -39,7 +39,7 @@ export default function LandingPage() {
           <div class="row-span-2">
             <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-loose tracking-normal text-gray-900 md:text-5xl lg:text-7xl ">Crafting Love Stories, <span class="underline underline-offset-3 decoration-8 decoration-wedvita-purple to-wedvita-purple-light from-wedvita-purple">One Invitation</span> at a Time </h1>
             <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Create, Share, and Celebrate Your Wedding with Beautiful Online Invitations</p>
-            <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Learn More &gt;&gt;&gt;</button>
+            {/* <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Learn More &gt;&gt;&gt;</button> */}
           </div>
           <div class="row-span-1"><img src={imag1} alt="Description of the image" /></div>
         </div>
@@ -49,7 +49,7 @@ export default function LandingPage() {
           <div class="row-span-2">
             <h1 class="body-font font-GreatVibes grid-item mb-8 text-4xl font-normal leading-none tracking-normal text-gray-900 md:text-5xl lg:text-7xl">Discover Our Feature Set</h1>
             <p class="font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">Wedvita simplifies your wedding invitation experience. Customize invitations, manage your guest list with digital RSVPs, choose from beautiful templates, stay connected with guests, and plan on-the-go with mobile accessibility. We prioritize your privacy and security for a stress-free wedding invitation journey.</p>
-            <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Learn More &gt;&gt;&gt;</button>
+            {/* <button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-extrabold rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Learn More &gt;&gt;&gt;</button> */}
           </div>
         </div>
 
