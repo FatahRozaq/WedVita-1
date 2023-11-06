@@ -25,4 +25,41 @@ class guestMessagesController extends Controller
             'guestMessages' => $guestMessages,
         ], 201);
     }
+
+    public function update(guestMessagesRequest $request, $id)
+    {
+        $guestMessage = guestMessages::find($id);
+
+        if (!$guestMessage) {
+            return response()->json(['message' => 'Pesan tamu tidak ditemukan'], 404);
+        }
+
+        $validatedData = $request->validated();
+
+        $guestMessage->invitationId = $validatedData['invitationId'];
+        $guestMessage->guestName = $validatedData['guestName'];
+        $guestMessage->message = $validatedData['message'];
+
+        $guestMessage->save();
+
+        return response()->json([
+            'message' => 'Data pesan tamu berhasil diperbarui',
+            'guestMessage' => $guestMessage,
+        ], 200);
+    }
+
+
+    public function destroy($id)
+    {
+        $guestMessage = guestMessages::find($id);
+
+        if (!$guestMessage) {
+            return response()->json(['message' => 'Pesan tamu tidak ditemukan'], 404);
+        }
+
+        $guestMessage->delete();
+
+        return response()->json(['message' => 'Data pesan tamu berhasil dihapus'], 200);
+    }
+
 }
