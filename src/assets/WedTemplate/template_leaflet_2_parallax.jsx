@@ -31,6 +31,15 @@ import ParallaxComponent from './parallax_component_2';
 import foreground from './img/foreground.png'
 import background2 from './img/background2.png'
 
+
+import { createRef } from 'react'
+import { useStateContext } from '../../Contexts/ContextProvider'
+import { useRef } from 'react';
+
+import 'datatables.net-dt/css/jquery.dataTables.css';
+import $ from 'jquery';
+import 'datatables.net';
+
 function formatDate(inputDate) {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = new Date(inputDate).toLocaleDateString(undefined, options);
@@ -104,9 +113,19 @@ const Box2 = ({ str }) => {
 };
 
 function WeddingTemplateLeaflet2() {
+
+    const nameRef = createRef();
+    const messageRef = createRef();
+    const tableRef = useRef(null);
+
+    const [messagesView, setMessagesView] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
-
+    const { setMessageData } = useStateContext();
 
     const date = weddingInvitations.weddingDate;
     const time = weddingInvitations.weddingTime;
@@ -214,6 +233,52 @@ function WeddingTemplateLeaflet2() {
 
     const isDefaultSize = window.innerWidth >= 1280;
 
+
+    const onSubmit = (ev) => {
+        ev.preventDefault()
+
+        // navigate(`/pesanan/${user.id}`);
+        const formData = new FormData();
+        formData.append('invitationId', weddingInvitations.id);
+        formData.append('guestName', nameRef.current.value);
+        formData.append('message', messageRef.current.value);
+
+        axiosClient.post('/message', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+            .then(({ data }) => {
+                setMessageData(data.weddingMessage)
+            })
+            .catch(err => {
+                const response = err.response;
+                if (response && response.status === 422) {
+                    setErrors(response.data.errors)
+                }
+            })
+    }
+
+
+    useEffect(() => {
+
+        axiosClient
+            .get(`/getMessages/${id}`)
+            .then((response) => {
+                setMessagesView(response.data);
+                setIsLoading(false)
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+                setIsLoading(false)
+            });
+
+        if (tableRef.current) {
+            $(tableRef.current).DataTable();
+        }
+
+    }, [setMessagesView]);
+
     return (
         <div>
             <head>
@@ -232,7 +297,7 @@ function WeddingTemplateLeaflet2() {
 
             <body>
 
-            <ImgKaveh1 groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} wedDate={formatDate(weddingInvitations.weddingDate)} />
+                <ImgKaveh1 groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} wedDate={formatDate(weddingInvitations.weddingDate)} />
 
 
                 {/* <p class="subtitle">Wedding Invitation</p>
@@ -402,36 +467,61 @@ function WeddingTemplateLeaflet2() {
                             <span class="relative invisible">Isi Buku Tamu</span>
                         </button>
                         <div class="overflow-auto p-4 mx-16 h-48 text-justify mt-4 mb-4">
-
-                            <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                            {/* {messagesView.map((invitation, index) => (
+                                <article key={index} class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                                    <footer class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center">
+                                            <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                                                class="mr-2 w-6 h-6 rounded-full"
+                                                src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                                                alt="Michael Gough" />{invitation.guestName}</p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
+                                                title="February 8th, 2022">Feb. 8, 2022</time></p>
+                                        </div>
+                                    </footer>
+                                    <p class="text-gray-500 dark:text-gray-400">{invitation.message}</p>
+                                </article>
+                            ))} */}
+                            {isLoading ? (
+                                <p>Loading...</p>
+                            ) : messagesView.length > 0 ? (
+                                // <table ref={tableRef} className="display">
+                                //     <thead>
+                                //         <tr>
+                                //             <th>id</th>
+                                //             <th>Nama</th>
+                                //             <th>Pesan</th>
+                                //             {/* Add more table headers if needed */}
+                                //         </tr>
+                                //     </thead>
+                                //     <tbody>
+                                //         {messagesView.map((invitation, index) => (
+                                //             <tr key={index}>
+                                //                 <td>{invitation.id}</td>
+                                //                 <td>{invitation.guestName}</td>
+                                //                 <td>{invitation.message}</td>
+                                //             </tr>
+                                //         ))}
+                                //     </tbody>
+                                // </table>
+                                messagesView.map((invitation, index) => (
+                                <article key={index} class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
                                 <footer class="flex justify-between items-center mb-2">
                                     <div class="flex items-center">
                                         <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
                                             class="mr-2 w-6 h-6 rounded-full"
                                             src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                            alt="Michael Gough" />Ivan Gough</p>
+                                            alt="Michael Gough" />{invitation.guestName}</p>
                                         <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
                                             title="February 8th, 2022">Feb. 8, 2022</time></p>
                                     </div>
                                 </footer>
-                                <p class="text-gray-500 dark:text-gray-400">Selamat ya pernikahannya! Semoga pernikahan ini penuh cinta, kebahagiaan, dan berkah dari Allah. Semoga kalian selalu saling mendukung dan menjadi pasangan yang harmonis. Semoga setiap hari kalian habiskan bersama penuh kebahagiaan dan cinta. Selamat menempuh perjalanan kehidupan baru sebagai suami istri!</p>
+                                <p class="text-gray-500 dark:text-gray-400">{invitation.message}</p>
                             </article>
-
-
-                            <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
-                                <footer class="flex justify-between items-center mb-2">
-                                    <div class="flex items-center">
-                                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
-                                            class="mr-2 w-6 h-6 rounded-full"
-                                            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                            alt="Michael Gough" />Javier Stoy</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
-                                            title="February 8th, 2022">Feb. 8, 2022</time></p>
-                                    </div>
-                                </footer>
-                                <p class="text-gray-500 dark:text-gray-400">Selamat atas pernikahannya! Semoga perjalanan cinta kalian menjadi kisah indah yang tak terlupakan. Semoga cinta kalian semakin kuat, kebahagiaan selalu menghiasi hari-hari kalian, dan kebersamaan selalu menjadi dasar yang kokoh dalam pernikahan ini. Selamat meniti perjalanan baru sebagai suami dan istri!</p>
-                            </article>
-                            {/* The city pulses with energy as a vibrant tapestry of life unfolds before our eyes. Skyscrapers stretch towards the heavens, their glass facades reflecting the dazzling sunlight. Streets teem with a kaleidoscope of people, each with their own story and purpose. Amidst the urban symphony, the scent of freshly brewed coffee mingles with the aroma of international cuisines, enticing passersby to savor culinary delights. Neon lights illuminate the night, casting a vibrant glow on bustling sidewalks and lively cafes. Wandering through the city's heart, we discover hidden gems tucked away in narrow alleyways—a charming bookstore, a lively street art mural, or a tranquil park providing respite from the urban hustle. The rhythm of life here is palpable, echoing through the laughter, the honking of taxis, and the melodies drifting from street performers. */}
+                            ))
+                            ) : (
+                                <p>Tidak ada pesan</p>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -444,14 +534,14 @@ function WeddingTemplateLeaflet2() {
                     contentLabel="Example Modal"
                     style={modalStyles}
                 >
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div class="mb-6">
-                            <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                            <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketikkan Nama" required />
+                            <label for="guestName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                            <input ref={nameRef} type="text" name="guestName" id="guestName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketikkan Nama" required />
                         </div>
                         <div class="mb-6">
-                            <label for="pesan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
-                            <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
+                            <textarea ref={messageRef} id="message" name="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
                 </ReactModal>
