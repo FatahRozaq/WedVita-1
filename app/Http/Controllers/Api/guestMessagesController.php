@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class guestMessagesController extends Controller
 {
+    public function showData($invId)
+    {
+        try{
+            $messages = guestMessages::where('invitationId', $invId)->get();
+            return response()->json($messages);
+        }catch  (\Exception $e){ 
+            return response()->json(['message' => 'Data undangan tidak ditemukan'],404);
+        }   
+        
+    }
     public function store(guestMessagesRequest $request)
     {
         $validatedData = $request->validated();

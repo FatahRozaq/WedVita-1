@@ -55,4 +55,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/designs/{id}', [invitationDesignsController::class, 'destroy']);
 
     Route::post('/message', [guestMessagesController::class, 'store']);
-    Route::get('/getMessages/{id}',[weddingInvitationsController::class, 'showData']);
+    Route::get('/getMessages/{id}',[guestMessagesController::class, 'showData']);
