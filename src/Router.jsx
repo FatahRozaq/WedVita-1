@@ -19,6 +19,7 @@ import Template from "./Views/WedTemplateViewer.jsx"
 import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
 import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
+import UploadPhoto from "./Views/Users/UploadPhotoUndangan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
     {
         path: '/pesanan/:id',
         element : <PesananUser />
+    },
+    {
+        path: '/up-photo/:id',
+        element : <UploadPhoto />
     },
     {
         path: '/template1/:id',          // langkah 1
