@@ -1,0 +1,74 @@
+
+                <div class="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center">
+                    {/* gambar ditengah: justify item center */}
+                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40" src={`http://localhost:8000${weddingInvitations.groomPhoto}`} //nambahin gambar
+                        alt="image description" />
+                        <p class="font-gv">{weddingInvitations.groomName}</p>
+                        <p>Putra dari </p>
+                        <p>Bapak {weddingInvitations.fatherOfGroom}</p>
+                        <p>&</p>
+                        <p>Ibu {weddingInvitations.motherOfGroom} </p>
+                    </div>
+                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
+                        alt="image description" />
+                        <p class="font-gv">{weddingInvitations.brideName}</p>
+                        <p>Putri dari </p>
+                        <p>Bapak {weddingInvitations.fatherOfBride}</p>
+                        <p>&</p>
+                        <p>Ibu {weddingInvitations.motherOfBride}</p>
+                    </div>
+                </div>
+
+
+
+                
+                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section class="p-2">
+                    <h1
+                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        Countdown</h1>
+
+                    <div class="flex justify-around text-center">
+                        <div>
+                            <h2 class="font-gv" id="month">{months}</h2>
+                            <p>Month</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="day">{days}</h2>
+                            <p>days</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="hour">{hours}</h2>
+                            <p>Hours</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="minute">{minutes}</h2>
+                            <p>Minutes</p>
+                        </div>
+
+                        <div>
+                            <h2 class="font-gv" id="second">{seconds}</h2>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                </section>
+
+
+                
+                <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                    <footer class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                                class="mr-2 w-6 h-6 rounded-full"
+                                src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                                alt="Michael Gough" />Javier Stoy</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
+                                title="February 8th, 2022">Feb. 8, 2022</time></p>
+                        </div>
+                    </footer>
+                    <p class="text-gray-500 dark:text-gray-400">Selamat atas pernikahannya! Semoga perjalanan cinta kalian menjadi kisah indah yang tak terlupakan. Semoga cinta kalian semakin kuat, kebahagiaan selalu menghiasi hari-hari kalian, dan kebersamaan selalu menjadi dasar yang kokoh dalam pernikahan ini. Selamat meniti perjalanan baru sebagai suami dan istri!</p>
+                </article>
+                {/* The city pulses with energy as a vibrant tapestry of life unfolds before our eyes. Skyscrapers stretch towards the heavens, their glass facades reflecting the dazzling sunlight. Streets teem with a kaleidoscope of people, each with their own story and purpose. Amidst the urban symphony, the scent of freshly brewed coffee mingles with the aroma of international cuisines, enticing passersby to savor culinary delights. Neon lights illuminate the night, casting a vibrant glow on bustling sidewalks and lively cafes. Wandering through the city's heart, we discover hidden gems tucked away in narrow alleyways—a charming bookstore, a lively street art mural, or a tranquil park providing respite from the urban hustle. The rhythm of life here is palpable, echoing through the laughter, the honking of taxis, and the melodies drifting from street performers. */}

@@ -120,7 +120,7 @@ function PesananUser() {
                                 <td>{invitation.groomName}</td>
                                 <td>{invitation.brideName}</td>
                                 {/* langkah3 */}
-                                <td><Link to={`/WeddingCobaLeaflet/${invitation.id}`}>Lihat Desain</Link></td> 
+                                <td><Link to={`/Wedding/wedding-of-${invitation.groomName}-and-${invitation.brideName}/${invitation.id}`}>Lihat Desain</Link></td> 
                                 <td>
                                     <button onClick={() => openModal(invitation)}>  
                                       Show Detail
@@ -157,28 +157,21 @@ function PesananUser() {
 
       <div className="row">
         <div className="column">
-          <span className="subTitle">
-              Mempelai Pria :
-          </span>
-
-          <span>
-              {selectedInvitation.groomName}
-              {selectedInvitation.designId.designName}
-          </span>
+          <div class="mb-6">
+              <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Mempelai Pria</label>
+              <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.groomName} disabled></input>
+          </div>
         </div>
 
         <div className="column">
-          <span className="subTitle">
-            Mempelai Wanita :
-          </span>
-
-          <span>
-            {selectedInvitation.brideName}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Mempelai Wanita</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.brideName} disabled></input>
+          </div>
         </div>
       </div>
 
-      <div className="row">
+      <div className="row-center-detail">
           <img className="rounded-lg object-cover h-40 w-28" src={`http://localhost:8000${selectedInvitation.groomPhoto}`} alt={selectedInvitation.groomPhoto}/* alt="product image"*/ />
 
           <img className="rounded-lg object-cover h-40 w-28" src={`http://localhost:8000${selectedInvitation.bridePhoto}`} alt={selectedInvitation.bridePhoto}/* alt="product image"*/ />
@@ -186,58 +179,43 @@ function PesananUser() {
 
       <div className="row">
         <div className="column">
-          <span className="subTitle">
-              Ayah Mempelai Pria :
-          </span>
-
-          <span>
-              {selectedInvitation.fatherOfGroom}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ayah Mempelai Pria</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.fatherOfGroom} disabled></input>
+          </div>
         </div>
 
         <div className="column">
-          <span className="subTitle">
-            Ayah Mempelai Wanita :
-          </span>
-
-          <span>
-            {selectedInvitation.fatherOfBride}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ayah Mempelai Wanita</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.fatherOfBride} disabled></input>
+          </div>
         </div>
       </div>
 
       <div className="row">
         <div className="column">
-          <span className="subTitle">
-              Ibu Mempelai Pria :
-          </span>
-
-          <span>
-              {selectedInvitation.motherOfGroom}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ibu Mempelai Pria</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.motherOfGroom} disabled></input>
+          </div>
         </div>
 
         <div className="column">
-          <span className="subTitle">
-             Ibu Mempelai Wanita:
-          </span>
-
-          <span>
-            {selectedInvitation.motherOfBride}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ibu Mempelai Wanita</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.motherOfBride} disabled></input>
+          </div>
         </div>
       </div>
 
       <div className="row">
 
         <div className="column">
-          <span className='subTitle'>
-            Tanggal Pernikahan :
-          </span>
-
-          <span>
-            {selectedInvitation.weddingDate}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Tanggal Pernikahan</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingDate} disabled></input>
+          </div>
         </div>
         
       </div>
@@ -245,13 +223,10 @@ function PesananUser() {
       <div className="row">
 
         <div className="column">
-          <span className='subTitle'>
-            Waktu Pernikahan :
-          </span>
-
-          <span>
-            {selectedInvitation.weddingTime}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Waktu Pernikahan</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingTime} disabled></input>
+          </div>
         </div>
         
       </div>
@@ -259,13 +234,10 @@ function PesananUser() {
       <div className="row">
 
         <div className="column">
-          <span className='subTitle'>
-            Tempat Pernikahan :
-          </span>
-
-          <span>
-            {selectedInvitation.weddingLocation}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Lokasi Pernikahan</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingLocation} disabled></input>
+          </div>
         </div>
         
       </div>
@@ -273,13 +245,10 @@ function PesananUser() {
       <div className="row">
 
         <div className="column">
-          <span className='subTitle'>
-            Maps Pernikahan :
-          </span>
-
-          <span>
-            {selectedInvitation.weddingMap}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Maps Pernikahan</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingMap} disabled></input>
+          </div>
         </div>
         
       </div>
@@ -287,13 +256,10 @@ function PesananUser() {
       <div className="row">
 
         <div className="column">
-          <span className='subTitle'>
-            Nomor Rekening :
-          </span>
-
-          <span>
-            {selectedInvitation.accountNumber}
-          </span>
+          <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Nomor Rekening</label>
+            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.accountNumber} disabled></input>
+          </div>
         </div>
         
       </div>
