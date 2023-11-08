@@ -33,6 +33,7 @@ import ParallaxComponent from "./assets/WedTemplate/parallax_component_2.jsx";
 
 import ImgKaveh1 from "./assets/WedTemplate/ImgKaveh1.jsx";
 import ParallaxDrivers from "./assets/WedTemplate/parallax_driver.jsx";
+import ParallaxSpringCoba from "./assets/WedTemplate/ParallaxSpringCoba.jsx";
 
 const router = createBrowserRouter([
     {
@@ -122,7 +123,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/Wedding/:namaVariable/:id',
-        element: <WeddingTemplateLeaflet2/>       
+        element: <ParallaxSpringCoba/>       
     },
     {
         path: '/cobaParallax',
@@ -131,7 +132,12 @@ const router = createBrowserRouter([
     { 
         path: '/cobaLeaflet',
         element: <LeafletMain/>       
-    }
+    },
+    { 
+        path: '/parSpring',
+        element: <ParallaxSpringCoba/>       
+    },
+
 ])
 
 export default router;
