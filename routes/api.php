@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\api\guestMessagesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\invitationDesignsController;
 use App\Http\Controllers\Api\weddingInvitationsController;
@@ -55,3 +56,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/designs/{id}', [invitationDesignsController::class, 'update']);
     Route::delete('/designs/{id}', [invitationDesignsController::class, 'destroy']);
 
+    Route::post('/message', [guestMessagesController::class, 'store']);
+    Route::get('/getMessages/{id}',[guestMessagesController::class, 'showData']);
