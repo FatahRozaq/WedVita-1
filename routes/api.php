@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\api\guestMessagesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\invitationDesignsController;
 use App\Http\Controllers\Api\invitationOrdersController;
@@ -59,3 +60,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/orders', [invitationOrdersController::class, 'index']);
 
     Route::post('/webhook', [WebhookController::class, 'midtransHandler']);
+    Route::post('/message', [guestMessagesController::class, 'store']);
+    Route::get('/getMessages/{id}',[guestMessagesController::class, 'showData']);

@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class weddingPhotos extends Model
+class guestMessages extends Model
 {
-
-    protected $table = 'weddingPhotos';
+    protected $table = 'guestMessages';
     use HasFactory;
+
     protected $fillable = [
         'invitationId',
-        'photo',
-        'photoInformation',
+        'guestName',
+        'message'
     ];
 
     public function weddingInvitations()
     {
         return $this->belongsTo(weddingInvitations::class, 'invitationId');
     }
+
+
 }
