@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\invitationDesignsController;
+use App\Http\Controllers\Api\invitationOrdersController;
+use App\Http\Controllers\Api\WebhookController;
 use App\Http\Controllers\Api\weddingInvitationsController;
 use App\Http\Controllers\Api\weddingPhotosController;
 use App\Models\weddingInvitations;
@@ -53,3 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/designs/{id}', [invitationDesignsController::class, 'update']);
     Route::delete('/designs/{id}', [invitationDesignsController::class, 'destroy']);
 
+    Route::post('/orders', [invitationOrdersController::class, 'create']);
+    Route::get('/orders', [invitationOrdersController::class, 'index']);
+
+    Route::post('/webhook', [WebhookController::class, 'midtransHandler']);

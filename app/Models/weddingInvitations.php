@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\invitationOrders;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class weddingInvitations extends Model
 {
@@ -36,5 +37,10 @@ class weddingInvitations extends Model
 
     public function design() {
         return $this->hasOne(invitationDesigns::class);
+    }
+
+    public function order()
+    {
+        return $this->hasOne(invitationOrders::class, 'id', 'invitationId');
     }
 }

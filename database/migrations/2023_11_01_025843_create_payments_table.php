@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('orderId');
-            $table->string('paymentMethod');
-            $table->string('cardNumber');
-            $table->date('paymentDate');
-            $table->double('paymentTotal', 8, 2);
             $table->string('paymentStatus');
+            $table->string('paymentMethod');
+            $table->json('raw_response');
             $table->timestamps();
 
-            $table->foreign('orderId')->references('id')->on('weddingInvitations');
+            $table->foreignId('orderId')->references('id')->on('invitationOrders');
         });
     }
 

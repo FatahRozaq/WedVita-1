@@ -16,10 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('invitationId');
             $table->unsignedBigInteger('designId');
             $table->unsignedBigInteger('userId');
-            $table->date('orderDate');
-            $table->date('orderExpired');
-            $table->double('totalPrice', 9, 0);
-            $table->string('orderStatus');
+            $table->string('orderStatus')->default('pending');
+            $table->string('snapUrl')->nullable();
+            $table->json('metadata')->nullable();
             $table->timestamps();
 
             $table->foreign('invitationId')->references('id')->on('weddingInvitations');
