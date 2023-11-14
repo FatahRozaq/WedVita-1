@@ -21,6 +21,8 @@ import ReactModal from 'react-modal';
 import axios from 'axios'
 import axiosClient from '../../axios-client'
 import { useParams } from 'react-router-dom'
+import { useStateContext } from '../../Contexts/ContextProvider'
+import { Navigate } from 'react-router-dom'
 
 import LeafletMap from '../../coba_LeafletMap'
 
@@ -107,7 +109,12 @@ function WeddingTemplateLeaflet2() {
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
 
-
+    const {user, token, setUser, setToken} = useStateContext();
+    
+    if (!token) {
+        return <Navigate to="/nothing" />;
+    }
+    
     const date = weddingInvitations.weddingDate;
     const time = weddingInvitations.weddingTime;
     const formattedDate = formatCustomDateTime(date, time);
