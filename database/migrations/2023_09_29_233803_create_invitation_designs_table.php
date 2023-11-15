@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('designName');
             $table->text('designDescription')->nullable();
             $table->string('designImage')->nullable();
-            $table->string('designDummy')->nullable();
-            $table->string('designCode')->nullable();
             $table->decimal('price', 10, 2);
             $table->string('designLink')->unique();
             $table->timestamps();

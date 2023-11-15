@@ -46,28 +46,11 @@ class invitationDesignsController extends Controller
         // Dapatkan URL gambar yang disimpan
         $imageUrl = Storage::url('public/images/' . $imageName);
 
-        // Simpan file designDummy (CSS dan JavaScript)
-        if ($request->hasFile('designDummy')) {
-            $designDummy = $request->file('designDummy');
-            $designDummyName = $designDummy->getClientOriginalName();    
-            $designDummy->storeAs('public/designs', $designDummyName, ['disk' => 'local']);
-            $validatedData['designDummy'] = $designDummyName;
-        }
-        
-        if ($request->hasFile('designCode')) {
-            $designCode = $request->file('designCode');
-            $designCodeName = $designCode->getClientOriginalName();    
-            $designCode->storeAs('public/designs', $designCodeName, ['disk' => 'local']);
-            $validatedData['designCode'] = $designCodeName;
-        }
-
         $invitationDesigns = new InvitationDesigns([
             'userId' => $request->input('userId'),
             'designName' => $validatedData['designName'],
             'designDescription' => $validatedData['designDescription'],
             'designImage' => $imageUrl,
-            'designDummy' => $validatedData['designDummy'],
-            'designCode' => $validatedData['designCode'],
             'price' => $validatedData['price'],
             'designLink' => $validatedData['designLink'],
         ]);
@@ -91,54 +74,58 @@ class invitationDesignsController extends Controller
     }
 
 
-    public function update(invitationDesignsRequest $request, $id)
+    public function update($id, Request $request)
     {
         try {
             // Validasi data
-            $validatedData = $request->validated();
+            // $validatedData = $request->validated();
 
             // Cari desain berdasarkan ID
             $invitationDesigns = InvitationDesigns::findOrFail($id);
 
             // Pastikan pengguna yang mengirim permintaan adalah pemilik desain
-            if ($invitationDesigns->userId != $validatedData['userId']) {
-                return response()->json(['message' => 'Anda tidak memiliki izin untuk mengubah desain ini'], 403);
-            }
+            // if ($invitationDesigns->userId != $validatedData['userId']) {
+            //     return response()->json(['message' => 'Anda tidak memiliki izin untuk mengubah desain ini'], 403);
+            // }
 
             // Update data desain kecuali gambar
             $invitationDesigns->update([
-                'designName' => $validatedData['designName'],
-                'designDescription' => $validatedData['designDescription'],
-                'price' => $validatedData['price'],
-                'designLink' => $validatedData['designLink'],
+                'designName' => $request->designName,
+                'designDescription' => $request->designDescription,
+                'price' => $request->price,
+                'designLink' => $request->designLink,
             ]);
 
             // Jika ada gambar baru yang dikirim, simpan gambar
-            if ($request->hasFile('designImage')) {
-                // Hapus gambar lama jika ada
-                if ($invitationDesigns->designImage) {
-                    // PENTING: Anda mungkin perlu menyesuaikan path gambar lama sesuai dengan struktur penyimpanan Anda
-                    Storage::delete($invitationDesigns->designImage);
-                }
+            // if ($request->hasFile('designImage')) {
+            //     // Hapus gambar lama jika ada
+            //     if ($invitationDesigns->designImage) {
+            //         Storage::delete('public/images/' . basename($invitationDesigns->designImage));
+            //     }
 
-                // Simpan gambar baru dengan nama yang unik
-                $designImage = $request->file('designImage');
-                $designImagePath = $designImage->store('design_images');
+            //     // Simpan gambar baru dengan nama yang unik
+            //     $designImage = $request->file('designImage');
+            //     $designImagePath = $designImage->storeAs('public/images', $designImage->getClientOriginalName());
 
-                // Update path gambar dalam database
-                $invitationDesigns->update(['designImage' => $designImagePath]);
-            }
+            //     // Update path gambar dalam database
+            //     $invitationDesigns->update(['designImage' => $designImagePath]);
+            // }
+            
 
             return response()->json(['message' => 'Data invitation design berhasil diupdate', 'design' => $invitationDesigns], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Desain tidak ditemukan atau terjadi kesalahan saat memperbarui data'], 404);
         }
+
+        // $validatedData = $request->validated();
     }
 
-    public function destroy($id)
+
+
+    public function detroy($id)
     {
         try {
-            $invitationDesigns = InvitationDesigns::findOrFail($id);
+            $invitationDessigns = InvitationDesigns::findOrFail($id);
 
             // Hapus gambar jika ada
             if ($invitationDesigns->designImage) {

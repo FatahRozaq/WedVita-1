@@ -20,13 +20,11 @@ class invitationDesigns extends Model
         'designName',
         'designDescription',
         'designImage',
-        'designDummy',
-        'designCode',
         'price',
         'designLink',
     ];
 
-    public function weddiingInvitations() {
+    public function weddingInvitations() {
         return $this->belongsTo(weddingInvitations::class);
     }
 }
