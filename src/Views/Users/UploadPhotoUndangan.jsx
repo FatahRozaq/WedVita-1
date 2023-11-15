@@ -13,9 +13,11 @@ function UploadPhotoUndangan() {
     const photoRef = createRef();
     const photoInformationRef = createRef();
 
-    const [weddingInvitations, setWeddingInvitation] = useState([]);
+    const { id } = useParams();
+    const [weddingInvitations, setWeddingInvitations] = useState({});
     const [errors, setErrors] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
+    const { setweddingPhoto } = useStateContext();
     const {setDesign, user, token, setUser, setToken} = useStateContext();
     const navigate = useNavigate();
 
@@ -35,12 +37,25 @@ function UploadPhotoUndangan() {
           })
     }
     
+      // useEffect(() => {
+      //   axiosClient.get('/user')
+      //     .then(({data}) => {
+      //        setUser(data)
+      //     })
+      // }, [])
+
       useEffect(() => {
-        axiosClient.get('/user')
-          .then(({data}) => {
-             setUser(data)
-          })
-      }, [])
+
+          axiosClient
+              .get(`/getWeddingInvitations/${id}`)
+              .then((response) => {
+                  setWeddingInvitations(response.data);
+              })
+              .catch((error) => {
+                  console.error('Error fetching data: ', error);
+              });
+
+      }, [setWeddingInvitations]);
     
 
       const handleImageChange = (e) => {
@@ -65,13 +80,11 @@ function UploadPhotoUndangan() {
           },
         })
         .then(({data}) => {
-          setDesign(data.weddingPhotos)
+          setweddingPhoto(data.weddingPhotos)
         })
         .catch(err => {
           const response = err.response;
           if( response && response.status === 422){
-            // response.data.errors
-            // console.log(response.data.errors);
             setErrors(response.data.errors)
           }
         })
