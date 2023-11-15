@@ -21,6 +21,7 @@ import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
 import UploadPhoto from "./Views/Users/UploadPhotoUndangan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
+import InvitationDesignsList from "./invitationDesignsList.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
 import LeafletMap from './coba_LeafletMap.jsx';
@@ -34,6 +35,7 @@ import ParallaxComponent from "./assets/WedTemplate/parallax_component_2.jsx";
 
 import ImgKaveh1 from "./assets/WedTemplate/ImgKaveh1.jsx";
 import ParallaxDrivers from "./assets/WedTemplate/parallax_driver.jsx";
+import ParallaxSpringCoba from "./assets/WedTemplate/ParallaxSpringCoba.jsx";
 
 const router = createBrowserRouter([
     {
@@ -127,7 +129,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/Wedding/:namaVariable/:id',
-        element: <WeddingTemplateLeaflet2/>       
+        element: <ParallaxSpringCoba/>       
     },
     {
         path: '/cobaParallax',
@@ -136,6 +138,14 @@ const router = createBrowserRouter([
     { 
         path: '/cobaLeaflet',
         element: <LeafletMain/>       
+    },
+    { 
+        path: '/parSpring',
+        element: <ParallaxSpringCoba/>       
+    },
+    {
+        path: '/invitationDesignsList',
+        element: <InvitationDesignsList/>
     }
 ])
 

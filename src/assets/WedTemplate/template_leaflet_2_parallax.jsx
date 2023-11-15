@@ -9,6 +9,7 @@ import img4 from './img/33814_05-eb9a2e4cc91544c5b78cc623c3c56222.jpg'
 import ImgKaveh1 from "./ImgKaveh1";
 import ImgRep1 from './ImgRep1'
 import ImgShikanoin1 from './ImgShikanoin1'
+import gengisDrip from './music/gengis_khan_drip.mp3'
 
 import { inView, motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -16,6 +17,8 @@ import { useInView } from 'react-intersection-observer'
 import img11 from './img/user3-128x128.jpg'
 import img12 from './img/user6-128x128.jpg'
 import ReactModal from 'react-modal';
+import { Container, Button, Link } from 'react-floating-action-button'
+
 
 //langkah 2
 import axios from 'axios'
@@ -122,7 +125,34 @@ function WeddingTemplateLeaflet2() {
     const [isLoading, setIsLoading] = useState(true);
 
     const [weddingPhotos, setweddingPhotos] = useState([]);
+    const [audioTune] = useState(new Audio(gengisDrip));
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [buttonIcon, setButtonIcon] = useState('fas fa-play');
 
+    const playSound = () => {
+        audioTune.play();
+        setIsPlaying(true);
+    }
+
+    const pauseSound = () => {
+        audioTune.pause();
+        setIsPlaying(false);
+    }
+
+    const handleClick = () => {
+        if (isPlaying) {
+            setButtonIcon('fas fa-play'); 
+            pauseSound();
+        } else {
+            setButtonIcon('fas fa-pause');
+            playSound();
+        }
+      }
+
+    const stopSound = () => {
+        audioTune.pause();
+        audioTune.currentTime = 0;
+    }
 
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
@@ -515,20 +545,15 @@ function WeddingTemplateLeaflet2() {
                                 //     </tbody>
                                 // </table>
                                 messagesView.map((invitation, index) => (
-                                <article key={index} class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
-                                <footer class="flex justify-between items-center mb-2">
-                                    <div class="flex items-center">
-                                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
-                                            class="mr-2 w-6 h-6 rounded-full"
-                                            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                            alt="Michael Gough" />{invitation.guestName}</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
-                                            title="February 8th, 2022">Feb. 8, 2022</time></p>
-                                    </div>
-                                </footer>
-                                <p class="text-gray-500 dark:text-gray-400">{invitation.message}</p>
-                            </article>
-                            ))
+                                    <article key={index} class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                                        <footer class="flex justify-between items-center mb-2">
+                                            <div class="flex items-center">
+                                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{invitation.guestName}</p>
+                                            </div>
+                                        </footer>
+                                        <p class="text-gray-500 dark:text-gray-400">{invitation.message}</p>
+                                    </article>
+                                ))
                             ) : (
                                 <p>Tidak ada pesan</p>
                             )}
@@ -571,6 +596,12 @@ function WeddingTemplateLeaflet2() {
                     ))}
                     </div>
                     
+                <Container>
+                    <Button
+                        tooltip={isPlaying ? "Pause Sound" : "Play Sound"}
+                        icon={buttonIcon}
+                        onClick={handleClick} />
+                </Container>
             </body>
 
         </div>

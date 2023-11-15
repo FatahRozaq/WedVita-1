@@ -29,6 +29,7 @@ export default {
         'wedvita-content-beige' : '#F2EEEB',
         'wedvita-text-light-purple' : '#B8BED9',
         'genshin-red' : '#B05846',
+        'purple-A6A3CC' : '#A6A3CC',
 
       },
       fontSize: {
