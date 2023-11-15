@@ -14,11 +14,11 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Layout({ children, onLogout, user}) {
+export default function Layout({ children, onLogout, user }) {
     // const {setUser} = useStateContext();
     // const onLogout = ev => {
     //     ev.preventDefault()
-    
+
     //     axiosClient.post('/logout')
     //       .then(() => {
     //         setUser({})
@@ -26,7 +26,7 @@ export default function Layout({ children, onLogout, user}) {
     //       })
     //   }
 
-    return(
+    return (
         <div class="body-font font-poppins bg-wedvita-sidebar-dark">
 
             <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
@@ -103,108 +103,111 @@ export default function Layout({ children, onLogout, user}) {
             </aside>
 
             {/* Content */}
-            <div class="p-2 sm:ml-64">
-                <div class="rounded-lg">
-                    <div class="bg-wedvita-content-beige rounded-lg">
-                        <main class="flex-1 p-4">
+            <div className="min-h-screen flex">
+                <div class="p-2 sm:ml-64 flex-1">
+                    <div class="h-full rounded-lg">
+                        <div class="h-full rounded-lg bg-wedvita-content-beige">
+                            <main class="flex-1 p-4">
 
-                            <div class="container mx-auto flex justify-end items-center">
+                                <div class="container mx-auto flex justify-end items-center">
 
-                                <nav>
-                                    <ul class="flex space-x-5">
-                                        <Menu as="div" className="relative inline-block text-left">
-                                            <div>
-                                                <Menu.Button className="flex mb-4 items-center text-sm font-medium text-gray-900 rounded-full hover:text-blue-600 md:mr-0 focus:ring-4 focus:ring-gray-100">
-                                                    <span class="sr-only">Open user menu</span>
-                                                    <img class="w-8 h-8 mr-2 rounded-full" src={orang1} alt="user photo"></img>
-                                                    <div class="font-extrabold">{user.username}</div> 
-                                                    <div class="font-extrabold"></div>
-                                                    <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                                                    </svg>
-                                                </Menu.Button>
-                                            </div>
+                                    <nav>
+                                        <ul class="flex space-x-5">
+                                            <Menu as="div" className="relative inline-block text-left">
+                                                <div>
+                                                    <Menu.Button className="flex mb-4 items-center text-sm font-medium text-gray-900 rounded-full hover:text-blue-600 md:mr-0 focus:ring-4 focus:ring-gray-100">
+                                                        <span class="sr-only">Open user menu</span>
+                                                        <img class="w-8 h-8 mr-2 rounded-full" src={orang1} alt="user photo"></img>
+                                                        <div class="font-extrabold">{user.username}</div>
+                                                        <div class="font-extrabold"></div>
+                                                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                                        </svg>
+                                                    </Menu.Button>
+                                                </div>
 
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
-                                            >
-                                                <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="py-1">
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <a
-                                                                    href="#"
-                                                                    className={classNames(
-                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                        'block px-4 py-2 text-sm'
-                                                                    )}
-                                                                >
-                                                                    <div class="font-medium ">Pro User</div>
-                                                                    <div class="truncate">{user.email}</div>
-                                                                </a>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                    <div className="py-1">
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <a
-                                                                    href="#"
-                                                                    className={classNames(
-                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                        'block px-4 py-2 text-sm'
-                                                                    )}
-                                                                >
-                                                                    Dashboard
-                                                                </a>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <a
-                                                                    href="#"
-                                                                    className={classNames(
-                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                        'block px-4 py-2 text-sm'
-                                                                    )}
-                                                                >
-                                                                    Settings
-                                                                </a>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                    <div className="py-1">
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    onClick={onLogout}
-                                                                    className={classNames(
-                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                        'block px-4 py-2 text-sm'
-                                                                    )}
-                                                                >
-                                                                    Logout
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </ul>
-                                </nav>
-                            </div>
-                            {children}
-                        </main>
+                                                <Transition
+                                                    as={Fragment}
+                                                    enter="transition ease-out duration-100"
+                                                    enterFrom="transform opacity-0 scale-95"
+                                                    enterTo="transform opacity-100 scale-100"
+                                                    leave="transition ease-in duration-75"
+                                                    leaveFrom="transform opacity-100 scale-100"
+                                                    leaveTo="transform opacity-0 scale-95"
+                                                >
+                                                    <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                        <div className="py-1">
+                                                            <Menu.Item>
+                                                                {({ active }) => (
+                                                                    <a
+                                                                        href="#"
+                                                                        className={classNames(
+                                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                            'block px-4 py-2 text-sm'
+                                                                        )}
+                                                                    >
+                                                                        <div class="font-medium ">Pro User</div>
+                                                                        <div class="truncate">{user.email}</div>
+                                                                    </a>
+                                                                )}
+                                                            </Menu.Item>
+                                                        </div>
+                                                        <div className="py-1">
+                                                            <Menu.Item>
+                                                                {({ active }) => (
+                                                                    <a
+                                                                        href="#"
+                                                                        className={classNames(
+                                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                            'block px-4 py-2 text-sm'
+                                                                        )}
+                                                                    >
+                                                                        Dashboard
+                                                                    </a>
+                                                                )}
+                                                            </Menu.Item>
+                                                            <Menu.Item>
+                                                                {({ active }) => (
+                                                                    <a
+                                                                        href="#"
+                                                                        className={classNames(
+                                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                            'block px-4 py-2 text-sm'
+                                                                        )}
+                                                                    >
+                                                                        Settings
+                                                                    </a>
+                                                                )}
+                                                            </Menu.Item>
+                                                        </div>
+                                                        <div className="py-1">
+                                                            <Menu.Item>
+                                                                {({ active }) => (
+                                                                    <Link
+                                                                        onClick={onLogout}
+                                                                        className={classNames(
+                                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                            'block px-4 py-2 text-sm'
+                                                                        )}
+                                                                    >
+                                                                        Logout
+                                                                    </Link>
+                                                                )}
+                                                            </Menu.Item>
+                                                        </div>
+                                                    </Menu.Items>
+                                                </Transition>
+                                            </Menu>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                {children}
+                            </main>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
         </div>
     )
