@@ -20,7 +20,7 @@ import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
 import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
-import InvitationDesignsList from "./invitationDesignsList.jsx";
+import DaftarDesainKartuUndangan from "./DaftarDesainKartuUndangan.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
 import LeafletMap from './coba_LeafletMap.jsx';
@@ -134,8 +134,8 @@ const router = createBrowserRouter([
         element: <LeafletMain/>       
     },
     {
-        path: '/invitationDesignsList',
-        element: <InvitationDesignsList/>
+        path: '/DaftarDesainKartuUndangan',
+        element: <DaftarDesainKartuUndangan/>
     }
 ])
 

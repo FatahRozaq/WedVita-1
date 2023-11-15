@@ -14,14 +14,10 @@ function DataKartuUndangan() {
     const designDescriptionRef = createRef();
     const designImageRef = createRef();
     const priceRef = createRef();
-    const designLinkRef = createRef();
-    const designDummyRef = createRef();
-    const designCodeRef = createRef();
+    const designLinkRef = createRef();  
 
     const [errors, setErrors] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [selectedDesignDummy, setSelectedDesignDummy] = useState(null);
-    const [selectedDesignCode, setSelectedDesignCode] = useState(null);
     const {setDesign, user, token, setUser, setToken} = useStateContext();
     const navigate = useNavigate();
     
@@ -55,19 +51,6 @@ function DataKartuUndangan() {
         }
       }; 
 
-      
-      const handleDesignDummyChange = (e) => {
-        if (e.target.files.length > 0) {
-          setSelectedDesignDummy(e.target.files[0]);
-        }
-      };
-
-      const handleDesignCodeChange = (e) => {
-        if (e.target.files.length > 0) {
-          setSelectedDesignCode(e.target.files[0]);
-        }
-      };
-
     const onSubmit = (ev) => {
         ev.preventDefault()
 
@@ -78,8 +61,6 @@ function DataKartuUndangan() {
         formData.append('designName', designNameRef.current.value);
         formData.append('designDescription', designDescriptionRef.current.value);
         formData.append('designImage', selectedImage);
-        formData.append('designDummy', selectedDesignDummy);
-        formData.append('designCode', selectedDesignCode);
         formData.append('price', priceRef.current.value);
         formData.append('designLink', designLinkRef.current.value);
 
@@ -157,30 +138,6 @@ function DataKartuUndangan() {
                             <input id="dropzone-file" type="file" accept="image/*" onChange={handleImageChange} class="hidden" />
                         </label>
                             
-                        <div class="mb-6">
-                          <label for="designDummy" class="block mb-2 text-sm font-semibold text-gray-900">Design Dummy</label>
-                          <input
-                            ref={designDummyRef}
-                            name="designDummy"
-                            type="file"
-                            id="designDummy"
-                            accept=".css, .jsx, .js" // Atur tipe file yang diizinkan
-                            onChange={handleDesignDummyChange}
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          />
-                        </div>
-                        <div class="mb-6">
-                          <label for="designCode" class="block mb-2 text-sm font-semibold text-gray-900">Design Code</label>
-                          <input
-                            ref={designCodeRef}
-                            name="designCode"
-                            type="file"
-                            id="designCode"
-                            accept=".css, .jsx, .js" // Atur tipe file yang diizinkan
-                            onChange={handleDesignCodeChange}
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          />
-                        </div>
 
 
 
