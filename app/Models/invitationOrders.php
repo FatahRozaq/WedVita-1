@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\weddingInvitations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class invitationOrders extends Model
 {
-    protected $table = 'weddingInvitations';
+    protected $table = 'invitationOrders';
     use HasFactory;
 
     /**
@@ -20,9 +21,19 @@ class invitationOrders extends Model
         'invitationId',
         'designId',
         'userId',
-        'orderDate',
-        'orderExpired',
-        'totalPrice',
         'orderStatus',
+        'snapUrl',
+        'metadata',
      ];
+
+     protected $casts = [
+         'created_at' => 'datetime:Y-m-d H:m:s',
+         'updated_at' => 'datetime:Y-m-d H:m:s',
+         'metadata' => 'array'
+     ];
+
+    public function weddingInvitation()
+    {
+        return $this->belongsTo(weddingInvitations::class, 'invitationId', 'id');
+    }
 }
