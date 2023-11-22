@@ -1,10 +1,11 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { Link, Navigate } from 'react-router-dom'
 import { useStateContext } from '../Contexts/ContextProvider'
 import axiosClient from '../axios-client'
+import { useLocation } from 'react-router-dom';
 
 import '../App.css'
 
@@ -28,25 +29,86 @@ export default function Layout({ children, onLogout, user }) {
     //       })
     //   }
 
+    const location = useLocation();
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const sidebarRef = useRef(null);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+    };
+
+    const closeSidebar = () => {
+        setSidebarOpen(false);
+    };
+
+    const [isAlertVisible, setAlertVisible] = useState(true);
+
+    const closeAlert = () => {
+        setAlertVisible(false);
+    };
+
+    useEffect(() => {
+        const handleMouseDown = (event) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+                // Click occurred outside the sidebar, so close it
+                closeSidebar();
+            }
+        };
+
+        // Attach the event listener when the component mounts
+        document.addEventListener('mousedown', handleMouseDown);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            document.removeEventListener('mousedown', handleMouseDown);
+        };
+    }, [sidebarRef]);
+
     return (
         <div class="body-font font-poppins bg-wedvita-sidebar-dark">
 
-            <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                <span class="sr-only">Open sidebar</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+            <button
+                data-drawer-target="default-sidebar"
+                data-drawer-toggle="default-sidebar"
+                aria-controls="default-sidebar"
+                type="button"
+                className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                onClick={toggleSidebar}
+            >
+                <span className="sr-only">Toggle sidebar</span>
+                <svg
+                    className="w-6 h-6"
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+                    </svg>
                 </svg>
             </button>
 
             {/* Sidebar */}
-            <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <aside
+                ref={sidebarRef}
+                id="default-sidebar"
+                className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${isSidebarOpen ? '' : '-translate-x-full'
+                    } sm:translate-x-0`}
+                aria-label="Sidebar"
+            >
+                {/* <button onClick={closeSidebar}>Close Sidebar</button> */}
                 <div class="h-full px-3 py-4 overflow-y-auto bg-wedvita-sidebar-dark">
                     <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5">
                         <img src={wedvitaWhite} class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
                     </a>
                     <ul class="space-y-2 font-medium">
                         <li>
-                            <Link to="/cms-user-profile" class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
+                            <Link
+                                to="/cms-user-profile"
+                                className={`flex text-wedvita-text-light-purple items-center p-2 rounded-lg hover:bg-gray-100 hover:text-black group ${location.pathname === '/cms-user-profile' ? 'bg-gray-100 text-black' : 'text-gray-900'
+                                    }`}
+                            >
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                     <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
                                 </svg>
@@ -54,7 +116,12 @@ export default function Layout({ children, onLogout, user }) {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/cms-desain-ku" class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
+                            {/* <Link to="/cms-desain-ku" class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group"> */}
+                            <Link
+                                to="/cms-desain-ku"
+                                className={`flex text-wedvita-text-light-purple items-center p-2 rounded-lg hover:bg-gray-100 hover:text-black group ${location.pathname === '/cms-desain-ku' ? 'bg-gray-100 text-black' : 'text-gray-900'
+                                    }`}
+                            >
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                                     <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
                                 </svg>
@@ -62,7 +129,13 @@ export default function Layout({ children, onLogout, user }) {
                             </Link>
                         </li>
                         <li>
-                            <Link to={`/pesanan/${user.id}`} class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
+                            {/* <Link to={`/pesanan/${user.id}`} class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group"> */}
+                            <Link
+                                to={`/pesanan/${user.id}`}
+                                className={`flex text-wedvita-text-light-purple items-center p-2 rounded-lg hover:bg-gray-100 hover:text-black group ${location.pathname === `/pesanan/${user.id}` ? 'bg-gray-100 text-black' : 'text-gray-900'
+                                    }`}
+                            >
+
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
                                 </svg>
@@ -70,7 +143,7 @@ export default function Layout({ children, onLogout, user }) {
                                 {/* <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">5</span> */}
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
@@ -79,8 +152,18 @@ export default function Layout({ children, onLogout, user }) {
                                 </svg>
                                 <span class="ml-3 font-semibold">Atur Undangan</span>
                             </a>
-                        </li>
+                        </li> */}
 
+                        {/* <li>
+                            <Link onClick={onLogout} class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
+                                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                                </svg>
+                                <span class="ml-3 font-semibold">Logout</span>
+                            </Link>
+                        </li> */}
+                    </ul>
+                    <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
                         <li>
                             <Link onClick={onLogout} class="flex items-center p-2 text-gray-900 rounded-lg text-wedvita-text-light-purple hover:bg-gray-100 hover:text-black group">
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
@@ -89,7 +172,6 @@ export default function Layout({ children, onLogout, user }) {
                                 <span class="ml-3 font-semibold">Logout</span>
                             </Link>
                         </li>
-
                     </ul>
                 </div>
             </aside>
@@ -166,7 +248,7 @@ export default function Layout({ children, onLogout, user }) {
                                         </ul>
                                     </nav>
                                 </div>
-                                {children}  
+                                {children}
                             </main>
                         </div>
                     </div>
