@@ -118,6 +118,14 @@ function PesananUser() {
     })
 
     }
+
+    const onDelete = (invitation) => {
+      if(!window.confirm("Are you sure to delete this data?")){
+        return
+      }
+
+      axiosClient.delete(`/invitations/${invitation.id}`)
+    }
     
     useEffect(() => {
         console.log(selectedOrderId)
@@ -145,7 +153,7 @@ function PesananUser() {
         .get(`/getOrder/${selectedOrderId}`)
         .then((orderResponse) => {
           const weddingInvitations = orderResponse.data.weddingInvitations;
-          // console.log(orderResponse)
+
           if (weddingInvitations && weddingInvitations.length > 0) {
             const snapURL = weddingInvitations[0].snapUrl;
             window.location.href = snapURL;
@@ -159,25 +167,6 @@ function PesananUser() {
 
         
       }, [token, setUser, setToken, setWeddingInvitation]);
-
-      const onDelete = (invitation) => {
-        if (!window.confirm("Are you sure you want to delete this invitation?")) {
-          return;
-        }
-      
-        axiosClient
-          .delete(`/invitations/${invitation.id}`)
-          .then(() => {
-            // Remove the deleted invitation from the state
-            setWeddingInvitation((prevInvitations) =>
-              prevInvitations.filter((item) => item.id !== invitation.id)
-            );
-          })
-          .catch((error) => {
-            console.error("Error deleting invitation:", error);
-          });
-      };
-      
 
     return (
         
@@ -229,7 +218,6 @@ function PesananUser() {
                                     </button>
                                 </td>
                                 <td>
-                                <Link className="btn-edit" to={'/editPesanan/' + invitation.id}>Edit</Link>
                                   <button onClick={ev => onDelete(invitation)}>Delete</button>
                                 </td>
                                 {/* Add more table data if needed */}

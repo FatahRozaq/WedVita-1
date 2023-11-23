@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Register from "./Authentication/Register.jsx";
 import Login from "./Authentication/Login.jsx";
 import NotFound from "./Views/NotFound.jsx";
@@ -8,7 +8,6 @@ import Guest from "./Components/GuestLayout.jsx";
 import DefaultLayout from "./Components/DefaultLayout.jsx";
 import LandingPage from "./LandingPage.jsx";
 import UserProfile from "./user-profile.jsx";
-import { Navigate } from "react-router-dom";
 import CMSLayout from "./Components/CMSLayout.jsx";
 import UP1 from "./UserProfile.jsx";
 import DKU from "./DataKartuUndangan.jsx";
@@ -21,6 +20,7 @@ import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
 import InvitationDesignsList from "./invitationDesignsList.jsx";
+import EditPesanan from "./Views/Users/EditPesanan.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
 import LeafletMap from './coba_LeafletMap.jsx';
@@ -35,6 +35,12 @@ import ParallaxComponent from "./assets/WedTemplate/parallax_component_2.jsx";
 import ImgKaveh1 from "./assets/WedTemplate/ImgKaveh1.jsx";
 import ParallaxDrivers from "./assets/WedTemplate/parallax_driver.jsx";
 import ParallaxSpringCoba from "./assets/WedTemplate/ParallaxSpringCoba.jsx";
+
+// Khusus Pemesan
+import TemplatePemesan1 from "./assets/WedTemplate/template_leaflet_1_pemesan.jsx";
+import TemplatePemesan2 from "./assets/WedTemplate/template_leaflet_2_pemesan.jsx";
+import TemplatePemesan3 from "./assets/WedTemplate/template_leaflet_3_pemesan.jsx";
+import TemplatePemesan4 from "./assets/WedTemplate/template_leaflet_4_pemesan.jsx";
 
 const router = createBrowserRouter([
     {
@@ -123,10 +129,6 @@ const router = createBrowserRouter([
         element: <LeafletMap/>       
     },
     {
-        path: '/previewUndangan/:id',
-        element: <WeddingTemplateLeaflet2/>
-    },
-    {
         path: '/Wedding/:namaVariable/:id',
         element: <ParallaxSpringCoba/>       
     },
@@ -145,7 +147,20 @@ const router = createBrowserRouter([
     {
         path: '/invitationDesignsList',
         element: <InvitationDesignsList/>
-    }
+    },
+    {
+        path: '/invitationDesignsList',
+        element: <InvitationDesignsList/>
+    },
+    {
+        path: '/editPesanan/:id',
+        element : <EditPesanan key="userUpdate"/>
+    },
+    // Template Undangan Pemesan
+    {
+        path: '/previewUndangan/:id',
+        element: <TemplatePemesan4/>
+    },
 ])
 
 export default router;

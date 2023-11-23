@@ -8,6 +8,7 @@ import { createRef } from 'react'
 import { useStateContext } from '../../Contexts/ContextProvider'
 import { useNavigate } from 'react-router-dom'
 
+
 function IsiDataUndangan() {
     const groomNameRef = createRef();
     const brideNameRef = createRef();
@@ -115,6 +116,7 @@ function IsiDataUndangan() {
             })
             .then(({ data }) => {
                 setWeddingData(data.weddingInvitations)
+                set
                 //   return <Navigate to={"/cms-desain-ku"} />
                 //   navigate('/cms-desain-ku');
             })
