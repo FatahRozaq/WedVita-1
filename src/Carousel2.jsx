@@ -6,8 +6,35 @@ import 'slick-carousel/slick/slick-theme.css';
 import shrek from './assets/SHREK.jpeg'
 import blueTempl from './assets/blue.jpg'
 import img1 from './assets/image-1.jpg'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import axiosClient from './axios-client';
+import { Link, Navigate } from 'react-router-dom'
+import { useStateContext } from './Contexts/ContextProvider'
+import { redirect } from 'react-router-dom'
 
 const Carousel2 = () => {
+
+  const [designs, setDesigns] = useState([]);
+
+  const {user, token, setUser, setToken} = useStateContext();
+
+  useEffect(() => {
+
+    axiosClient.get('/user').then(({ data }) => {
+      setUser(data);
+    });
+
+    axiosClient
+      .get('/getInvitationDesigns')
+      .then((response) => {
+        setDesigns(response.data.designs);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, [token, setUser, setToken, setDesigns]);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -41,74 +68,24 @@ const Carousel2 = () => {
 
   return (
     <Slider {...settings}>
-      <div class="Container mx-auto">
-        <div class="px-2 flex justify-center">
-          {/* <div className="px-4"> */}
-          <div class="max-w-sm bg-white rounded-lg border border-gray-200 ">
-            <a href="#">
-              <img class="rounded-t-lg" src={blueTempl} alt="" />
-            </a>
-            <div class="p-5">
+      {designs.map((design, index) => (
+        <div class="Container mx-auto">
+          <div class="px-2 flex justify-center">
+            {/* <div className="px-4"> */}
+            <div class="max-w-sm bg-white rounded-lg border border-gray-200 ">
               <a href="#">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">Template 1</h5>
+                <img class="rounded-t-lg object-cover h-72 w-96" src={`http://localhost:8000${design.designImage}`} alt={design.designName} />
               </a>
+              <div class="p-5">
+                <a href="#">
+                  <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">{design.designName}</h5>
+                </a>
+              </div>
             </div>
+            {/* </div> */}
           </div>
-          {/* </div> */}
         </div>
-      </div>
-
-      <div class="Container mx-auto">
-        <div class="px-2 flex justify-center">
-          {/* <div className="px-4"> */}
-          <div class="max-w-sm bg-white rounded-lg border border-gray-200">
-            <a href="#">
-              <img class="rounded-t-lg" src={blueTempl} alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">Template 2</h5>
-              </a>
-            </div>
-          </div>
-          {/* </div> */}
-        </div>
-      </div>
-
-      <div class="Container mx-auto">
-        <div class="px-2 flex justify-center">
-          {/* <div className="px-4"> */}
-          <div class="max-w-sm bg-white rounded-lg border border-gray-200">
-            <a href="#">
-              <img class="rounded-t-lg" src={blueTempl} alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5 class=" text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">Template 3</h5>
-              </a>
-            </div>
-          </div>
-          {/* </div> */}
-        </div>
-      </div>
-
-      <div class="Container mx-auto">
-        <div class="px-2 flex justify-center">
-          {/* <div className="px-4"> */}
-          <div class="max-w-sm bg-white rounded-lg border border-gray-200">
-            <a href="#">
-              <img class="rounded-t-lg" src={blueTempl} alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">Template 4</h5>
-              </a>
-            </div>
-          </div>
-          {/* </div> */}
-        </div>
-      </div>
-
+      ))}
 
 
       {/* Add more items as needed */}

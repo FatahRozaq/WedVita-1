@@ -73,7 +73,7 @@ function DataKartuUndangan() {
                         <div><span class="text-xl font-medium">Deskripsi</span> <br /> <span>{design.designDescription}</span></div>
                         <div><span class="text-xl font-medium">Nama Design</span> <br /> <span>{design.designName}</span> </div>
                         <div><span class="text-xl font-medium">Harga</span> <br /> <span>Rp. {design.price}/pcs</span> </div>
-                        <div><span class="text-xl font-medium">Warna</span> <br /> <span> <img src={colorPallete2} alt="" /></span> </div>
+                        {/* <div><span class="text-xl font-medium">Warna</span> <br /> <span> <img src={colorPallete2} alt="" /></span> </div> */}
                         <div>
                                 <Link to={`/isi-data-undangan/${design.id}`} class="text-white text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center  mr-2 mb-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2">

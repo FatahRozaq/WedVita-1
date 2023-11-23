@@ -21,6 +21,7 @@ import PesananUser from "./Views/Users/Pesanan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
 import InvitationDesignsList from "./invitationDesignsList.jsx";
 import EditPesanan from "./Views/Users/EditPesanan.jsx";
+import AdminLayout from "./Components/CMSAdminLayout.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
 import LeafletMap from './coba_LeafletMap.jsx';
@@ -161,6 +162,10 @@ const router = createBrowserRouter([
         path: '/previewUndangan/:id',
         element: <TemplatePemesan4/>
     },
+    { 
+        path: '/adminLayout',
+        element: <AdminLayout/>       
+    }
 ])
 
 export default router;
