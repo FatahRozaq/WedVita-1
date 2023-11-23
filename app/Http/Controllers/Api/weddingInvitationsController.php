@@ -123,65 +123,57 @@ class weddingInvitationsController extends Controller
         ], 201);
     }
 
-    public function update(weddingInvitationsRequest $request, $id)
+    public function update($id, Request $request)
     {
-        
-        $validatedData = $request->validated();
+    $weddingInvitations = weddingInvitations::find($id);
 
-        $weddingInvitations = weddingInvitations::find($id);
-
-        if (!$weddingInvitations) {
-            return response()->json(['message' => 'Data wedding invitation tidak ditemukan'], 404);
-        }
-        
-        $groomPhoto = $request->file('groomPhoto');
-        $bridePhoto = $request->file('bridePhoto');
-        $coverPhoto = $request->file('coverPhoto');
-
-        if ($groomPhoto) {
-            $groomPhotoPath = $groomPhoto->getClientOriginalName();
-        }
-
-        if ($bridePhoto) {
-            $bridePhotoPath = $bridePhoto->getClientOriginalName();
-        }
-
-        if ($coverPhoto) {
-            $coverPhotoPath = $coverPhoto->getClientOriginalName();
-        }
-
-        $groomPhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $groomPhotoPath);
-        $bridePhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $bridePhotoPath);
-        $coverPhoto->storeAs('public/weddingInvitationPhoto/mainPhoto', $coverPhotoPath);
-
-        $groomPhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $groomPhotoPath);
-        $bridePhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $bridePhotoPath);
-        $coverPhotoUrl = Storage::url('public/weddingInvitationPhoto/mainPhoto/' . $coverPhotoPath);
-
-        $weddingInvitations->update([
-            'designId' => $validatedData['designId'],
-            'userId' => $validatedData['userId'],
-            'groomName' => $validatedData['groomName'],
-            'brideName' => $validatedData['brideName'],
-            'groomPhoto' => $groomPhotoUrl,
-            'bridePhoto' => $bridePhotoUrl,
-            'coverPhoto' => $coverPhotoUrl,
-            'weddingDate' => $validatedData['weddingDate'],
-            'weddingTime' => $validatedData['weddingTime'],
-            'weddingMap' => $validatedData['weddingMap'],
-            'weddingLocation' => $validatedData['weddingLocation'],
-            'fatherOfGroom' => $validatedData['fatherOfGroom'],
-            'motherOfGroom' => $validatedData['motherOfGroom'],
-            'fatherOfBride' => $validatedData['fatherOfBride'],
-            'motherOfBride' => $validatedData['motherOfBride'],
-            'accountNumber' => $validatedData['accountNumber'],
-        ]);
-
-        return response()->json([
-            'message' => 'Data wedding invitation berhasil diupdate',
-            'invitations' => $weddingInvitations,
-        ], 200);
+    if (!$weddingInvitations) {
+        return response()->json(['message' => 'Data wedding invitation tidak ditemukan'], 404);
     }
+
+    $groomPhoto = $request->file('groomPhoto');
+    $bridePhoto = $request->file('bridePhoto');
+    $coverPhoto = $request->file('coverPhoto');
+
+    if ($groomPhoto) {
+        $groomPhotoPath = $groomPhoto->store('public/weddingInvitationPhoto/mainPhoto');
+        $groomPhotoUrl = Storage::url($groomPhotoPath);
+    }
+
+    if ($bridePhoto) {
+        $bridePhotoPath = $bridePhoto->store('public/weddingInvitationPhoto/mainPhoto');
+        $bridePhotoUrl = Storage::url($bridePhotoPath);
+    }
+
+    if ($coverPhoto) {
+        $coverPhotoPath = $coverPhoto->store('public/weddingInvitationPhoto/mainPhoto');
+        $coverPhotoUrl = Storage::url($coverPhotoPath);
+    }
+
+    $weddingInvitations->update([
+        'designId' => $request->input('designId'),
+        'userId' => $request->input('userId'),
+        'groomName' => $request->input('groomName'),
+        'brideName' => $request->input('brideName'),
+        'groomPhoto' => $groomPhotoUrl ?? $weddingInvitations->groomPhoto,
+        'bridePhoto' => $bridePhotoUrl ?? $weddingInvitations->bridePhoto,
+        'coverPhoto' => $coverPhotoUrl ?? $weddingInvitations->coverPhoto,
+        'weddingDate' => $request->input('weddingDate'),
+        'weddingTime' => $request->input('weddingTime'),
+        'weddingMap' => $request->input('weddingMap'),
+        'weddingLocation' => $request->input('weddingLocation'),
+        'fatherOfGroom' => $request->input('fatherOfGroom'),
+        'motherOfGroom' => $request->input('motherOfGroom'),
+        'fatherOfBride' => $request->input('fatherOfBride'),
+        'motherOfBride' => $request->input('motherOfBride'),
+        'accountNumber' => $request->input('accountNumber'),
+    ]);
+
+    return response()->json([
+        'message' => 'Data wedding invitation berhasil diupdate',
+        'invitations' => $weddingInvitations,
+    ], 200);
+}
 
     public function destroy($id)
     {

@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Models\invitationOrders;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class weddingInvitations extends Model
 {
     protected $table = 'weddingInvitations';
     use HasFactory;
+    // use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

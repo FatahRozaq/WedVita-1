@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\invitationOrdersController;
 use App\Http\Controllers\Api\WebhookController;
 use App\Http\Controllers\Api\weddingInvitationsController;
 use App\Http\Controllers\Api\weddingPhotosController;
+use App\Models\invitationOrders;
 use App\Models\weddingInvitations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -58,7 +59,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/orders', [invitationOrdersController::class, 'create']);
     Route::get('/orders', [invitationOrdersController::class, 'index']);
-
     Route::post('/webhook', [WebhookController::class, 'midtransHandler']);
+    Route::get('/getOrder/{id}',[invitationOrdersController::class, 'getOrder']);
+
     Route::post('/message', [guestMessagesController::class, 'store']);
     Route::get('/getMessages/{id}',[guestMessagesController::class, 'showData']);

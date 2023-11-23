@@ -29,6 +29,21 @@ class invitationOrdersController extends Controller
 
     }
 
+    public function getOrder($invitationId)
+    {
+        try {
+            $weddingOrder = invitationOrders::where('invitationId', $invitationId)->get();
+            
+            if ($weddingOrder->isEmpty()) {
+                return response()->json(['message' => 'No orders found for this user'], 404);
+            }
+            
+            return response()->json(['weddingInvitations' => $weddingOrder]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'An error occurred'], 500);
+        }
+    }
+
     public function create(Request $request)
     {
         $userId = $request->input('userId');

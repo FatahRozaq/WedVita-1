@@ -76,7 +76,6 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'schema' => env('DB_PGSQL_SCHEMA', 'public'),
-            //'sslmode' => 'prefer',
         ],
 
         'sqlsrv' => [
