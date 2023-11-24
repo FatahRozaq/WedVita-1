@@ -19,6 +19,7 @@ import Template from "./Views/WedTemplateViewer.jsx"
 import IsiDataUndangan from "./Views/Users/IsiDataUndangan.jsx"
 import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
+import UploadPhoto from "./Views/Users/UploadPhotoUndangan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
 import DaftarDesainKartuUndangan from "./DaftarDesainKartuUndangan.jsx";
 import EditDesainKartuUndangan from "./EditDesainKartuUndangan.jsx";
@@ -29,6 +30,7 @@ import LeafletMap from './coba_LeafletMap.jsx';
 import MapLinks from './coba_MapLinks.jsx';
 
 import WeddingTemplateLeaflet from "./assets/WedTemplate/template_leaflet_1.jsx";
+
 
 import WeddingTemplateLeaflet2 from "./assets/WedTemplate/template_leaflet_2_parallax.jsx";
 import ParallaxProvider from "./assets/WedTemplate/parallax_provider_2.jsx";
@@ -115,6 +117,10 @@ const router = createBrowserRouter([
     {
         path: '/pesanan/:id',
         element : <PesananUser />
+    },
+    {
+        path: '/up-photo/:id',
+        element : <UploadPhoto />
     },
     {
         path: '/template1/:id',          // langkah 1
