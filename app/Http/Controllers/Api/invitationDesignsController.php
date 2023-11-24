@@ -74,7 +74,7 @@ class invitationDesignsController extends Controller
     }
 
 
-    public function update($id, Request $request)
+    public function update($id, request $request)
     {
         try {
             // Validasi data
@@ -82,6 +82,9 @@ class invitationDesignsController extends Controller
 
             // Cari desain berdasarkan ID
             $invitationDesigns = InvitationDesigns::findOrFail($id);
+
+            // $invitationDesigns->update($request->all());
+            // return $invitationDesigns;
 
             // Pastikan pengguna yang mengirim permintaan adalah pemilik desain
             // if ($invitationDesigns->userId != $validatedData['userId']) {
@@ -96,20 +99,43 @@ class invitationDesignsController extends Controller
                 'designLink' => $request->designLink,
             ]);
 
+            // $userId = $request->userId;
+            // $designName = $request->designName;
+            // $designDescription = $request->designDescription;
+            // $price = $request->price;
+            // $designLink = $request->designLink;
+            
+
             // Jika ada gambar baru yang dikirim, simpan gambar
-            // if ($request->hasFile('designImage')) {
-            //     // Hapus gambar lama jika ada
-            //     if ($invitationDesigns->designImage) {
-            //         Storage::delete('public/images/' . basename($invitationDesigns->designImage));
-            //     }
+            if ($request->hasFile('designImage')) {
+                // Hapus gambar lama jika ada
+                if ($invitationDesigns->designImage) {
+                    Storage::delete('public/images/' . basename($invitationDesigns->designImage));
+                }
+                //////////////////
 
-            //     // Simpan gambar baru dengan nama yang unik
-            //     $designImage = $request->file('designImage');
-            //     $designImagePath = $designImage->storeAs('public/images', $designImage->getClientOriginalName());
+                $image = $request->file('designImage');
+                $imageName = $image->getClientOriginalName();
 
-            //     // Update path gambar dalam database
-            //     $invitationDesigns->update(['designImage' => $designImagePath]);
-            // }
+                // Simpan gambar ke folder storage/app/public/images
+                $image->storeAs('public/images', $imageName);
+
+                // Dapatkan URL gambar yang disimpan
+                $imageUrl = Storage::url('public/images/' . $imageName);
+
+                //////////////////
+                // Simpan gambar baru dengan nama yang unik
+                // $designImage = $request->file('designImage');
+                // $imageName = $designImage->getClientOriginalName();
+                
+                // $image->storeAs('public/images', $imageName);
+
+                // // Dapatkan URL gambar yang disimpan
+                // $imageUrl = Storage::url('public/images/' . $imageName);
+
+                // Update path gambar dalam database
+                $invitationDesigns->update(['designImage' => $imageUrl]);
+            }
             
 
             return response()->json(['message' => 'Data invitation design berhasil diupdate', 'design' => $invitationDesigns], 200);
@@ -117,10 +143,43 @@ class invitationDesignsController extends Controller
             return response()->json(['message' => 'Desain tidak ditemukan atau terjadi kesalahan saat memperbarui data'], 404);
         }
 
-        // $validatedData = $request->validated();
     }
 
-
+    // public function update(invitationDesignsRequest $request, $id)
+    // {
+    //     $validatedData = $request->validated();
+    
+    //     // Temukan desain undangan berdasarkan ID
+    //     $invitationDesigns = InvitationDesigns::find($id);
+    
+    //     if (!$invitationDesigns) {
+    //         return response()->json(['message' => 'Desain undangan tidak ditemukan'], 404);
+    //     }
+    
+    //     // Jika ada file gambar baru, proses pengunggahan dan perbarui URL gambar
+    //     if ($request->hasFile('designImage')) {
+    //         $image = $request->file('designImage');
+    //         $imageName = $image->getClientOriginalName();
+    //         $image->storeAs('public/images', $imageName);
+    //         $imageUrl = Storage::url('public/images/' . $imageName);
+    //         $invitationDesigns->designImage = $imageUrl;
+    //     }
+    
+    //     // Update data desain undangan
+    //     $invitationDesigns->update([
+    //         'userId' => $request->input('userId'),
+    //         'designName' => $validatedData['designName'],
+    //         'designDescription' => $validatedData['designDescription'],
+    //         'price' => $validatedData['price'],
+    //         'designLink' => $validatedData['designLink'],
+    //     ]);
+    
+    //     return response()->json([
+    //         'message' => 'Data invitation design berhasil diperbarui',
+    //         'designs' => $invitationDesigns,
+    //     ], 200);
+    // }
+    
 
     public function detroy($id)
     {
