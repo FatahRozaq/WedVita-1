@@ -54,7 +54,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/getWeddingInvitations/{id}', [weddingInvitationsController::class, 'showDataWeddingInvitations']);   
 
     Route::post('/photos', [weddingPhotosController::class, 'store']);
-    Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);   
+    Route::delete('/photos/{id}', [weddingPhotosController::class, 'destroy']);
+    Route::get('/getphotos/{id}',[weddingPhotosController::class, 'showData']);
     Route::put('/designs/{id}', [invitationDesignsController::class, 'update']);
     Route::delete('/designs/{id}', [invitationDesignsController::class, 'destroy']);
 
