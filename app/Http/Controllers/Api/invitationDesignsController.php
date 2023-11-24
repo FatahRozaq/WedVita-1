@@ -38,7 +38,7 @@ class invitationDesignsController extends Controller
         $validatedData = $request->validated();
 
         $image = $request->file('designImage');
-        $imageName = $image->getClientOriginalName();;
+        $imageName = $image->getClientOriginalName();
 
         // Simpan gambar ke folder storage/app/public/images
         $image->storeAs('public/images', $imageName);

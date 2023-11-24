@@ -23,8 +23,11 @@ class weddingPhotosRequest extends FormRequest
     {
         return [
             'invitationId' => 'required|exists:weddingInvitations,id',
-            'photo' => 'required|image|max:2048',
-            'photoInformation' => 'nullable|string',
+            'photo1' => 'required|image|max:2048',
+            'photo2' => 'required|image|max:2048',
+            'photo3' => 'required|image|max:2048',
+            'photo4' => 'required|image|max:2048',
+            'photo5' => 'required|image|max:2048',
         ];
     }
 }
