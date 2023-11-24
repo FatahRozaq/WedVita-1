@@ -21,6 +21,7 @@ import PesanUndangan from "./Views/Users/PesanUndangan.jsx";
 import PesananUser from "./Views/Users/Pesanan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
 import DaftarDesainKartuUndangan from "./DaftarDesainKartuUndangan.jsx";
+import EditDesainKartuUndangan from "./EditDesainKartuUndangan.jsx";
 import AdminLayout from "./Components/CMSAdminLayout.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
@@ -142,6 +143,10 @@ const router = createBrowserRouter([
     {
         path: '/DaftarDesainKartuUndangan',
         element: <DaftarDesainKartuUndangan/>
+    },
+    {
+        path: '/EditDesainKartuUndangan/:id',
+        element: <EditDesainKartuUndangan/>
     },
     { 
         path: '/adminLayout',

@@ -123,10 +123,7 @@ function DaftarDesainKartuUndangan() {
                                 <td>{invitation.designDescription}</td>
                                 {/* langkah3 */}
                                 <td><Link to={`/cms-detail-ku/${invitation.id}`}>Lihat Desain</Link></td> 
-                                <td>
-                                    <button onClick={() => openModal(invitation)}>  
-                                      Show Detail
-                                    </button>
+                                <td><Link to={`/EditDesainKartuUndangan/${invitation.id}`}>Ubah Desain</Link>
                                 </td>
                                 
                                 {/* Add more table data if needed */}
