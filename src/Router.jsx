@@ -22,6 +22,7 @@ import PesananUser from "./Views/Users/Pesanan.jsx";
 import UploadPhoto from "./Views/Users/UploadPhotoUndangan.jsx";
 import Template1 from "./assets/WedTemplate/template_1.jsx";
 import InvitationDesignsList from "./invitationDesignsList.jsx";
+import AdminLayout from "./Components/CMSAdminLayout.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
 import LeafletMap from './coba_LeafletMap.jsx';
@@ -147,6 +148,10 @@ const router = createBrowserRouter([
     {
         path: '/invitationDesignsList',
         element: <InvitationDesignsList/>
+    },
+    { 
+        path: '/adminLayout',
+        element: <AdminLayout/>       
     }
 ])
 

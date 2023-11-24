@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import React, { useEffect, useRef } from "react";
-
+import { Menu, Transition } from '@headlessui/react'
+import { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -13,6 +14,10 @@ import Carousel2 from './Carousel2';
 import DarkModeSwitch from './DarkModeSwitch';
 
 import './App.css'
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 const RevealOnScroll = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,32 +50,167 @@ const RevealOnScroll = ({ children }) => {
   );
 };
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+};
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
 function App() {
+  const { height, width } = useWindowDimensions();
+  const isDefaultSize = window.outerWidth >= 877;
   const [count, setCount] = useState(0)
 
   return (
     <div class="body-font font-manrope">
-      <header class="px-12 py-8">
-        <div class="container mx-auto flex justify-between items-center">
-          <img src={wedvitaBlk} alt="Description of the image" />
-          <nav>
-            <ul class="flex space-x-10">
-              <li><a href="#" class="hover:underline">Home</a></li>
-              <li><a href="#design" class="hover:underline">Design</a></li>
-              <li><a href="#about" class="hover:underline">About</a></li>
+      {isDefaultSize ? (
+        <header class="px-12 py-8">
+          <div class="container mx-auto flex justify-between items-center">
+            <img src={wedvitaBlk} alt="Description of the image" />
+            <nav>
+              <ul class="flex space-x-10">
+                <li><a href="#" class="hover:underline">Home</a></li>
+                <li><a href="#design" class="hover:underline">Design</a></li>
+                <li><a href="#about" class="hover:underline">About</a></li>
 
-            </ul>
-          </nav>
-          <nav>
-            <ul class="flex space-x-5">
-              {/* <DarkModeSwitch /> */}
-              <Link to="/login"><button type="button" class="text-wedvita-purple-unhover hover:text-white border border-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:ring-4 focus:outline-none focus:ring-purple-hovered font-medium rounded-full text-sm px-5 py-2.5">Login</button></Link>
-              <Link to="/register"><button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5">Register</button></Link>
-            </ul>
-          </nav>
-        </div>
-      </header>
+              </ul>
+            </nav>
+            <nav>
+              <ul class="flex space-x-5">
+                {/* <DarkModeSwitch /> */}
+                <Link to="/login"><button type="button" class="text-wedvita-purple-unhover hover:text-white border border-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:ring-4 focus:outline-none focus:ring-purple-hovered font-medium rounded-full text-sm px-5 py-2.5">Login</button></Link>
+                <Link to="/register"><button type="button" class="text-white bg-wedvita-purple-unhover hover:bg-wedvita-purple-hovered focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5">Register</button></Link>
+              </ul>
+            </nav>
+          </div>
+        </header>
+      ) : (
+        <header class="px-12 py-8">
+          <div class="container mx-auto flex justify-between items-center">
+            <img src={wedvitaBlk} alt="Description of the image" />
+            <nav>
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="flex mb-4 items-center text-sm font-medium text-gray-900 rounded-full hover:text-blue-600 md:mr-0 focus:ring-4 focus:ring-gray-100">
+                    <span class="sr-only">Open user menu</span>
+                    <button class="relative group">
+                      <div class="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                        <div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden group-focus:-translate-y-1.5 group-focus:-rotate-90">
+                          <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                          <div class="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
+                          <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                        </div>
+                      </div>
+                    </button>
+                  </Menu.Button>
+                </div>
 
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Home
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#design"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Design
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#about"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            About
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </div>
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/login"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Login
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/register"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Register
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </nav>
+          </div>
+        </header>
+
+      )}
       <body class="my-20 px-12 py-8">
         <div id="about" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 justify-between items-center">
           <RevealOnScroll>
@@ -192,16 +332,26 @@ function App() {
       </body>
 
       <footer class="bg-wedvita-beige py-4">
-        <div class="container mx-auto text-center">
+
+        <div class="grid grid-cols-1 justify-items-center">
+          <p class="grid-item mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900">Contact Us</p>
+          <p class="mx-4 px-18 md:px-20 lg:px-24 xl:px-32 font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl  text-center ">At Wedvita, we're here to make your wedding journey as smooth and delightful as possible. Whether you have questions, need assistance, or simply want to share your thoughts, our dedicated team is ready to help.</p>
+          <p class="grid-item mb-4 text-xl font-bold leading-none tracking-tight text-gray-900 flex justify-center items-center">Follow Us<span class="inline-block"><img src={sosmed} alt="Image" class="ml-8 w-44" /></span></p>
+          <hr class="w-48 h-1 mx-auto my-4 bg-slate-950 border-0 rounded md:my-10" />
+          <div class="flex justify-center items-center mb-8">
+            <p class="flex justify-center items-center">Design<span><img src={wedvitaBlk} alt="Centered Image" class="mr-8 ml-8" /></span>About</p>
+          </div>
+        </div>
+
+        {/* <div class="container mx-auto text-center">
           <h1 class="grid-item mb-4 text-3xl font-bold leading-none tracking-tight text-gray-900">Contact Us</h1>
-          <p class="px-60 font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">At Wedvita, we're here to make your wedding journey as smooth and delightful as possible. Whether you have questions, need assistance, or simply want to share your thoughts, our dedicated team is ready to help.</p>
+          <p class="px-52 md:px-52 lg:px-44 xl:px-32 font-normal grid-item mb-8 leading-8 tracking-tight text-wedvita-text-light md:text-1setxl ">At Wedvita, we're here to make your wedding journey as smooth and delightful as possible. Whether you have questions, need assistance, or simply want to share your thoughts, our dedicated team is ready to help.</p>
           <p class="grid-item mb-4 text-xl font-bold leading-none tracking-tight text-gray-900 flex justify-center items-center">Follow Us<span class="inline-block"><img src={sosmed} alt="Image" class="ml-8" /></span></p>
           <hr class="h-px my-8 bg-gray-200 border-0"></hr>
           <div class="flex justify-center items-center mb-8">
             <p class="flex justify-center items-center">Design<span><img src={wedvitaBlk} alt="Centered Image" class="mr-8 ml-8" /></span>About</p>
           </div>
-          {/* <img src={wedvitaBlk} class="grid-item" /> */}
-        </div>
+        </div> */}
       </footer>
     </div>
 
