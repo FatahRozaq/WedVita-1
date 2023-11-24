@@ -29,6 +29,7 @@ import MapLinks from './coba_MapLinks.jsx';
 
 import WeddingTemplateLeaflet from "./assets/WedTemplate/template_leaflet_1.jsx";
 
+
 import WeddingTemplateLeaflet2 from "./assets/WedTemplate/template_leaflet_2_parallax.jsx";
 import ParallaxProvider from "./assets/WedTemplate/parallax_provider_2.jsx";
 import ParallaxComponent from "./assets/WedTemplate/parallax_component_2.jsx";

@@ -125,6 +125,7 @@ function WeddingTemplateLeaflet2() {
     const [isLoading, setIsLoading] = useState(true);
 
     const [weddingPhotos, setweddingPhotos] = useState([]);
+    const [photoWedding, setPhotoWedding] = useState({});
     const [audioTune] = useState(new Audio(gengisDrip));
     const [isPlaying, setIsPlaying] = useState(false);
     const [buttonIcon, setButtonIcon] = useState('fas fa-play');
@@ -319,6 +320,19 @@ function WeddingTemplateLeaflet2() {
 
     }, [setMessagesView]);
 
+    useEffect(() => {
+
+        axiosClient
+            .get(`/getphotos/${id}`) //kesalahan 2 (harusnya pake API yg baru)
+            .then((response) => {
+                setPhotoWedding(response.data.weddingPhotos); // kesalahan 1
+            })
+            .catch((error) => {
+                console.error('Error fetching data: ', error);
+            });
+
+    }, [setPhotoWedding]);
+
     return (
         <div>
             <head>
@@ -379,8 +393,7 @@ function WeddingTemplateLeaflet2() {
                             <div class="inv-grid">
                                 <div class="inv-grid grid-parent">
                                     <figure class="inv-grid grid-node inv-image is-height-rectangle">
-                                        <img width="800"
-                                            src={img1} />
+                                    <img width="800" src={`http://localhost:8000${photoWedding.photo1}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
                                     </figure>
                                 </div>
                                 <div class="inv-grid grid-vertical grid-column-3">
@@ -580,21 +593,6 @@ function WeddingTemplateLeaflet2() {
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
                 </ReactModal>
-
-                
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-                    {weddingPhotos.map((photos, index) => (
-                        <div className="px-2" key={index}>
-                        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-3xl shadow">
-                            <a href="#" className="flex p-5 justify-center">
-                            <img className="rounded-lg object-cover h-48 w-96" src={`http://localhost:8000${photos.photo}`} alt={photos.photoInformation}/* alt="product image"*/ />
-                            </a>
-                            
-                    
-                        </div>
-                        </div>
-                    ))}
-                    </div>
                     
                 <Container>
                     <Button
