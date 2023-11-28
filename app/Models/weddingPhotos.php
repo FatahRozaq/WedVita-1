@@ -12,8 +12,11 @@ class weddingPhotos extends Model
     use HasFactory;
     protected $fillable = [
         'invitationId',
-        'photo',
-        'photoInformation',
+        'photo1',
+        'photo2',
+        'photo3',
+        'photo4',
+        'photo5',
     ];
 
     public function weddingInvitations()

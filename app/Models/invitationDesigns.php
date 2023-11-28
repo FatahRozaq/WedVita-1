@@ -24,7 +24,7 @@ class invitationDesigns extends Model
         'designLink',
     ];
 
-    public function weddiingInvitations() {
+    public function weddingInvitations() {
         return $this->belongsTo(weddingInvitations::class);
     }
 }
