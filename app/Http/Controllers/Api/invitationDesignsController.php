@@ -117,7 +117,7 @@ class invitationDesignsController extends Controller
                 Storage::delete($invitationDesigns->designImage);
             }
 
-            $invitationDesigns->delete();
+            $invitationDesigns->forceDelete();
 
             return response()->json(['message' => 'Data invitation design berhasil dihapus'], 200);
         } catch (\Exception $e) {
