@@ -184,14 +184,14 @@ class invitationDesignsController extends Controller
     public function detroy($id)
     {
         try {
-            $invitationDessigns = InvitationDesigns::findOrFail($id);
+            $invitationDesigns = InvitationDesigns::findOrFail($id);
 
             // Hapus gambar jika ada
             if ($invitationDesigns->designImage) {
                 Storage::delete($invitationDesigns->designImage);
             }
 
-            $invitationDesigns->forceDelete();
+            $invitationDesigns->delete();
 
             return response()->json(['message' => 'Data invitation design berhasil dihapus'], 200);
         } catch (\Exception $e) {
