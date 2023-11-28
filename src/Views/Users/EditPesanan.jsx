@@ -117,7 +117,7 @@ function EditPesanan() {
 
     return (
         <Layout onLogout={onLogout} user={user}>
-            <div class="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
+            <div className="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
             <div className='DataKartuUndangan'>
 
                 {errors &&
@@ -130,80 +130,80 @@ function EditPesanan() {
 
 
                 <form onSubmit={onSubmit}>
-                    <div class="bg-white p-4 mb-4 rounded shadow">
-                        <div class="mb-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mb-6">
+                    <div className="bg-white p-4 mb-4 rounded shadow">
+                        <div className="mb-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mb-6">
                                 <div>
-                                    <label for="groomName" class="block mb-2 text-sm font-semibold text-gray-900">Nama Pengantin Pria</label>
-                                    <input value={weddingInvitation.groomName} onChange={ev => setWeddingInvitation({...weddingInvitation, groomName: ev.target.value})} name="groomName" type="name" id="groomName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Pengantin Pria" required></input>
+                                    <label for="groomName" className="block mb-2 text-sm font-semibold text-gray-900">Nama Pengantin Pria</label>
+                                    <input value={weddingInvitation.groomName} onChange={ev => setWeddingInvitation({...weddingInvitation, groomName: ev.target.value})} name="groomName" type="name" id="groomName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Pengantin Pria" required></input>
                                 </div>
                                 <div>
-                                    <label for="brideName" class="block mb-2 text-sm font-semibold text-gray-900">Nama Pengantin Wanita</label>
-                                    <input value={weddingInvitation.brideName} onChange={ev => setWeddingInvitation({...weddingInvitation, brideName: ev.target.value})} name="brideName" type="name" id="brideName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Pengantin Wanita" required></input>
+                                    <label for="brideName" className="block mb-2 text-sm font-semibold text-gray-900">Nama Pengantin Wanita</label>
+                                    <input value={weddingInvitation.brideName} onChange={ev => setWeddingInvitation({...weddingInvitation, brideName: ev.target.value})} name="brideName" type="name" id="brideName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Pengantin Wanita" required></input>
                                 </div>
                                 <div>
-                                    <label for="fatherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah Mempelai Pria</label>
-                                    <input value={weddingInvitation.fatherOfGroom} onChange={ev => setWeddingInvitation({...weddingInvitation, fatherOfGroom: ev.target.value})} name="fatherOfGroom" type="name" id="fatherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
-                                </div>
-
-                                <div>
-                                    <label for="fatherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah Mempelai Wanita</label>
-                                    <input value={weddingInvitation.fatherOfBride} onChange={ev => setWeddingInvitation({...weddingInvitation, fatherOfBride: ev.target.value})} name="fatherOfBride" type="name" id="fatherOfBride" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Wanita" required></input>
+                                    <label for="fatherOfGroom" className="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah Mempelai Pria</label>
+                                    <input value={weddingInvitation.fatherOfGroom} onChange={ev => setWeddingInvitation({...weddingInvitation, fatherOfGroom: ev.target.value})} name="fatherOfGroom" type="name" id="fatherOfGroom" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Pria" required></input>
                                 </div>
 
                                 <div>
-                                    <label for="motherOfGroom" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu Mempelai Pria</label>
-                                    <input value={weddingInvitation.motherOfGroom} onChange={ev => setWeddingInvitation({...weddingInvitation, motherOfGroom: ev.target.value})} name="motherOfGroom" type="name" id="motherOfGroom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Pria" required></input>
+                                    <label for="fatherOfBride" className="block mb-2 text-sm font-semibold text-gray-900">Nama Ayah Mempelai Wanita</label>
+                                    <input value={weddingInvitation.fatherOfBride} onChange={ev => setWeddingInvitation({...weddingInvitation, fatherOfBride: ev.target.value})} name="fatherOfBride" type="name" id="fatherOfBride" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ayah Pengantin Wanita" required></input>
                                 </div>
 
                                 <div>
-                                    <label for="motherOfBride" class="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu Mempelai Wanita</label>
-                                    <input value={weddingInvitation.motherOfBride} onChange={ev => setWeddingInvitation({...weddingInvitation, motherOfBride: ev.target.value})} name="motherOfBride" type="name" id="motherOfBride" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Wanita" required></input>
+                                    <label for="motherOfGroom" className="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu Mempelai Pria</label>
+                                    <input value={weddingInvitation.motherOfGroom} onChange={ev => setWeddingInvitation({...weddingInvitation, motherOfGroom: ev.target.value})} name="motherOfGroom" type="name" id="motherOfGroom" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Pria" required></input>
+                                </div>
+
+                                <div>
+                                    <label for="motherOfBride" className="block mb-2 text-sm font-semibold text-gray-900">Nama Ibu Mempelai Wanita</label>
+                                    <input value={weddingInvitation.motherOfBride} onChange={ev => setWeddingInvitation({...weddingInvitation, motherOfBride: ev.target.value})} name="motherOfBride" type="name" id="motherOfBride" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama Ibu Pengantin Wanita" required></input>
                                 </div>
                                 <div>
-                                    <label for="groomPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Pria</label>
-                                    <input  class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeGroom} required />
+                                    <label for="groomPhoto" className="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Pria</label>
+                                    <input  className="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeGroom} required />
                                 </div>
                                 <div>
-                                    <label for="bridePhoto" class="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Wanita</label>
-                                    <input class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeBride} required />
+                                    <label for="bridePhoto" className="block mb-2 text-sm font-semibold text-gray-900">Foto Pengantin Wanita</label>
+                                    <input className="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeBride} required />
                                 
                                 </div>
 
                             </div>
 
-                            <div class="mb-6">
-                                <label for="coverPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
-                                <input class="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeCover} required />
+                            <div className="mb-6">
+                                <label for="coverPhoto" className="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
+                                <input className="bg-gray-50 border border-wedvita-sidebar-dark text-gray-900 text-sm rounded-lg relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-2.5 text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-2.5 file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-wedvita-sidebar-dark file:px-3 file:py-2.5 file:text-wedvita-text-light-purple file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-100 hover:file:text-black focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none" type="file" id="formFile"  accept="image/*" onChange={handleImageChangeCover} required />
                                 
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingDate" class="block mb-2 text-sm font-semibold text-gray-900">Tanggal Pernikahan</label>
-                                <input value={weddingInvitation.weddingDate} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingDate: ev.target.value})} name="weddingDate" type="date" id="weddingDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" /*  value={selectedDate} onChange={handleDateChange} */ required></input> 
+                            <div className="mb-6">
+                                <label for="weddingDate" className="block mb-2 text-sm font-semibold text-gray-900">Tanggal Pernikahan</label>
+                                <input value={weddingInvitation.weddingDate} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingDate: ev.target.value})} name="weddingDate" type="date" id="weddingDate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" /*  value={selectedDate} onChange={handleDateChange} */ required></input> 
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingTime" class="block mb-2 text-sm font-semibold text-gray-900">Waktu Pernikahan</label>
-                                <input value={weddingInvitation.weddingTime} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingTime: ev.target.value})} name="weddingTime" type="time" id="weddingTime" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" /* value={selectedTime} onChange={handleTimeChange} */ required></input>
+                            <div className="mb-6">
+                                <label for="weddingTime" className="block mb-2 text-sm font-semibold text-gray-900">Waktu Pernikahan</label>
+                                <input value={weddingInvitation.weddingTime} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingTime: ev.target.value})} name="weddingTime" type="time" id="weddingTime" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" /* value={selectedTime} onChange={handleTimeChange} */ required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingLocation" class="block mb-2 text-sm font-semibold text-gray-900">Lokasi Pernikahan</label>
-                                <input value={weddingInvitation.weddingLocation} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingLocation: ev.target.value})} name="weddingLocation" type="name" id="weddingLocation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Lokasi Pernikahan" required></input>
+                            <div className="mb-6">
+                                <label for="weddingLocation" className="block mb-2 text-sm font-semibold text-gray-900">Lokasi Pernikahan</label>
+                                <input value={weddingInvitation.weddingLocation} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingLocation: ev.target.value})} name="weddingLocation" type="name" id="weddingLocation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Lokasi Pernikahan" required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="accountNumber" class="block mb-2 text-sm font-semibold text-gray-900">Nomor Rekening</label>
-                                <input value={weddingInvitation.accountNumber} onChange={ev => setWeddingInvitation({...weddingInvitation, accountNumber: ev.target.value})} name="accountNumber" type="name" id="accountNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nomor Rekening Anda" required></input>
+                            <div className="mb-6">
+                                <label for="accountNumber" className="block mb-2 text-sm font-semibold text-gray-900">Nomor Rekening</label>
+                                <input value={weddingInvitation.accountNumber} onChange={ev => setWeddingInvitation({...weddingInvitation, accountNumber: ev.target.value})} name="accountNumber" type="name" id="accountNumber" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nomor Rekening Anda" required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingMap" class="block mb-2 text-sm font-semibold text-gray-900">Link Open Street Map Pernikahan</label>
-                                <input value={weddingInvitation.weddingMap} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingMap: ev.target.value})} name="weddingMap" type="name" id="weddingMap" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Link Google Maps Pernikahan" required></input>
+                            <div className="mb-6">
+                                <label for="weddingMap" className="block mb-2 text-sm font-semibold text-gray-900">Link Open Street Map Pernikahan</label>
+                                <input value={weddingInvitation.weddingMap} onChange={ev => setWeddingInvitation({...weddingInvitation, weddingMap: ev.target.value})} name="weddingMap" type="name" id="weddingMap" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Link Google Maps Pernikahan" required></input>
                             </div>
 
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Upload</button>
+                            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Upload</button>
 
                         </div>
                     </div>

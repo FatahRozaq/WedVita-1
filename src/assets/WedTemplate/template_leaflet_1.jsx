@@ -158,36 +158,36 @@ function WeddingTemplateLeaflet() {
             </head>
 
             <body>
-                <section class="inv-banner banner-fullheight color-ltblue ">
-                    <div class="banner-body text-centered">
-                        <div class="container">
-                            {/* <p class="subtitle">{formattedDate}</p> */}
-                            <p class="subtitle">Wedding Invitation</p>
-                            <p class="title">{weddingInvitations.groomName} & {weddingInvitations.brideName}</p>
-                            <p class="subtitle">{formatDate(weddingInvitations.weddingDate)}</p>
+                <section className="inv-banner banner-fullheight color-ltblue ">
+                    <div className="banner-body text-centered">
+                        <div className="container">
+                            {/* <p className="subtitle">{formattedDate}</p> */}
+                            <p className="subtitle">Wedding Invitation</p>
+                            <p className="title">{weddingInvitations.groomName} & {weddingInvitations.brideName}</p>
+                            <p className="subtitle">{formatDate(weddingInvitations.weddingDate)}</p>
                         </div>
                     </div>
                 </section>
 
-                <section class="p-2">
+                <section className="p-2">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Mempelai</h1>
                 </section>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center">
                     {/* gambar ditengah: justify item center */}
-                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40" src={`http://localhost:8000${weddingInvitations.groomPhoto}`} //nambahin gambar
+                    <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-40 h-40" src={`http://localhost:8000${weddingInvitations.groomPhoto}`} //nambahin gambar
                         alt="image description" />
-                        <p class="font-gv">{weddingInvitations.groomName}</p>
+                        <p className="font-gv">{weddingInvitations.groomName}</p>
                         <p>Putra dari </p>
                         <p>Bapak {weddingInvitations.fatherOfGroom}</p>
                         <p>&</p>
                         <p>Ibu {weddingInvitations.motherOfGroom} </p>
                     </div>
-                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
+                    <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-40 h-40 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
                         alt="image description" />
-                        <p class="font-gv">{weddingInvitations.brideName}</p>
+                        <p className="font-gv">{weddingInvitations.brideName}</p>
                         <p>Putri dari </p>
                         <p>Bapak {weddingInvitations.fatherOfBride}</p>
                         <p>&</p>
@@ -195,46 +195,46 @@ function WeddingTemplateLeaflet() {
                     </div>
                 </div>
 
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="p-2">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="p-2">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Gallery</h1>
-                    <div class="grid-container">
-                        <div class="inv-grid grid-vertical">
-                            <div class="inv-grid">
-                                <div class="inv-grid grid-parent">
-                                    <figure class="inv-grid grid-node inv-image is-height-rectangle">
+                    <div className="grid-container">
+                        <div className="inv-grid grid-vertical">
+                            <div className="inv-grid">
+                                <div className="inv-grid grid-parent">
+                                    <figure className="inv-grid grid-node inv-image is-height-rectangle">
                                         <img width="800"
                                             src={img1} />
                                     </figure>
                                 </div>
-                                <div class="inv-grid grid-vertical grid-column-3">
-                                    <div class="inv-grid grid-parent">
-                                        <div class="inv-grid grid-node">
-                                            <figure class="inv-image is-width-rectangle">
+                                <div className="inv-grid grid-vertical grid-column-3">
+                                    <div className="inv-grid grid-parent">
+                                        <div className="inv-grid grid-node">
+                                            <figure className="inv-image is-width-rectangle">
                                                 <img width="800" src={img2} />
                                             </figure>
                                         </div>
                                     </div>
-                                    <div class="inv-grid grid-parent">
-                                        <div class="inv-grid grid-node">
-                                            <figure class="inv-image is-md-width-rectangle">
+                                    <div className="inv-grid grid-parent">
+                                        <div className="inv-grid grid-node">
+                                            <figure className="inv-image is-md-width-rectangle">
                                                 <img width="800" src={img3} />
                                             </figure>
                                         </div>
                                     </div>
-                                    <div class="inv-grid grid-parent grid-no-padding">
-                                        <div class="inv-grid grid-parent">
-                                            <div class="inv-grid grid-node">
-                                                <figure class="inv-image">
+                                    <div className="inv-grid grid-parent grid-no-padding">
+                                        <div className="inv-grid grid-parent">
+                                            <div className="inv-grid grid-node">
+                                                <figure className="inv-image">
                                                     <img width="800" src={img4} />
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="inv-grid grid-parent">
-                                            <div class="inv-grid grid-node">
-                                                <figure class="inv-image">
+                                        <div className="inv-grid grid-parent">
+                                            <div className="inv-grid grid-node">
+                                                <figure className="inv-image">
                                                     <img width="800" src={img4} />
                                                 </figure>
                                             </div>
@@ -248,50 +248,50 @@ function WeddingTemplateLeaflet() {
 
                 </section>
 
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="p-2">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="p-2">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Countdown</h1>
 
-                    <div class="flex justify-around text-center">
+                    <div className="flex justify-around text-center">
                         <div>
-                            <h2 class="font-gv" id="month">{months}</h2>
+                            <h2 className="font-gv" id="month">{months}</h2>
                             <p>Month</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="day">{days}</h2>
+                            <h2 className="font-gv" id="day">{days}</h2>
                             <p>days</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="hour">{hours}</h2>
+                            <h2 className="font-gv" id="hour">{hours}</h2>
                             <p>Hours</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="minute">{minutes}</h2>
+                            <h2 className="font-gv" id="minute">{minutes}</h2>
                             <p>Minutes</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="second">{seconds}</h2>
+                            <h2 className="font-gv" id="second">{seconds}</h2>
                             <p>Seconds</p>
                         </div>
                     </div>
                 </section>
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="p-5">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="p-5">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Location</h1>
 
-                    <div class="inv-card">
-                        <div class="card-title">
-                            <div class="card-header-title">
+                    <div className="inv-card">
+                        <div className="card-title">
+                            <div className="card-header-title">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-6 h-6 mr-4">
+                                    className="w-6 h-6 mr-4">
                                     <path fill-rule="evenodd"
                                         d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
                                         clip-rule="evenodd" />
@@ -300,15 +300,15 @@ function WeddingTemplateLeaflet() {
                                 {weddingInvitations.weddingLocation}
                             </div>
                         </div>
-                        <div class="relative w-full h-96">
+                        <div className="relative w-full h-96">
                             {/* <console className="log">{weddingInvitations.weddingMap}</console> */}
                             <LeafletMap wedUrl={weddingInvitations.weddingMap} groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} />
                         </div>
-                        <div class="card-content">
+                        <div className="card-content">
                             {weddingInvitations.weddingLocation}
                         </div>
-                        <div class="card-footer">
-                            <div class="card-footer-item">
+                        <div className="card-footer">
+                            <div className="card-footer-item">
                                 <time dateTime="2016-1-1">{weddingInvitations.weddingTime} - {formatDate(weddingInvitations.weddingDate)}</time>
                             </div>
                         </div>
@@ -316,72 +316,72 @@ function WeddingTemplateLeaflet() {
                 </section>
 
 
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="pt-2 mb-12">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="pt-2 mb-12">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Amplop Undangan</h1>
 
-                    <div class="grid grid-cols-1 justify-center justify-items-center items-center">
+                    <div className="grid grid-cols-1 justify-center justify-items-center items-center">
                         {/* gambar ditengah: justify item center */}
 
-                        <button href="#_" class="relative inline-block text-lg group" >
-                            <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
-                                <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
-                                <span class="absolute left-0 w-96 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
-                                <span class="relative">Kirim Amplop Undangan</span>
+                        <button href="#_" className="relative inline-block text-lg group" >
+                            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+                                <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+                                <span className="absolute left-0 w-96 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
+                                <span className="relative">Kirim Amplop Undangan</span>
                             </span>
-                            <span class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
+                            <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
                         </button>
                     </div>
                 </section>
 
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="pt-2 mb-12">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="pt-2 mb-12">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Buku Tamu</h1>
 
-                    <div class="grid grid-cols-1 justify-center justify-items-center items-center">
+                    <div className="grid grid-cols-1 justify-center justify-items-center items-center">
                         {/* gambar ditengah: justify item center */}
 
-                        <button class="relative inline-block text-lg group" onClick={() => openModal(weddingInvitations)}>
-                            <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
-                                <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
-                                <span class="absolute left-0 w-96 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
-                                <span class="relative">Isi Buku Tamu</span>
+                        <button className="relative inline-block text-lg group" onClick={() => openModal(weddingInvitations)}>
+                            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+                                <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+                                <span className="absolute left-0 w-96 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
+                                <span className="relative">Isi Buku Tamu</span>
                             </span>
-                            <span class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
+                            <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
                         </button>
-                        <div class="overflow-auto p-4 mx-16 h-48 text-justify mt-4 mb-4">
+                        <div className="overflow-auto p-4 mx-16 h-48 text-justify mt-4 mb-4">
 
-                            <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
-                                <footer class="flex justify-between items-center mb-2">
-                                    <div class="flex items-center">
-                                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
-                                            class="mr-2 w-6 h-6 rounded-full"
+                            <article className="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                                <footer className="flex justify-between items-center mb-2">
+                                    <div className="flex items-center">
+                                        <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                                            className="mr-2 w-6 h-6 rounded-full"
                                             src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                                             alt="Michael Gough" />Ivan Gough</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
+                                        <p className="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
                                             title="February 8th, 2022">Feb. 8, 2022</time></p>
                                     </div>
                                 </footer>
-                                <p class="text-gray-500 dark:text-gray-400">Selamat ya pernikahannya! Semoga pernikahan ini penuh cinta, kebahagiaan, dan berkah dari Allah. Semoga kalian selalu saling mendukung dan menjadi pasangan yang harmonis. Semoga setiap hari kalian habiskan bersama penuh kebahagiaan dan cinta. Selamat menempuh perjalanan kehidupan baru sebagai suami istri!</p>
+                                <p className="text-gray-500 dark:text-gray-400">Selamat ya pernikahannya! Semoga pernikahan ini penuh cinta, kebahagiaan, dan berkah dari Allah. Semoga kalian selalu saling mendukung dan menjadi pasangan yang harmonis. Semoga setiap hari kalian habiskan bersama penuh kebahagiaan dan cinta. Selamat menempuh perjalanan kehidupan baru sebagai suami istri!</p>
                             </article>
 
 
-                            <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
-                                <footer class="flex justify-between items-center mb-2">
-                                    <div class="flex items-center">
-                                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
-                                            class="mr-2 w-6 h-6 rounded-full"
+                            <article className="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                                <footer className="flex justify-between items-center mb-2">
+                                    <div className="flex items-center">
+                                        <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                                            className="mr-2 w-6 h-6 rounded-full"
                                             src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                                             alt="Michael Gough" />Javier Stoy</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
+                                        <p className="text-sm text-gray-600 dark:text-gray-400"><time pubdate dateTime="2022-02-08"
                                             title="February 8th, 2022">Feb. 8, 2022</time></p>
                                     </div>
                                 </footer>
-                                <p class="text-gray-500 dark:text-gray-400">Selamat atas pernikahannya! Semoga perjalanan cinta kalian menjadi kisah indah yang tak terlupakan. Semoga cinta kalian semakin kuat, kebahagiaan selalu menghiasi hari-hari kalian, dan kebersamaan selalu menjadi dasar yang kokoh dalam pernikahan ini. Selamat meniti perjalanan baru sebagai suami dan istri!</p>
+                                <p className="text-gray-500 dark:text-gray-400">Selamat atas pernikahannya! Semoga perjalanan cinta kalian menjadi kisah indah yang tak terlupakan. Semoga cinta kalian semakin kuat, kebahagiaan selalu menghiasi hari-hari kalian, dan kebersamaan selalu menjadi dasar yang kokoh dalam pernikahan ini. Selamat meniti perjalanan baru sebagai suami dan istri!</p>
                             </article>
                             {/* The city pulses with energy as a vibrant tapestry of life unfolds before our eyes. Skyscrapers stretch towards the heavens, their glass facades reflecting the dazzling sunlight. Streets teem with a kaleidoscope of people, each with their own story and purpose. Amidst the urban symphony, the scent of freshly brewed coffee mingles with the aroma of international cuisines, enticing passersby to savor culinary delights. Neon lights illuminate the night, casting a vibrant glow on bustling sidewalks and lively cafes. Wandering through the city's heart, we discover hidden gems tucked away in narrow alleyways—a charming bookstore, a lively street art mural, or a tranquil park providing respite from the urban hustle. The rhythm of life here is palpable, echoing through the laughter, the honking of taxis, and the melodies drifting from street performers. */}
                         </div>
@@ -389,7 +389,7 @@ function WeddingTemplateLeaflet() {
                 </section>
 
 
-                <footer class="inv-footer">© CSS Framework Invitation 2023</footer>
+                <footer className="inv-footer">© CSS Framework Invitation 2023</footer>
                 <ReactModal
                     isOpen={isModalOpen}
                     onRequestClose={closeModal}
@@ -397,14 +397,14 @@ function WeddingTemplateLeaflet() {
                     style={modalStyles}
                 >
                     <form>
-                        <div class="mb-6">
-                            <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                            <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketikkan Nama" required />
+                        <div className="mb-6">
+                            <label for="nama" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                            <input type="text" id="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketikkan Nama" required />
                         </div>
-                        <div class="mb-6">
-                            <label for="pesan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
-                            <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        <div className="mb-6">
+                            <label for="pesan" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
+                            <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
+                        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
                 </ReactModal>
             </body>

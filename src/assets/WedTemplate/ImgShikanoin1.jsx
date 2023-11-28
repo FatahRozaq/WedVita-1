@@ -32,62 +32,62 @@ function ImgShikanoin1({ months, days, hours, minutes, seconds }) {
                 <Parallax blur={2} className='image-half' bgImage={imgshikanoin} strength={400}>
                     <div className='content-half'>
 
-                        <div class="flex justify-around text-center text-white">
+                        <div className="flex justify-around text-center text-white">
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="month">{months}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>Month</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="month">{months}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>Month</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="day">&nbsp;{days}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>days</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="day">&nbsp;{days}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>days</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="hour">&nbsp;{hours}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>Hours</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="hour">&nbsp;{hours}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>Hours</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="minute">&nbsp;{minutes}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>Minutes</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="minute">&nbsp;{minutes}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>Minutes</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="second">&nbsp;{seconds}</h1>
-                                <h1 class='font-GenshinFont'>Seconds</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="second">&nbsp;{seconds}</h1>
+                                <h1 className='font-GenshinFont'>Seconds</h1>
                             </div>
                         </div>
                     </div>
                 </Parallax>
             ) : (
-                <section style={divStyle} class="inv-banner banner-halfheight color-red">
+                <section style={divStyle} className="inv-banner banner-halfheight color-red">
                     <div className='content-half'>
 
-                        <div class="flex justify-around text-center text-white">
+                        <div className="flex justify-around text-center text-white">
                             <div>
-                                <h1 class='font-GenshinFont text-3xl' id="month">{months}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont text-xs'>Month</h1>
+                                <h1 className='font-GenshinFont text-3xl' id="month">{months}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont text-xs'>Month</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-3xl' id="day">&nbsp;{days}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont text-xs'>days</h1>
+                                <h1 className='font-GenshinFont text-3xl' id="day">&nbsp;{days}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont text-xs'>days</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-3xl' id="hour">&nbsp;{hours}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont text-xs'>Hours</h1>
+                                <h1 className='font-GenshinFont text-3xl' id="hour">&nbsp;{hours}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont text-xs'>Hours</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-3xl' id="minute">&nbsp;{minutes}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont text-xs'>Minutes</h1>
+                                <h1 className='font-GenshinFont text-3xl' id="minute">&nbsp;{minutes}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont text-xs'>Minutes</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-3xl' id="second">&nbsp;{seconds}</h1>
-                                <h1 class='font-GenshinFont text-xs'>Seconds</h1>
+                                <h1 className='font-GenshinFont text-3xl' id="second">&nbsp;{seconds}</h1>
+                                <h1 className='font-GenshinFont text-xs'>Seconds</h1>
                             </div>
                         </div>
                     </div>

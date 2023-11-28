@@ -118,7 +118,7 @@ function PesanUndangan() {
 
     return (
         <Layout onLogout={onLogout} user={user}>
-            <div class="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
+            <div className="text-xl font-extrabold mb-4">Form Data Kartu Undangan</div>
             <div className='DataKartuUndangan'>
 
                 {errors && 
@@ -131,45 +131,45 @@ function PesanUndangan() {
 
 
                 <form onSubmit={onSubmit}>
-                <div class="bg-white p-4 mb-4 rounded shadow">
-                    <div class="mb-4">
+                <div className="bg-white p-4 mb-4 rounded shadow">
+                    <div className="mb-4">
 
-                            {/* <div class="mb-6">
-                                <label for="orderDate" class="block mb-2 text-sm font-semibold text-gray-900">Tanggal Link Undangan Diaktifkan</label>
-                                <input ref={orderDateRef} name="weddingDate" type="date" id="weddingDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value={selectedDateOrder} onChange={handleDateChangeOrder} required></input>
+                            {/* <div className="mb-6">
+                                <label for="orderDate" className="block mb-2 text-sm font-semibold text-gray-900">Tanggal Link Undangan Diaktifkan</label>
+                                <input ref={orderDateRef} name="weddingDate" type="date" id="weddingDate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value={selectedDateOrder} onChange={handleDateChangeOrder} required></input>
                             </div> */}
 
-                            <div class="mb-6">
-                                <label for="orderExpired" class="block mb-2 text-sm font-semibold text-gray-900">Tanggal Pernikahan</label>
-                                <input ref={orderExpiredRef} name="weddingDate" type="date" id="weddingDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value={selectedDateOrder} onChange={handleDateChangeOrder} required></input>
+                            <div className="mb-6">
+                                <label for="orderExpired" className="block mb-2 text-sm font-semibold text-gray-900">Tanggal Pernikahan</label>
+                                <input ref={orderExpiredRef} name="weddingDate" type="date" id="weddingDate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value={selectedDateOrder} onChange={handleDateChangeOrder} required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingTime" class="block mb-2 text-sm font-semibold text-gray-900">Waktu Pernikahan</label>
-                                <input ref={weddingTimeRef} name="weddingTime" type="time" id="weddingTime" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value={selectedTime} onChange={handleTimeChange} required></input>
+                            <div className="mb-6">
+                                <label for="weddingTime" className="block mb-2 text-sm font-semibold text-gray-900">Waktu Pernikahan</label>
+                                <input ref={weddingTimeRef} name="weddingTime" type="time" id="weddingTime" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value={selectedTime} onChange={handleTimeChange} required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingLocation" class="block mb-2 text-sm font-semibold text-gray-900">Lokasi Pernikahan</label>
-                                <input ref={weddingLocationRef} name="weddingLocation" type="name" id="weddingLocation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Lokasi Pernikahan" required></input>
+                            <div className="mb-6">
+                                <label for="weddingLocation" className="block mb-2 text-sm font-semibold text-gray-900">Lokasi Pernikahan</label>
+                                <input ref={weddingLocationRef} name="weddingLocation" type="name" id="weddingLocation" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Lokasi Pernikahan" required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="coverPhoto" class="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
-                                <input ref={coverPhotoRef} name="coverPhoto" type="file" id="coverPhoto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeCover} required></input>
+                            <div className="mb-6">
+                                <label for="coverPhoto" className="block mb-2 text-sm font-semibold text-gray-900">Cover Undangan Pernikahan</label>
+                                <input ref={coverPhotoRef} name="coverPhoto" type="file" id="coverPhoto" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" accept="image/*" onChange={handleImageChangeCover} required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="accountNumber" class="block mb-2 text-sm font-semibold text-gray-900">Nomor Rekening</label>
-                                <input ref={accountNumberRef} name="accountNumber" type="name" id="accountNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nomor Rekening Anda" required></input>
+                            <div className="mb-6">
+                                <label for="accountNumber" className="block mb-2 text-sm font-semibold text-gray-900">Nomor Rekening</label>
+                                <input ref={accountNumberRef} name="accountNumber" type="name" id="accountNumber" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nomor Rekening Anda" required></input>
                             </div>
 
-                            <div class="mb-6">
-                                <label for="weddingMap" class="block mb-2 text-sm font-semibold text-gray-900">Link Google Maps Pernikahan</label>
-                                <input ref={weddingMapRef} name="weddingMap" type="name" id="weddingMap" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Link Google Maps Pernikahan" required></input>
+                            <div className="mb-6">
+                                <label for="weddingMap" className="block mb-2 text-sm font-semibold text-gray-900">Link Google Maps Pernikahan</label>
+                                <input ref={weddingMapRef} name="weddingMap" type="name" id="weddingMap" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Link Google Maps Pernikahan" required></input>
                             </div>
                  
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Upload</button>
+                            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Upload</button>
                         
                     </div>
                 </div>

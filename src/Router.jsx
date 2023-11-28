@@ -23,6 +23,7 @@ import Template1 from "./assets/WedTemplate/template_1.jsx";
 import DaftarDesainKartuUndangan from "./DaftarDesainKartuUndangan.jsx";
 import EditDesainKartuUndangan from "./EditDesainKartuUndangan.jsx";
 import AdminLayout from "./Components/CMSAdminLayout.jsx";
+import EditPesanan from "./Views/Users/EditPesanan.jsx";
 
 import LeafletMain from "./coba_Leaflet_Main.jsx";
 import LeafletMap from './coba_LeafletMap.jsx';
@@ -158,10 +159,6 @@ const router = createBrowserRouter([
     {
         path: '/EditDesainKartuUndangan/:id',
         element: <EditDesainKartuUndangan/>
-    },
-    {
-        path: '/invitationDesignsList',
-        element: <InvitationDesignsList/>
     },
     {
         path: '/editPesanan/:id',

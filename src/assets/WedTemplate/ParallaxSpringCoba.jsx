@@ -79,7 +79,7 @@ const Box = ({ str }) => {
             initial="hidden"
             animate={control}
         >
-            <h1 class="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-white md:text-xl lg:text-2xl">{str} </h1>
+            <h1 className="body-font font-GenshinFont text-center grid-item mt-16 mb-16 text-lg font-normal leading-none tracking-normal text-white md:text-xl lg:text-2xl">{str} </h1>
         </motion.div>
     );
 };
@@ -102,7 +102,7 @@ const Box2 = ({ str }) => {
             initial="hidden"
             animate={control}
         >
-            <h1 class="body-font font-GenshinFont text-center grid-item mt-4 mb-4 text-lg font-normal leading-none tracking-normal text-white md:text-xl lg:text-2xl">{str} </h1>
+            <h1 className="body-font font-GenshinFont text-center grid-item mt-4 mb-4 text-lg font-normal leading-none tracking-normal text-white md:text-xl lg:text-2xl">{str} </h1>
         </motion.div>
     );
 };
@@ -402,19 +402,19 @@ function ParallaxSpringCoba() {
                 <ParallaxLayer offset={1} speed={1.75}>
                     <div className='content2 animation_layer parallax' style={{ backgroundColor: '#22212E' }}>
                         <Box str="Embark on the romantic journey of..." />
-                        <div class="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center text-white">
+                        <div className="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center text-white">
                             {/* gambar ditengah: justify item center */}
-                            <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-48 h-48" src={`http://localhost:8000${weddingInvitations.groomPhoto}`}  //nambahin gambar
+                            <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-48 h-48" src={`http://localhost:8000${weddingInvitations.groomPhoto}`}  //nambahin gambar
                                 alt="image description" />
-                                <p class="font-gv mt-4">{weddingInvitations.groomName}</p>
+                                <p className="font-gv mt-4">{weddingInvitations.groomName}</p>
                                 <p className='font-GenshinFont'>Putra dari </p>
                                 <p className='font-GenshinFont'>Bapak {weddingInvitations.fatherOfGroom}</p>
                                 <p className='font-GenshinFont'>&</p>
                                 <p className='font-GenshinFont'>Ibu {weddingInvitations.motherOfGroom}</p>
                             </div>
-                            <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-48 h-48 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
+                            <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-48 h-48 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
                                 alt="image description" />
-                                <p class="font-gv mt-4">{weddingInvitations.brideName}</p>
+                                <p className="font-gv mt-4">{weddingInvitations.brideName}</p>
                                 <p className='font-GenshinFont'>Putri dari </p>
                                 <p className='font-GenshinFont'>Bapak {weddingInvitations.fatherOfBride}</p>
                                 <p className='font-GenshinFont'>&</p>
@@ -427,11 +427,11 @@ function ParallaxSpringCoba() {
                 <ParallaxLayer offset={2} speed={1.75}>
                     <div className='content2 animation_layer parallax' style={{ backgroundColor: '#22212E' }}>
                         <Box str="Browse through memories of their love story..." />
-                        <div class="grid-container">
-                            <div class="inv-grid grid-vertical">
-                                <div class="inv-grid">
-                                    <div class="inv-grid grid-parent">
-                                        <figure class="inv-grid grid-node inv-image is-height-rectangle">
+                        <div className="grid-container">
+                            <div className="inv-grid grid-vertical">
+                                <div className="inv-grid">
+                                    <div className="inv-grid grid-parent">
+                                        <figure className="inv-grid grid-node inv-image is-height-rectangle">
                                             
                                         
                                             {/* <img width="800" src={`http://localhost:8000${photoWedding[0].photo1}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/> */}
@@ -441,38 +441,38 @@ function ParallaxSpringCoba() {
                                             
                                         </figure>
                                     </div>
-                                    <div class="inv-grid grid-vertical grid-column-3">
-                                        <div class="inv-grid grid-parent">
-                                            <div class="inv-grid grid-node">
-                                                <figure class="inv-image is-width-rectangle">
+                                    <div className="inv-grid grid-vertical grid-column-3">
+                                        <div className="inv-grid grid-parent">
+                                            <div className="inv-grid grid-node">
+                                                <figure className="inv-image is-width-rectangle">
                                                 {photoWedding.length > 0 && (
                                                     <img width="800" src={`http://localhost:8000${photoWedding[0].photo2}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
                                                 )}
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="inv-grid grid-parent">
-                                            <div class="inv-grid grid-node">
-                                                <figure class="inv-image is-md-width-rectangle">
+                                        <div className="inv-grid grid-parent">
+                                            <div className="inv-grid grid-node">
+                                                <figure className="inv-image is-md-width-rectangle">
                                                 {photoWedding.length > 0 && (
                                                     <img width="800" src={`http://localhost:8000${photoWedding[0].photo3}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
                                                 )}
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="inv-grid grid-parent grid-no-padding">
-                                            <div class="inv-grid grid-parent">
-                                                <div class="inv-grid grid-node">
-                                                    <figure class="inv-image">
+                                        <div className="inv-grid grid-parent grid-no-padding">
+                                            <div className="inv-grid grid-parent">
+                                                <div className="inv-grid grid-node">
+                                                    <figure className="inv-image">
                                                     {photoWedding.length > 0 && (
                                                         <img width="800" src={`http://localhost:8000${photoWedding[0].photo4}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
                                                     )}
                                                     </figure>
                                                 </div>
                                             </div>
-                                            <div class="inv-grid grid-parent">
-                                                <div class="inv-grid grid-node">
-                                                    <figure class="inv-image">
+                                            <div className="inv-grid grid-parent">
+                                                <div className="inv-grid grid-node">
+                                                    <figure className="inv-image">
                                                     {photoWedding.length > 0 && (
                                                         <img width="800" src={`http://localhost:8000${photoWedding[0].photo5}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
                                                     )}
@@ -491,30 +491,30 @@ function ParallaxSpringCoba() {
                 <ParallaxLayer offset={3} speed={1.75}>
                     <div className='content2 animation_layer parallax p-5' style={{ backgroundColor: '#22212E' }}>
                         <Box str="The big day is approaching, the clock is ticking!" />
-                        <div class="flex justify-around text-center text-white">
+                        <div className="flex justify-around text-center text-white">
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="month">{months}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>Month</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="month">{months}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>Month</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="day">&nbsp;{days}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>days</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="day">&nbsp;{days}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>days</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="hour">&nbsp;{hours}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>Hours</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="hour">&nbsp;{hours}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>Hours</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="minute">&nbsp;{minutes}&nbsp;:</h1>
-                                <h1 class='font-GenshinFont'>Minutes</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="minute">&nbsp;{minutes}&nbsp;:</h1>
+                                <h1 className='font-GenshinFont'>Minutes</h1>
                             </div>
 
                             <div>
-                                <h1 class='font-GenshinFont text-6xl' id="second">&nbsp;{seconds}</h1>
-                                <h1 class='font-GenshinFont'>Seconds</h1>
+                                <h1 className='font-GenshinFont text-6xl' id="second">&nbsp;{seconds}</h1>
+                                <h1 className='font-GenshinFont'>Seconds</h1>
                             </div>
                         </div>
                     </div>
@@ -523,11 +523,11 @@ function ParallaxSpringCoba() {
                 <ParallaxLayer offset={4} speed={1.75}>
                     <div className='content2 animation_layer p-5' style={{ backgroundColor: '#22212E' }}>
                         <Box str="Discover the enchanting venues" />
-                        <div class="inv-card" style={{ backgroundColor: '#FFFFFF' }}>
-                            <div class="card-title">
-                                <div class="card-header-title">
+                        <div className="inv-card" style={{ backgroundColor: '#FFFFFF' }}>
+                            <div className="card-title">
+                                <div className="card-header-title">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-6 h-6 mr-4">
+                                        className="w-6 h-6 mr-4">
                                         <path fill-rule="evenodd"
                                             d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
                                             clip-rule="evenodd" />
@@ -536,15 +536,15 @@ function ParallaxSpringCoba() {
                                     {weddingInvitations.weddingLocation}
                                 </div>
                             </div>
-                            <div class="relative w-full h-96">
+                            <div className="relative w-full h-96">
                                 {/* <console className="log">{weddingInvitations.weddingMap}</console> */}
                                 <LeafletMap wedUrl={weddingInvitations.weddingMap} groomName={weddingInvitations.groomName} brideName={weddingInvitations.brideName} />
                             </div>
-                            <div class="card-content">
+                            <div className="card-content">
                                 {weddingInvitations.weddingLocation}
                             </div>
-                            <div class="card-footer">
-                                <div class="card-footer-item">
+                            <div className="card-footer">
+                                <div className="card-footer-item">
                                     <time dateTime="2016-1-1">{weddingInvitations.weddingTime} - {formatDate(weddingInvitations.weddingDate)}</time>
                                 </div>
                             </div>
@@ -557,16 +557,16 @@ function ParallaxSpringCoba() {
                     <Box2 str="Look out for the special invitation arriving soon!" />
                     <p className='text-lg text-center text-white font-GenshinFont mb-4'>{weddingInvitations.groomName} and {weddingInvitations.brideName} invite you to celebrate with them.</p>
 
-                    <div class="grid grid-cols-1 justify-center justify-items-center items-center">
-                        <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-A6A3CC rounded-full shadow-md group" onClick={() => {
+                    <div className="grid grid-cols-1 justify-center justify-items-center items-center">
+                        <a href="#_" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-A6A3CC rounded-full shadow-md group" onClick={() => {
                                 generateQrCode();
                                 openModal(weddingInvitations);
                             }}>
-                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-A6A3CC group-hover:translate-x-0 ease">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-A6A3CC group-hover:translate-x-0 ease">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Kirim Amplop Undangan</span>
-                            <span class="relative invisible">Kirim Amplop Undangan</span>
+                            <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Kirim Amplop Undangan</span>
+                            <span className="relative invisible">Kirim Amplop Undangan</span>
                         </a>
                     </div>
                     </div>
@@ -574,31 +574,31 @@ function ParallaxSpringCoba() {
 
                 <ParallaxLayer offset={6} speed={1.75}>
                     <div className='content2 animation_layer parallax' style={{ backgroundColor: '#22212E' }}>
-                        <div class="grid grid-cols-1 justify-center justify-items-center items-center">
+                        <div className="grid grid-cols-1 justify-center justify-items-center items-center">
 
                             <Box2 str="Don't forget to sign our guest book with your warm wishes." />
                             <p className='text-lg text-white text-center font-GenshinFont mb-4'>Your words will be a cherished memory for {weddingInvitations.groomName} and {weddingInvitations.brideName}.</p>
-                            <button href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-genshin-red transition duration-300 ease-out border-2 border-purple-A6A3CC rounded-full shadow-md group" onClick={() => openModal(weddingInvitations)}>
-                                <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-A6A3CC group-hover:translate-x-0 ease">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            <button href="#_" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-genshin-red transition duration-300 ease-out border-2 border-purple-A6A3CC rounded-full shadow-md group" onClick={() => openModal(weddingInvitations)}>
+                                <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-A6A3CC group-hover:translate-x-0 ease">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
-                                <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Isi Buku Tamu</span>
-                                <span class="relative invisible text-white">Isi Buku Tamu</span>
+                                <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">Isi Buku Tamu</span>
+                                <span className="relative invisible text-white">Isi Buku Tamu</span>
                             </button>
-                            <div class="overflow-auto p-4 mx-16 h-48 text-justify mt-4 mb-4">
+                            <div className="overflow-auto p-4 mx-16 h-48 text-justify mt-4 mb-4">
 
                                 {isLoading ? (
                                     <p>Loading...</p>
                                 ) : messagesView.length > 0 ? (
 
                                     messagesView.map((invitation, index) => (
-                                        <article key={index} class="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
-                                            <footer class="flex justify-between items-center mb-2">
-                                                <div class="flex items-center">
-                                                    <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{invitation.guestName}</p>
+                                        <article key={index} className="p-6 text-base bg-white rounded-lg dark:bg-gray-900 mb-4">
+                                            <footer className="flex justify-between items-center mb-2">
+                                                <div className="flex items-center">
+                                                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">{invitation.guestName}</p>
                                                 </div>
                                             </footer>
-                                            <p class="text-gray-500 dark:text-gray-400">{invitation.message}</p>
+                                            <p className="text-gray-500 dark:text-gray-400">{invitation.message}</p>
                                         </article>
                                     ))
                                 ) : (
@@ -619,14 +619,14 @@ function ParallaxSpringCoba() {
                 style={modalStyles}
             >
                 <form onSubmit={onSubmit}>
-                    <div class="mb-6">
-                        <label for="guestName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                        <input ref={nameRef} type="text" name="guestName" id="guestName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketikkan Nama" required />
+                    <div className="mb-6">
+                        <label for="guestName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <input ref={nameRef} type="text" name="guestName" id="guestName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketikkan Nama" required />
                     </div>
-                    <div class="mb-6">
-                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
-                        <textarea ref={messageRef} id="message" name="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    <div className="mb-6">
+                        <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
+                        <textarea ref={messageRef} id="message" name="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
+                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     <div className="mb-6">
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">QR Code</label>
                         {qrCodeData && <QRCode value={qrCodeData} size={128} />}

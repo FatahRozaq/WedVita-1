@@ -125,7 +125,7 @@ function UploadPhotoUndangan() {
 
     return (
         <Layout onLogout={onLogout} user={user}>
-            <div class="text-xl font-extrabold mb-4">Upload Photo Undangan</div>
+            <div className="text-xl font-extrabold mb-4">Upload Photo Undangan</div>
             
             <div className='UploadPhotoUndangan'>
               {errors && 
@@ -137,16 +137,16 @@ function UploadPhotoUndangan() {
                 }
 
                 <form onSubmit={onSubmit}>
-                <div class="bg-white p-4 mb-4 rounded shadow">
-                    <div class="mb-4">
-                        <label for="dropzone-file-1" class="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                <div className="bg-white p-4 mb-4 rounded shadow">
+                    <div className="mb-4">
+                        <label for="dropzone-file-1" className="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
 
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                {/* <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                {/* <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
+                                <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
                                 {selectedImage1 ? (
                                 <img className="object-cover h-48 w-96" src={URL.createObjectURL(selectedImage1)} />
                                 ) : (
@@ -176,17 +176,17 @@ function UploadPhotoUndangan() {
                                   )}
                             </div>
 
-                            <input id="dropzone-file-1" type="file" accept="image/*" onChange={handleImageChange1} class="hidden" />
+                            <input id="dropzone-file-1" type="file" accept="image/*" onChange={handleImageChange1} className="hidden" />
                         </label>
 
-                        <label for="dropzone-file-2" class="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <label for="dropzone-file-2" className="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
 
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                {/* <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                {/* <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
+                                <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
                                 {selectedImage2 ? (
                                 <img className="object-cover h-48 w-96" src={URL.createObjectURL(selectedImage2)} />
                                 ) : (
@@ -216,17 +216,17 @@ function UploadPhotoUndangan() {
                                   )}
                             </div>
 
-                            <input id="dropzone-file-2" type="file" accept="image/*" onChange={handleImageChange2} class="hidden" />
+                            <input id="dropzone-file-2" type="file" accept="image/*" onChange={handleImageChange2} className="hidden" />
                         </label>
 
-                        <label for="dropzone-file-3" class="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <label for="dropzone-file-3" className="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
 
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                {/* <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                {/* <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
+                                <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
                                 {selectedImage3 ? (
                                 <img className="object-cover h-48 w-96" src={URL.createObjectURL(selectedImage3)} />
                                 ) : (
@@ -256,18 +256,18 @@ function UploadPhotoUndangan() {
                                   )}
                             </div>
 
-                            <input id="dropzone-file-3" type="file" accept="image/*" onChange={handleImageChange3} class="hidden" />
+                            <input id="dropzone-file-3" type="file" accept="image/*" onChange={handleImageChange3} className="hidden" />
                         </label>
 
 
-                        <label for="dropzone-file-4" class="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <label for="dropzone-file-4" className="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
 
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                {/* <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                {/* <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
+                                <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
                                 {selectedImage4 ? (
                                 <img className="object-cover h-48 w-96" src={URL.createObjectURL(selectedImage4)} />
                                 ) : (
@@ -297,18 +297,18 @@ function UploadPhotoUndangan() {
                                   )}
                             </div>
 
-                            <input id="dropzone-file-4" type="file" accept="image/*" onChange={handleImageChange4} class="hidden" />
+                            <input id="dropzone-file-4" type="file" accept="image/*" onChange={handleImageChange4} className="hidden" />
                         </label>
 
 
-                        <label for="dropzone-file-5" class="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                        <label for="dropzone-file-5" className="mb-4 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
 
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                {/* <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                {/* <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
+                                <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p> */}
                                 {selectedImage5 ? (
                                 <img className="object-cover h-48 w-96" src={URL.createObjectURL(selectedImage5)} />
                                 ) : (
@@ -338,11 +338,11 @@ function UploadPhotoUndangan() {
                                   )}
                             </div>
 
-                            <input id="dropzone-file-5" type="file" accept="image/*" onChange={handleImageChange5} class="hidden" />
+                            <input id="dropzone-file-5" type="file" accept="image/*" onChange={handleImageChange5} className="hidden" />
                         </label>
 
                                                      
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Upload</button>
+                            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Upload</button>
                         
                     </div>
                 </div>

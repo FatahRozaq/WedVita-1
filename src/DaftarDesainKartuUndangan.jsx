@@ -14,6 +14,7 @@ import 'datatables.net';
 import ReactModal from 'react-modal';
 
 import { useRef } from 'react';
+import AdminLayout from './Components/CMSAdminLayout.jsx'
 
 function DaftarDesainKartuUndangan() {
     const { id } = useParams();
@@ -95,9 +96,27 @@ function DaftarDesainKartuUndangan() {
         
       }, [token, setUser, setToken, setInvitationDesigns]);
 
+      const onDelete = (design) => {
+        if (!window.confirm("Are you sure you want to delete this invitation?")) {
+          return;
+        }
+      
+        axiosClient
+          .delete(`/designs/${design.id}`)
+          .then(() => {
+            // Remove the deleted invitation from the state
+            setWeddingInvitation((prevInvitations) =>
+              prevInvitations.filter((item) => item.id !== design.id)
+            );
+          })
+          .catch((error) => {
+            console.error("Error deleting invitation:", error);
+          });
+      };
+
     return (
         
-        <Layout onLogout={onLogout} user={user}>
+        <AdminLayout onLogout={onLogout} user={user}>
             <div className="text-xl font-extrabold mb-4">
                 Pilihan Desain Kartu Undangan
             </div>
@@ -113,6 +132,7 @@ function DaftarDesainKartuUndangan() {
                             <th>Deskripsi Desain</th>
                             <th>Show</th>
                             <th>Generate Link</th>
+                            <th>Hapus</th>
                             {/* Add more table headers if needed */}
                         </tr>
                     </thead>
@@ -124,6 +144,9 @@ function DaftarDesainKartuUndangan() {
                                 {/* langkah3 */}
                                 <td><Link to={`/cms-detail-ku/${invitation.id}`}>Lihat Desain</Link></td> 
                                 <td><Link to={`/EditDesainKartuUndangan/${invitation.id}`}>Ubah Desain</Link>
+                                </td>
+                                <td>
+                                  <button onClick={ev => onDelete(invitation)}>Delete</button>
                                 </td>
                                 
                                 {/* Add more table data if needed */}
@@ -156,16 +179,16 @@ function DaftarDesainKartuUndangan() {
 
       <div className="row">
         <div className="column">
-          <div class="mb-6">
-              <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Mempelai Pria</label>
-              <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.groomName} disabled></input>
+          <div className="mb-6">
+              <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Mempelai Pria</label>
+              <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.groomName} disabled></input>
           </div>
         </div>
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Mempelai Wanita</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.brideName} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Mempelai Wanita</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.brideName} disabled></input>
           </div>
         </div>
       </div>
@@ -178,42 +201,42 @@ function DaftarDesainKartuUndangan() {
 
       <div className="row">
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ayah Mempelai Pria</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.fatherOfGroom} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ayah Mempelai Pria</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.fatherOfGroom} disabled></input>
           </div>
         </div>
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ayah Mempelai Wanita</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.fatherOfBride} disabled></input>
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ibu Mempelai Pria</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.motherOfGroom} disabled></input>
-          </div>
-        </div>
-
-        <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ibu Mempelai Wanita</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.motherOfBride} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ayah Mempelai Wanita</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.fatherOfBride} disabled></input>
           </div>
         </div>
       </div>
 
       <div className="row">
+        <div className="column">
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ibu Mempelai Pria</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.motherOfGroom} disabled></input>
+          </div>
+        </div>
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Tanggal Pernikahan</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingDate} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Ibu Mempelai Wanita</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.motherOfBride} disabled></input>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+
+        <div className="column">
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Tanggal Pernikahan</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingDate} disabled></input>
           </div>
         </div>
         
@@ -222,9 +245,9 @@ function DaftarDesainKartuUndangan() {
       <div className="row">
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Waktu Pernikahan</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingTime} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Waktu Pernikahan</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingTime} disabled></input>
           </div>
         </div>
         
@@ -233,9 +256,9 @@ function DaftarDesainKartuUndangan() {
       <div className="row">
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Lokasi Pernikahan</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingLocation} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Lokasi Pernikahan</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingLocation} disabled></input>
           </div>
         </div>
         
@@ -244,9 +267,9 @@ function DaftarDesainKartuUndangan() {
       <div className="row">
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Maps Pernikahan</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingMap} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Maps Pernikahan</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.weddingMap} disabled></input>
           </div>
         </div>
         
@@ -255,9 +278,9 @@ function DaftarDesainKartuUndangan() {
       <div className="row">
 
         <div className="column">
-          <div class="mb-6">
-            <label for="name" class="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Nomor Rekening</label>
-            <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.accountNumber} disabled></input>
+          <div className="mb-6">
+            <label for="name" className="block mb-2 text-sm font-semibold text-gray-900 dark:text-dark">Nomor Rekening</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={selectedInvitation.accountNumber} disabled></input>
           </div>
         </div>
         
@@ -273,7 +296,7 @@ function DaftarDesainKartuUndangan() {
     <p>No invitation selected.</p>
   )}
             </ReactModal>
-        </Layout> 
+        </AdminLayout> 
     );
 }
 

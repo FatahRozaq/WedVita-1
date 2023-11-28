@@ -69,16 +69,16 @@ const Carousel2 = () => {
   return (
     <Slider {...settings}>
       {designs.map((design, index) => (
-        <div class="Container mx-auto">
-          <div class="px-2 flex justify-center">
+        <div className="Container mx-auto">
+          <div className="px-2 flex justify-center">
             {/* <div className="px-4"> */}
-            <div class="max-w-sm bg-white rounded-lg border border-gray-200 ">
+            <div className="max-w-sm bg-white rounded-lg border border-gray-200 ">
               <a href="#">
-                <img class="rounded-t-lg object-cover h-72 w-96" src={`http://localhost:8000${design.designImage}`} alt={design.designName} />
+                <img className="rounded-t-lg object-cover h-72 w-96" src={`http://localhost:8000${design.designImage}`} alt={design.designName} />
               </a>
-              <div class="p-5">
+              <div className="p-5">
                 <a href="#">
-                  <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">{design.designName}</h5>
+                  <h5 className="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900">{design.designName}</h5>
                 </a>
               </div>
             </div>
