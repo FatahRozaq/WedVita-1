@@ -54,19 +54,19 @@ function ImgRep1({ groomName, brideName, fatherOfGroom, motherOfGroom, fatherOfB
                         animate={control}>
                         <div className='content'>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center text-white">
+                            <div className="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center text-white">
                                 {/* gambar ditengah: justify item center */}
-                                <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-48 h-48" src={`http://localhost:8000${groomPhoto}`} //nambahin gambar
+                                <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-48 h-48" src={`http://localhost:8000${groomPhoto}`} //nambahin gambar
                                     alt="image description" />
-                                    <p class="font-gv mt-4">{groomName}</p>
+                                    <p className="font-gv mt-4">{groomName}</p>
                                     <p className='font-GenshinFont'>Putra dari </p>
                                     <p className='font-GenshinFont'>Bapak {fatherOfGroom}</p>
                                     <p className='font-GenshinFont'>&</p>
                                     <p className='font-GenshinFont'>Ibu {motherOfGroom} </p>
                                 </div>
-                                <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-48 h-48 " src={`http://localhost:8000${bridePhoto}`}
+                                <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-48 h-48 " src={`http://localhost:8000${bridePhoto}`}
                                     alt="image description" />
-                                    <p class="font-gv mt-4">{brideName}</p>
+                                    <p className="font-gv mt-4">{brideName}</p>
                                     <p className='font-GenshinFont'>Putri dari </p>
                                     <p className='font-GenshinFont'>Bapak {fatherOfBride}</p>
                                     <p className='font-GenshinFont'>&</p>
@@ -78,20 +78,20 @@ function ImgRep1({ groomName, brideName, fatherOfGroom, motherOfGroom, fatherOfB
 
                 </Parallax>
             ) : (
-                <section style={divStyle} class="inv-banner banner-fullheight color-ltblue text-white">
-                <div class="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center">
+                <section style={divStyle} className="inv-banner banner-fullheight color-ltblue text-white">
+                <div className="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center items-center">
                     {/* gambar ditengah: justify item center */}
-                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40" src={`http://localhost:8000${groomPhoto}`} //nambahin gambar
+                    <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-40 h-40" src={`http://localhost:8000${groomPhoto}`} //nambahin gambar
                         alt="image description" />
-                        <p class="font-gv">{groomName}</p>
+                        <p className="font-gv">{groomName}</p>
                         <p>Putra dari </p>
                         <p>Bapak {fatherOfGroom}</p>
                         <p>&</p>
                         <p>Ibu {motherOfGroom} </p>
                     </div>
-                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40 " src={`http://localhost:8000${bridePhoto}`}
+                    <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-40 h-40 " src={`http://localhost:8000${bridePhoto}`}
                         alt="image description" />
-                        <p class="font-gv">{brideName}</p>
+                        <p className="font-gv">{brideName}</p>
                         <p>Putri dari </p>
                         <p>Bapak {fatherOfBride}</p>
                         <p>&</p>

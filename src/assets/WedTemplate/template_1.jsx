@@ -80,34 +80,34 @@ function template1() {
             </head>
 
             <body>
-                <section class="inv-banner banner-fullheight color-ltblue ">
-                    <div class="banner-body text-centered">
-                        <div class="container">
-                            <p class="subtitle">Wedding Invitation</p>
-                            <p class="title">{weddingInvitations.groomName} & {weddingInvitations.brideName}</p>
-                            <p class="subtitle">Friday, June 9th 2077</p>
+                <section className="inv-banner banner-fullheight color-ltblue ">
+                    <div className="banner-body text-centered">
+                        <div className="container">
+                            <p className="subtitle">Wedding Invitation</p>
+                            <p className="title">{weddingInvitations.groomName} & {weddingInvitations.brideName}</p>
+                            <p className="subtitle">Friday, June 9th 2077</p>
                         </div>
                     </div>
                 </section>
 
-                <section class="p-2">
+                <section className="p-2">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Mempelai</h1>
                 </section>
 
-                <div class="flex justify-center items-center">
-                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40" src={`http://localhost:8000${weddingInvitations.groomPhoto}`} //nambahin gambar
+                <div className="flex justify-center items-center">
+                    <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-40 h-40" src={`http://localhost:8000${weddingInvitations.groomPhoto}`} //nambahin gambar
                         alt="image description" />
-                        <p class="font-gv">{weddingInvitations.groomName}</p>
+                        <p className="font-gv">{weddingInvitations.groomName}</p>
                         <p>Putri dari </p>
                         <p>Bapak Ibu ...</p>
                         <p>&</p>
                         <p>Ibu Bapak ... </p>
                     </div>
-                    <div class="text-center p-4 mr-24 ml-24"><img class="rounded-full w-40 h-40 " src={img12}
+                    <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-40 h-40 " src={img12}
                         alt="image description" />
-                        <p class="font-gv">{weddingInvitations.brideName}</p>
+                        <p className="font-gv">{weddingInvitations.brideName}</p>
                         <p>Putra dari </p>
                         <p>Bapak Ibu ...</p>
                         <p>&</p>
@@ -115,46 +115,46 @@ function template1() {
                     </div>
                 </div>
 
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="p-2">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="p-2">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Gallery</h1>
-                    <div class="grid-container">
-                        <div class="inv-grid grid-vertical">
-                            <div class="inv-grid">
-                                <div class="inv-grid grid-parent">
-                                    <figure class="inv-grid grid-node inv-image is-height-rectangle">
+                    <div className="grid-container">
+                        <div className="inv-grid grid-vertical">
+                            <div className="inv-grid">
+                                <div className="inv-grid grid-parent">
+                                    <figure className="inv-grid grid-node inv-image is-height-rectangle">
                                         <img width="800"
                                             src={img1} />
                                     </figure>
                                 </div>
-                                <div class="inv-grid grid-vertical grid-column-3">
-                                    <div class="inv-grid grid-parent">
-                                        <div class="inv-grid grid-node">
-                                            <figure class="inv-image is-width-rectangle">
+                                <div className="inv-grid grid-vertical grid-column-3">
+                                    <div className="inv-grid grid-parent">
+                                        <div className="inv-grid grid-node">
+                                            <figure className="inv-image is-width-rectangle">
                                                 <img width="800" src={img2} />
                                             </figure>
                                         </div>
                                     </div>
-                                    <div class="inv-grid grid-parent">
-                                        <div class="inv-grid grid-node">
-                                            <figure class="inv-image is-md-width-rectangle">
+                                    <div className="inv-grid grid-parent">
+                                        <div className="inv-grid grid-node">
+                                            <figure className="inv-image is-md-width-rectangle">
                                                 <img width="800" src={img3} />
                                             </figure>
                                         </div>
                                     </div>
-                                    <div class="inv-grid grid-parent grid-no-padding">
-                                        <div class="inv-grid grid-parent">
-                                            <div class="inv-grid grid-node">
-                                                <figure class="inv-image">
+                                    <div className="inv-grid grid-parent grid-no-padding">
+                                        <div className="inv-grid grid-parent">
+                                            <div className="inv-grid grid-node">
+                                                <figure className="inv-image">
                                                     <img width="800" src={img4} />
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="inv-grid grid-parent">
-                                            <div class="inv-grid grid-node">
-                                                <figure class="inv-image">
+                                        <div className="inv-grid grid-parent">
+                                            <div className="inv-grid grid-node">
+                                                <figure className="inv-image">
                                                     <img width="800" src={img4} />
                                                 </figure>
                                             </div>
@@ -168,50 +168,50 @@ function template1() {
 
                 </section>
 
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="p-2">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="p-2">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Countdown</h1>
 
-                    <div class="flex justify-around text-center">
+                    <div className="flex justify-around text-center">
                         <div>
-                            <h2 class="font-gv" id="month">{months}</h2>
+                            <h2 className="font-gv" id="month">{months}</h2>
                             <p>Month</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="day">{days}</h2>
+                            <h2 className="font-gv" id="day">{days}</h2>
                             <p>days</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="hour">{hours}</h2>
+                            <h2 className="font-gv" id="hour">{hours}</h2>
                             <p>Hours</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="minute">{minutes}</h2>
+                            <h2 className="font-gv" id="minute">{minutes}</h2>
                             <p>Minutes</p>
                         </div>
 
                         <div>
-                            <h2 class="font-gv" id="second">{seconds}</h2>
+                            <h2 className="font-gv" id="second">{seconds}</h2>
                             <p>Seconds</p>
                         </div>
                     </div>
                 </section>
-                <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-                <section class="p-5">
+                <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+                <section className="p-5">
                     <h1
-                        class="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
+                        className="body-font font-GreatVibes text-center grid-item mt-10 mb-16 text-2xl font-normal leading-none tracking-normal text-gray-900 md:text-3xl lg:text-6xl">
                         Location</h1>
 
-                    <div class="inv-card">
-                        <div class="card-title">
-                            <div class="card-header-title">
+                    <div className="inv-card">
+                        <div className="card-title">
+                            <div className="card-header-title">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-6 h-6 mr-4">
+                                    className="w-6 h-6 mr-4">
                                     <path fill-rule="evenodd"
                                         d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
                                         clip-rule="evenodd" />
@@ -220,24 +220,24 @@ function template1() {
                                 Gedung Sate
                             </div>
                         </div>
-                        <div class="relative w-full h-96">
-                            <iframe class="absolute top-0 left-0 w-full h-full"
+                        <div className="relative w-full h-96">
+                            <iframe className="absolute top-0 left-0 w-full h-full"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9007508209097!2d107.61612687554891!3d-6.902471493096789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64c5e8866e5%3A0x37be7ac9d575f7ed!2sGedung%20Sate!5e0!3m2!1sid!2sid!4v1696392274223!5m2!1sid!2sid"
                                 width="600" height="450" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                        <div class="card-content">
+                        <div className="card-content">
                             Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115
                         </div>
-                        <div class="card-footer">
-                            <div class="card-footer-item">
+                        <div className="card-footer">
+                            <div className="card-footer-item">
                                 <time datetime="2016-1-1">11:09 PM - Friday, June 9th 2077</time>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <footer class="inv-footer">© CSS Framework Invitation 2023</footer>
+                <footer className="inv-footer">© CSS Framework Invitation 2023</footer>
 
             </body>
 

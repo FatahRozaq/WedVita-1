@@ -13,10 +13,11 @@ import img1 from './img/madeline-james-wedding-couple-0422-71c410b79316461997eb0
 import img2 from './img/wed_exp.png'
 import img3 from './img/father-walking-his-daughter-down-aisle.jpg'
 import img4 from './img/33814_05-eb9a2e4cc91544c5b78cc623c3c56222.jpg'
-import { QRCode } from 'react-qrcode-logo';
+
 
 import { createRef } from 'react'
 import { useStateContext } from '../../Contexts/ContextProvider'
+import { Navigate } from 'react-router-dom';
 
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import $ from 'jquery';
@@ -118,7 +119,6 @@ function ParallaxSpringCoba() {
     const [messagesView, setMessagesView] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-
     const [audioTune] = useState(new Audio(gengisDrip));
     const [isPlaying, setIsPlaying] = useState(false);
     const [buttonIcon, setButtonIcon] = useState('fas fa-play');
@@ -155,10 +155,14 @@ function ParallaxSpringCoba() {
 
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
-    const [weddingPhotos, setweddingPhotos] = useState([]);
-    const [photoWedding, setPhotoWedding] = useState({});
     const { setMessageData } = useStateContext();
-    const [qrCodeData, setQrCodeData] = useState('');
+
+    const {token} = useStateContext();
+    
+    if (!token) {
+        return <Navigate to="/nothing" />;
+    }
+
     const date = weddingInvitations.weddingDate;
     const time = weddingInvitations.weddingTime;
     const formattedDate = formatCustomDateTime(date, time);
@@ -258,7 +262,7 @@ function ParallaxSpringCoba() {
                 console.error('Error fetching data: ', error);
             });
 
-    }, [setWeddingInvitations,setweddingPhotos]);
+    }, [setWeddingInvitations]);
 
     const control = useAnimation();
     const [ref, inView] = useInView();
@@ -316,25 +320,6 @@ function ParallaxSpringCoba() {
 
     }, [setMessagesView]);
 
-    
-    useEffect(() => {
-
-        axiosClient
-            .get(`/getphotos/${id}`) //kesalahan 2 (harusnya pake API yg baru)
-            .then((response) => {
-                setPhotoWedding(response.data.weddingPhotos); // kesalahan 1
-                console.log(response)
-            })
-            .catch((error) => {
-                console.error('Error fetching data: ', error);
-            });
-
-    }, [setPhotoWedding]);
-    const generateQrCode = () => {
-        // Generate QR code data from the accountNumber
-        const qrData = weddingInvitations.accountNumber; // replace with the actual field from your data
-        setQrCodeData(qrData);
-    };
 
     return (
         <div>
@@ -410,7 +395,7 @@ function ParallaxSpringCoba() {
                                 <p className='font-GenshinFont'>Putra dari </p>
                                 <p className='font-GenshinFont'>Bapak {weddingInvitations.fatherOfGroom}</p>
                                 <p className='font-GenshinFont'>&</p>
-                                <p className='font-GenshinFont'>Ibu {weddingInvitations.motherOfGroom}</p>
+                                <p className='font-GenshinFont'>Ibu {weddingInvitations.motherOfGroom} </p>
                             </div>
                             <div className="text-center p-4 mr-24 ml-24"><img className="rounded-full w-48 h-48 " src={`http://localhost:8000${weddingInvitations.bridePhoto}`}
                                 alt="image description" />
@@ -432,31 +417,22 @@ function ParallaxSpringCoba() {
                                 <div className="inv-grid">
                                     <div className="inv-grid grid-parent">
                                         <figure className="inv-grid grid-node inv-image is-height-rectangle">
-                                            
-                                        
-                                            {/* <img width="800" src={`http://localhost:8000${photoWedding[0].photo1}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/> */}
-                                            {photoWedding.length > 0 && (
-                                                <img width="800" src={`http://localhost:8000${photoWedding[0].photo1}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
-                                            )}
-                                            
+                                            <img width="800"
+                                                src={img1} />
                                         </figure>
                                     </div>
                                     <div className="inv-grid grid-vertical grid-column-3">
                                         <div className="inv-grid grid-parent">
                                             <div className="inv-grid grid-node">
                                                 <figure className="inv-image is-width-rectangle">
-                                                {photoWedding.length > 0 && (
-                                                    <img width="800" src={`http://localhost:8000${photoWedding[0].photo2}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
-                                                )}
+                                                    <img width="800" src={img2} />
                                                 </figure>
                                             </div>
                                         </div>
                                         <div className="inv-grid grid-parent">
                                             <div className="inv-grid grid-node">
                                                 <figure className="inv-image is-md-width-rectangle">
-                                                {photoWedding.length > 0 && (
-                                                    <img width="800" src={`http://localhost:8000${photoWedding[0].photo3}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
-                                                )}
+                                                    <img width="800" src={img3} />
                                                 </figure>
                                             </div>
                                         </div>
@@ -464,18 +440,14 @@ function ParallaxSpringCoba() {
                                             <div className="inv-grid grid-parent">
                                                 <div className="inv-grid grid-node">
                                                     <figure className="inv-image">
-                                                    {photoWedding.length > 0 && (
-                                                        <img width="800" src={`http://localhost:8000${photoWedding[0].photo4}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
-                                                    )}
+                                                        <img width="800" src={img4} />
                                                     </figure>
                                                 </div>
                                             </div>
                                             <div className="inv-grid grid-parent">
                                                 <div className="inv-grid grid-node">
                                                     <figure className="inv-image">
-                                                    {photoWedding.length > 0 && (
-                                                        <img width="800" src={`http://localhost:8000${photoWedding[0].photo5}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
-                                                    )}
+                                                        <img width="800" src={img4} />
                                                     </figure>
                                                 </div>
                                             </div>
@@ -558,10 +530,7 @@ function ParallaxSpringCoba() {
                     <p className='text-lg text-center text-white font-GenshinFont mb-4'>{weddingInvitations.groomName} and {weddingInvitations.brideName} invite you to celebrate with them.</p>
 
                     <div className="grid grid-cols-1 justify-center justify-items-center items-center">
-                        <a href="#_" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-A6A3CC rounded-full shadow-md group" onClick={() => {
-                                generateQrCode();
-                                openModal(weddingInvitations);
-                            }}>
+                        <a href="#_" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-purple-A6A3CC rounded-full shadow-md group">
                             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-A6A3CC group-hover:translate-x-0 ease">
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
@@ -609,7 +578,6 @@ function ParallaxSpringCoba() {
                     </div>
                 </ParallaxLayer>
 
-
             </Parallax>
 
             <ReactModal
@@ -627,16 +595,8 @@ function ParallaxSpringCoba() {
                         <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
                         <textarea ref={messageRef} id="message" name="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tinggalkan Pesan..."></textarea>                        </div>
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-                    <div className="mb-6">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">QR Code</label>
-                        {qrCodeData && <QRCode value={qrCodeData} size={128} />}
-                    </div>
-                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                 </form>
             </ReactModal>
-            
-            
-
             <Container>
                 <Button
                     tooltip={isPlaying ? "Pause Sound" : "Play Sound"}

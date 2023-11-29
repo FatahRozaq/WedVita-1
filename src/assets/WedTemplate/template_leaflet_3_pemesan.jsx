@@ -47,6 +47,11 @@ function WeddingTemplateLeaflet2() {
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
 
+    const {token} = useStateContext();
+    
+    if (!token) {
+        return <Navigate to="/nothing" />;
+    }
 
     const date = weddingInvitations.weddingDate;
     const time = weddingInvitations.weddingTime;

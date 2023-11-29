@@ -125,8 +125,6 @@ function WeddingTemplateLeaflet2() {
     const [messagesView, setMessagesView] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const [weddingPhotos, setweddingPhotos] = useState([]);
-    const [photoWedding, setPhotoWedding] = useState({});
     const [audioTune] = useState(new Audio(gengisDrip));
     const [isPlaying, setIsPlaying] = useState(false);
     const [buttonIcon, setButtonIcon] = useState('fas fa-play');
@@ -159,6 +157,12 @@ function WeddingTemplateLeaflet2() {
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
     
+    const {token} = useStateContext();
+    
+    if (!token) {
+        return <Navigate to="/nothing" />;
+    }
+
     const { setMessageData } = useStateContext();
 
     const date = weddingInvitations.weddingDate;
@@ -255,16 +259,7 @@ function WeddingTemplateLeaflet2() {
                 console.error('Error fetching data: ', error);
             });
 
-        axiosClient
-            .get(`/getphotos/${id}`) //kesalahan 2 (harusnya pake API yg baru)
-            .then((response) => {
-                setweddingPhotos(response.data.weddingPhotos); // kesalahan 1
-            })
-            .catch((error) => {
-                console.error('Error fetching data: ', error);
-            });
-
-    }, [setWeddingInvitations,setweddingPhotos]);
+    }, [setWeddingInvitations]);
 
     const control = useAnimation();
     const [ref, inView] = useInView();
@@ -321,19 +316,6 @@ function WeddingTemplateLeaflet2() {
         }
 
     }, [setMessagesView]);
-
-    useEffect(() => {
-
-        axiosClient
-            .get(`/getphotos/${id}`) //kesalahan 2 (harusnya pake API yg baru)
-            .then((response) => {
-                setPhotoWedding(response.data.weddingPhotos); // kesalahan 1
-            })
-            .catch((error) => {
-                console.error('Error fetching data: ', error);
-            });
-
-    }, [setPhotoWedding]);
 
     return (
         <div>
@@ -395,7 +377,8 @@ function WeddingTemplateLeaflet2() {
                             <div className="inv-grid">
                                 <div className="inv-grid grid-parent">
                                     <figure className="inv-grid grid-node inv-image is-height-rectangle">
-                                    <img width="800" src={`http://localhost:8000${photoWedding.photo1}`} alt="Wedding Photo" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
+                                        <img width="800"
+                                            src={img1} />
                                     </figure>
                                 </div>
                                 <div className="inv-grid grid-vertical grid-column-3">
@@ -595,7 +578,6 @@ function WeddingTemplateLeaflet2() {
                         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
                 </ReactModal>
-                    
                 <Container>
                     <Button
                         tooltip={isPlaying ? "Pause Sound" : "Play Sound"}

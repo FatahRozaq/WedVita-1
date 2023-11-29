@@ -10,8 +10,6 @@ import 'datatables.net-dt/css/jquery.dataTables.css'; // Import the DataTables C
 import $ from 'jquery';
 import 'datatables.net';
 import ReactModal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faPencilAlt, faTrash, faTrashAlt, faShareSquare, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import { useRef } from 'react';
 
@@ -29,8 +27,6 @@ function PesananUser() {
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [isLoadingOrderModal, setIsLoadingOrderModal] = useState(false);
     const [isLoadingInvitationModal, setIsLoadingInvitationModal] = useState(false);
-    const [isInvitationModalOpen, setIsInvitationModalOpen] = useState(false);
-    const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
     const userRef = createRef();
     const invitationRef = createRef();
@@ -42,21 +38,19 @@ function PesananUser() {
 
     const openModal = (invitation) => {
       setSelectedInvitation(invitation);
-      setIsInvitationModalOpen(true);
+      setIsModalOpen(true);
     };
-  
+
     const openModalOrder = (invitation) => {
       setSelectedOrder(invitation);
-      setIsOrderModalOpen(true);
+      setIsModalOpen(true);
     };
-  
+
     const closeModal = () => {
-      setIsInvitationModalOpen(false);
-      setIsOrderModalOpen(false);
+      setIsModalOpen(false);
       setIsLoadingOrderModal(false);
       setIsLoadingInvitationModal(false);
     };
-  
 
     const modalStyles = {
       overlay: {
@@ -124,6 +118,14 @@ function PesananUser() {
     })
 
     }
+
+    const onDelete = (invitation) => {
+      if(!window.confirm("Are you sure to delete this data?")){
+        return
+      }
+
+      axiosClient.delete(`/invitations/${invitation.id}`)
+    }
     
     useEffect(() => {
         console.log(selectedOrderId)
@@ -151,7 +153,7 @@ function PesananUser() {
         .get(`/getOrder/${selectedOrderId}`)
         .then((orderResponse) => {
           const weddingInvitations = orderResponse.data.weddingInvitations;
-          // console.log(orderResponse)
+
           if (weddingInvitations && weddingInvitations.length > 0) {
             const snapURL = weddingInvitations[0].snapUrl;
             window.location.href = snapURL;
@@ -165,25 +167,6 @@ function PesananUser() {
 
         
       }, [token, setUser, setToken, setWeddingInvitation]);
-
-      const onDelete = (invitation) => {
-        if (!window.confirm("Are you sure you want to delete this invitation?")) {
-          return;
-        }
-      
-        axiosClient
-          .delete(`/invitations/${invitation.id}`)
-          .then(() => {
-            // Remove the deleted invitation from the state
-            setWeddingInvitation((prevInvitations) =>
-              prevInvitations.filter((item) => item.id !== invitation.id)
-            );
-          })
-          .catch((error) => {
-            console.error("Error deleting invitation:", error);
-          });
-      };
-      
 
     return (
         
@@ -220,10 +203,10 @@ function PesananUser() {
                                     </button>
                                 </td>
                                 {/* langkah3 */}
-                                <td className='flex items-center justify-center'><Link to={`/previewUndangan/${invitation.id}`}><FontAwesomeIcon icon={faEye} className="text-blue-500"/></Link></td> 
-                                <td >{invitation.status === 'success' ? (
+                                <td><Link to={`/previewUndangan/${invitation.id}`}>Lihat Desain</Link></td> 
+                                <td>{invitation.status === 'success' ? (
                                       <Link to={`/Wedding/wedding-of-${invitation.groomName}-and-${invitation.brideName}/${invitation.id}`}>
-                                        <FontAwesomeIcon icon={faShareSquare} className="text-blue-500"/>
+                                        Share Link
                                       </Link>
                                     ) : (
                                       <span>Undangan harus dibayar dahulu</span>
@@ -234,15 +217,9 @@ function PesananUser() {
                                       Order
                                     </button>
                                 </td>
-                                <td className='flex items-center justify-center space-x-2'>
-                                  <Link className="btn-edit" to={'/editPesanan/' + invitation.id}>
-                                    <FontAwesomeIcon icon={faEdit} className="text-blue-500" />
-                                  </Link>
-                                  <button onClick={ev => onDelete(invitation)}>
-                                    <FontAwesomeIcon icon={faTrash} className="text-red-500" />
-                                  </button>
+                                <td>
+                                  <button onClick={ev => onDelete(invitation)}>Delete</button>
                                 </td>
-
                                 {/* Add more table data if needed */}
                             </tr>
                         ))}
@@ -255,7 +232,7 @@ function PesananUser() {
             </div>
 
             <ReactModal
-              isOpen={isInvitationModalOpen}
+              isOpen={isModalOpen}
               onRequestClose={closeModal}
               contentLabel="Example Modal"
               style={modalStyles}
@@ -392,7 +369,7 @@ function PesananUser() {
             </ReactModal>
 
             <ReactModal
-              isOpen={isOrderModalOpen}
+              isOpen={isModalOpen}
               onRequestClose={closeModal}
               contentLabel="Example Modal"
               style={modalStyles}

@@ -78,12 +78,12 @@ function ImgKaveh1({ groomName, brideName, wedDate }) {
                     </motion.div>
                 </Parallax>
             ) : (
-                <section style={divStyle} class="inv-banner banner-fullheight color-ltblue">
-                    <div class="banner-body text-centered">
-                        <div class="container">
-                            <p class="subtitle">Wedding Invitation</p>
-                            <p class="title">{groomName} <br /> & <br /> {brideName}</p>
-                            <p class="subtitle">{wedDate}</p>
+                <section style={divStyle} className="inv-banner banner-fullheight color-ltblue">
+                    <div className="banner-body text-centered">
+                        <div className="container">
+                            <p className="subtitle">Wedding Invitation</p>
+                            <p className="title">{groomName} <br /> & <br /> {brideName}</p>
+                            <p className="subtitle">{wedDate}</p>
                         </div>
                     </div>
                 </section>

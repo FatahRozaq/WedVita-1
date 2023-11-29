@@ -1,6 +1,7 @@
 import '../../App.css'
 import './style.css'
 import { useEffect, useState } from 'react'
+import { useStateContext } from '../../Contexts/ContextProvider'
 import img1 from './img/madeline-james-wedding-couple-0422-71c410b79316461997eb0c63de0d4aa6.jpg'
 import img2 from './img/wed_exp.png'
 import img3 from './img/father-walking-his-daughter-down-aisle.jpg'
@@ -9,7 +10,6 @@ import img4 from './img/33814_05-eb9a2e4cc91544c5b78cc623c3c56222.jpg'
 import img11 from './img/user3-128x128.jpg'
 import img12 from './img/user6-128x128.jpg'
 import ReactModal from 'react-modal';
-import { useStateContext } from '../../Contexts/ContextProvider'
 
 //langkah 2
 import axios from 'axios'
@@ -19,8 +19,6 @@ import { useParams } from 'react-router-dom'
 import LeafletMap from '../../coba_LeafletMap'
 
 import extractCoordinatesFromURL from './extract-link'
-
-
 
 function formatDate(inputDate) {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -43,10 +41,15 @@ function formatCustomDateTime(weddingDate, weddingTime) {
     return formattedDateTime;
 }
 
-function WeddingTemplateLeaflet2() {
+function WeddingTemplateLeaflet() {
     const { id } = useParams();
     const [weddingInvitations, setWeddingInvitations] = useState({});
 
+    const {token} = useStateContext();
+    
+    if (!token) {
+        return <Navigate to="/nothing" />;
+    }
 
     const date = weddingInvitations.weddingDate;
     const time = weddingInvitations.weddingTime;
@@ -161,12 +164,16 @@ function WeddingTemplateLeaflet2() {
             </head>
 
             <body>
-
-                
-                <p className="subtitle">Wedding Invitation</p>
-                <p className="title">{weddingInvitations.groomName} & {weddingInvitations.brideName}</p>
-                <p className="subtitle">{formatDate(weddingInvitations.weddingDate)}</p>
-                <ParallaxComponent/>
+                <section className="inv-banner banner-fullheight color-ltblue ">
+                    <div className="banner-body text-centered">
+                        <div className="container">
+                            {/* <p className="subtitle">{formattedDate}</p> */}
+                            <p className="subtitle">Wedding Invitation</p>
+                            <p className="title">{weddingInvitations.groomName} & {weddingInvitations.brideName}</p>
+                            <p className="subtitle">{formatDate(weddingInvitations.weddingDate)}</p>
+                        </div>
+                    </div>
+                </section>
 
                 <section className="p-2">
                     <h1
@@ -408,8 +415,11 @@ function WeddingTemplateLeaflet2() {
                 </ReactModal>
             </body>
 
+
+
+
         </div>
     )
 }
 
-export default WeddingTemplateLeaflet2;
+export default WeddingTemplateLeaflet;
